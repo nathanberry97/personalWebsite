@@ -8,7 +8,7 @@ export class InfraStack extends cdk.Stack {
 
     // Create s3 bucket to host static website
     new websiteBucket(this, 'bucket',{
-      bucketName: 'ENTER_BUCKET_NAME',
+      bucketName: 'test-static-bucket-npb',
       websiteIndex: 'index.html'
     });
   }
