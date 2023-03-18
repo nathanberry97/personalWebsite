@@ -20,7 +20,7 @@ export class websiteBucket extends Construct {
     new Bucket(this, 'websiteRedirectBucket', {
       bucketName: `www.${props.bucketName}`,
       websiteRedirect: { 
-        hostName: `${websiteBucket.bucketDomainName}/index.html`
+        hostName: `${props.bucketName}`
       }
     });
 
