@@ -14,14 +14,14 @@ export class websiteBucket extends Construct {
 
     const websiteBucket = new Bucket(this, 'websiteBucket', {
       bucketName: props.bucketName,
-      websiteIndexDocument: props.websiteIndex,
-      enforceSSL: true
+      websiteIndexDocument: props.websiteIndex
     });
 
     new Bucket(this, 'websiteRedirectBucket', {
       bucketName: `www.${props.bucketName}`,
-      websiteRedirect: { hostName: websiteBucket.bucketDomainName },
-      enforceSSL: true
+      websiteRedirect: { 
+        hostName: `${websiteBucket.bucketDomainName}/index.html`
+      }
     });
 
     const publicBucket = new PolicyStatement({
