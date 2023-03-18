@@ -18,6 +18,12 @@ export class websiteBucket extends Construct {
       enforceSSL: true
     });
 
+    new Bucket(this, 'websiteRedirectBucket', {
+      bucketName: `www.${props.bucketName}`,
+      websiteRedirect: { hostName: websiteBucket.bucketDomainName },
+      enforceSSL: true
+    });
+
     const publicBucket = new PolicyStatement({
        actions: ['s3:GetObject'],
        effect: Effect.ALLOW,
