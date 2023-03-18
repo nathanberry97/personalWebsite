@@ -3,8 +3,6 @@ name: Build and Test
 on:
   push:
     branches: [main]
-  pull_request:
-    branches: [main]
 
 jobs:
   test:
@@ -30,3 +28,15 @@ jobs:
         cd ./infra
         npm run test
 
+    - name: cdk deploy
+      uses: youyo/aws-cdk-github-actions@v2
+      with:
+        cdk_subcommand: 'deploy'
+        working_dir: './infra'
+        cdk_args: '--require-approval never'
+        actions_comment: false
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        ACCOUNT_NUM: ${{secrets.ACCOUNT_NUM}}
+        REGION: 'eu-west-2'
