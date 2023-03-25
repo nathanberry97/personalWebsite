@@ -32,7 +32,7 @@ the following commands:
 ```shell
 npm ci
 npm run build
-npx cdk install
+npx cdk deploy
 ```
 
 > **Note** you need to set aws account number and region in your environment

@@ -31,7 +31,6 @@ body{
 }
 
 .navbar a:hover {
-  color: rgb(216, 222, 233);
   background: rgb(76, 86, 106);
   border-radius: 10px;
 }
@@ -101,6 +100,34 @@ body{
 .name h4{
   color: rgba(236, 239, 244, 0.45);
   margin: 0;
+}
+
+.blog{
+  flex-direction: column;
+  padding-bottom: 600px;
+}
+
+.blog h2{
+  padding-left: 40px;
+  color: rgba(216, 222, 233, 0.9);
+  padding-bottom: 15px;
+}
+
+.blog p{
+  color: rgba(216, 222, 233, 0.9);
+  text-align: right;
+  margin-top: 0
+}
+
+.blog a{
+  color: rgba(236, 239, 244, 0.6);
+  padding: 14px 16px;
+  text-align: left;
+  text-decoration: none;
+}
+
+.blog a:hover {
+  text-decoration: underline;
 }
 
 .links{
