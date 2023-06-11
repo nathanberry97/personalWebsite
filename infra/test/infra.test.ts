@@ -1,12 +1,47 @@
 import * as cdk from 'aws-cdk-lib';
+import { Bucket } from 'aws-cdk-lib/aws-s3';
 import { Template } from 'aws-cdk-lib/assertions';
-import * as Infra from '../lib/infra-stack';
+import { websiteS3 } from '../lib/constructs/websiteS3';
+import { websiteCloudFront } from '../lib/constructs/websiteCloudFront';
 
-test('S3 bucket Created', () => {
-   const app = new cdk.App();
-   const stack = new Infra.InfraStack(app, 'MyTestStack');
-   const template = Template.fromStack(stack);
+describe('Test constructs', () => {
+  test('Test S3 bucket Creation', () => {
+     const stack = new cdk.Stack();
 
-   template.resourceCountIs('AWS::S3::Bucket', 2)
-   template.hasResourceProperties('AWS::S3::Bucket', {});
-});
+     new websiteS3(stack, 'bucketStack', {
+       domainName: 'test',
+       websiteIndex: 'index.html'
+     });
+
+     const template = Template.fromStack(stack);
+
+     template.resourceCountIs('AWS::S3::Bucket', 2)
+     template.resourceCountIs('AWS::S3::BucketPolicy', 1)
+  });
+
+  test('Test CloudFront creation', () => {
+     const stack = new cdk.Stack();
+
+     new websiteCloudFront(stack, 'cloudFrontStack', {
+       domainName: 'test',
+       certArn: 'arn:aws:acm:us-east-1:1234:certificatete:test',
+       websiteBucket: new Bucket(stack, 'test'),
+       redirectWebsiteBucket: new Bucket(stack, 'testTwo')
+     });
+
+     const template = Template.fromStack(stack);
+
+     template.resourceCountIs('AWS::CloudFront::Distribution', 2)
+     template.resourceCountIs('AWS::CloudFront::CloudFrontOriginAccessIdentity', 2)
+  });
+
+  test('Test Route53 creation', () => {
+     /*
+      * When trying to test websiteRoute53 jest throws an error due to
+      * HostedZone.fromLookup, for more information about this follow the
+      * following github issue which states they aren't able to solve this issue
+      * through the CDK:
+      *   - https://github.com/aws-samples/aws-cdk-examples/issues/238
+      */
+  });
+})
