@@ -23,10 +23,10 @@ jobs:
         npm ci
         npm run build
 
-    # - name: Run Tests
-    #   run: |
-    #     cd ./infra
-    #     npm run test
+    - name: Run Tests
+      run: |
+        cd ./infra
+        npm run test
 
     - name: cdk deploy
       uses: youyo/aws-cdk-github-actions@v2
