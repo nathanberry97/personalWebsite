@@ -1,0 +1,19 @@
+/* Shared content */
+.links{
+  font-size: 18px;
+  list-style: none;
+  padding-left: 0px;
+  text-align: left;
+}
+.links li{
+  display: inline-block;
+  margin-right: 8px;
+}
+.links a{
+  padding: 5px;
+  text-decoration: none;
+}
+.links a img:hover{
+  background-color: rgba(0, 0, 0, 0);
+}
+

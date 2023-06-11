@@ -1,0 +1,30 @@
+/* Navigation bar */ 
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 5px;
+  width: 40%;
+}
+.navbar a {
+  color: rgb(216, 222, 233);
+  display: block;
+  float: right;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+.navbar a:hover {
+  background: rgb(76, 86, 106);
+  border-radius: 10px;
+}
+
+/* Phone resize content */
+@media only screen and (max-width: 650px){
+  .navbar {
+    width: 40%;
+    padding-left: 150px;
+  }
+  .navbar a{
+    padding: 5px 5px;
+  }
+}

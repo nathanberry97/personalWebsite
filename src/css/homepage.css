@@ -1,0 +1,64 @@
+/* Home page content */
+.profile, .aboutme{    
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  font-family: 'Roboto', sans-serif;
+  justify-content: center;
+  margin: 20px, 5px;
+  max-width: 50%;
+  text-align: justify;
+}
+.aboutme{
+  background-color: rgb(216, 222, 233);
+  border-radius: 15px;
+  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+}
+.profile{
+  padding-top: 25px;
+}
+.headshot{
+ border-radius: 50%;
+ box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
+ margin-bottom: 20px;
+}
+.bio{
+  color: rgb(76, 86, 106);
+  width: 80%;
+}
+.bio h2{
+  margin-bottom: 0px;
+  text-align: center;
+}
+.name{
+  margin-bottom: 0px;
+  text-align: center;
+}
+.name h1{
+  color: rgba(216, 222, 233, 0.9);
+  margin: 0;
+}
+.name h4{
+  color: rgba(236, 239, 244, 0.45);
+  margin: 0;
+}
+
+/* phone resize content */
+@media only screen and (max-width: 650px){
+  .profile, .aboutme{
+    margin: 10px;
+  }
+  .headshot{
+    visibility: hidden;
+  }
+}
+
+@media only screen and (max-height: 500px) and (orientation: landscape) {
+  .profile{
+    padding-bottom: 250px;
+  }
+  .headshot{
+    visibility: hidden;
+  }
+}

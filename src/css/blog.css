@@ -1,0 +1,32 @@
+/* Blog content */
+.blog{
+  flex-direction: column;
+  padding-bottom: 600px;
+}
+.blog h2{
+  padding-left: 45px;
+  color: rgba(216, 222, 233, 0.9);
+  padding-bottom: 15px;
+}
+.blog p{
+  color: rgba(216, 222, 233, 0.9);
+  text-align: right;
+  margin-top: 0
+}
+.blog a{
+  color: rgba(236, 239, 244, 0.6);
+  padding: 14px 16px;
+  text-align: left;
+  text-decoration: none;
+}
+.blog a:hover {
+  text-decoration: underline;
+}
+
+/* phone resize content */
+@media only screen and (max-width: 650px){
+  .blog{
+    padding-top: 250px;
+    padding-right: 50px;
+  }
+}
