@@ -66,8 +66,16 @@ body{
 }
 
 .name{
-  margin-bottom: 0px;
+  margin-bottom: 5px;
   text-align: center;
+}
+
+.saa{
+    margin-left: 2px;
+}
+
+.rhcsa{
+    margin-right: 2px;
 }
 
 .name h1{
