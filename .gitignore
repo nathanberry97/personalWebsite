@@ -7,3 +7,9 @@ node_modules
 .cdk.staging
 cdk.out
 cdk.context.json
+
+# Ignore node files
+lib/
+node_modules/
+package-lock.json
+.env
