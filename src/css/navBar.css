@@ -1,0 +1,25 @@
+.navbar {
+  overflow: hidden;
+  position: fixed;
+  top: 0px;
+  width: 60%;
+  transition: top 0.5s;
+}
+
+.navbar a{
+  color: rgba(235, 219, 178, 0.8);
+  display: block;
+  float: right;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.navbar a:hover {
+  background: rgb(98, 96, 84);
+  border-radius: 10px;
+}
+
+.current a{
+  color: rgb(177, 98, 134);
+}

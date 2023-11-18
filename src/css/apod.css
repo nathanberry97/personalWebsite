@@ -1,0 +1,43 @@
+html, body{
+  overflow-x: auto;
+}
+
+.apod {
+  text-align: center;
+  color: rgb(235, 219, 178);
+  margin: 0;
+  width: 55%
+}
+
+.apod h1{
+  padding-top: 50px;
+  color: rgb(177, 98, 134);
+}
+
+.apod img{
+    width: 40%;
+}
+
+.apod a{
+  color: rgb(177, 98, 134);
+  text-decoration: none;
+}
+
+.apod a:hover {
+  text-decoration: underline;
+}
+
+.explanation{
+  text-align: justify;
+}
+
+/* phone resize content */
+@media only screen and (max-width: 650px){
+  .apod {
+    width: 90%;
+  }
+
+  .apod img{
+    width: 100%;
+  }
+}
