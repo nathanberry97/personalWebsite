@@ -1,8 +1,14 @@
-import { getData } from './nasaApodFunctions';
+import {
+    getData,
+    formatData,
+    writeApodHtmlFile
+} from './nasaApodFunctions';
 
 async function main() {
 
-    await getData();
+    const rawApodData = await getData();
+    const htmlApodData = formatData(rawApodData);
+    writeApodHtmlFile(htmlApodData);
 
 }
 

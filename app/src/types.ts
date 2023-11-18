@@ -9,3 +9,11 @@ export type apodData = {
     url: string;
 }
 
+export type htmlApodData = {
+    title: string;
+    date: string;
+    image: string;
+    copyright: string;
+    explanation: string;
+}
+

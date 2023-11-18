@@ -13,3 +13,4 @@ lib/
 node_modules/
 package-lock.json
 .env
+app/html/apod.html

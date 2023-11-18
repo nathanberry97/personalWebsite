@@ -6,7 +6,7 @@ html, body{
   text-align: center;
   color: rgb(235, 219, 178);
   margin: 0;
-  width: 55%
+  width: 30%
 }
 
 .apod h1{
@@ -15,7 +15,7 @@ html, body{
 }
 
 .apod img{
-    width: 40%;
+  width: 100%;
 }
 
 .apod a{
@@ -27,7 +27,7 @@ html, body{
   text-decoration: underline;
 }
 
-.explanation{
+.apod p{
   text-align: justify;
 }
 
@@ -35,9 +35,5 @@ html, body{
 @media only screen and (max-width: 650px){
   .apod {
     width: 90%;
-  }
-
-  .apod img{
-    width: 100%;
   }
 }

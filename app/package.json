@@ -1,7 +1,7 @@
 {
   "scripts": {
     "build": "tsc",
-    "main": "node ./lib/main.js",
+    "main": "node ./lib/src/main.js",
     "test": "jest"
   },
   "devDependencies": {
