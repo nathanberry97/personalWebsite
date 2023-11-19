@@ -2,6 +2,8 @@ import { apodData, htmlApodData } from "./types";
 import * as fs from 'fs';
 import axios from 'axios';
 import 'dotenv/config';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { CloudFrontClient, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront';
 
 export async function getData(): Promise<apodData>{
 
@@ -41,15 +43,56 @@ export function formatData(data: apodData): htmlApodData{
     return (formattedApodData);
 }
 
-export function writeApodHtmlFile(data: htmlApodData){
+export function writeApodHtmlFile(data: htmlApodData): string{
 
-    let htmlFile = fs.readFileSync('./html/template.html', 'utf-8');
+    try {
+        let htmlFile = fs.readFileSync('./html/template.html', 'utf-8');
 
-    htmlFile = htmlFile.replace(/Title/g, data.title);
-    htmlFile = htmlFile.replace(/Date/g, data.date);
-    htmlFile = htmlFile.replace(/Image/g, data.image);
-    htmlFile = htmlFile.replace(/Copyright/g, data.copyright);
-    htmlFile = htmlFile.replace(/Explanation/g, data.explanation);
+        htmlFile = htmlFile.replace(/Title/g, data.title);
+        htmlFile = htmlFile.replace(/Date/g, data.date);
+        htmlFile = htmlFile.replace(/Image/g, data.image);
+        htmlFile = htmlFile.replace(/Copyright/g, data.copyright);
+        htmlFile = htmlFile.replace(/Explanation/g, data.explanation);
 
-    fs.writeFileSync('./html/apod.html', htmlFile);
+        return (htmlFile);
+    } catch {
+        throw new Error('Unable to fetch and update template html file');
+    }
+}
+
+export function writeHtmlFileToS3(file: string){
+    const client = new S3Client({ region: 'eu-west-2' });
+
+    const command = new PutObjectCommand({
+        Bucket: 'nathanberry.co.uk',
+        Key: 'apod.html',
+        Body: file
+    });
+
+    try {
+        client.send(command);
+    } catch {
+        console.error('Unable to upload APOD html file to S3');
+    }
+}
+
+export function clearCacheCloudFront(distribution_id: string){
+    const client = new CloudFrontClient({ region: 'eu-west-2' });
+
+    const command = new CreateInvalidationCommand({
+        DistributionId: distribution_id,
+        InvalidationBatch: {
+            Paths: {
+                Quantity: 1,
+                Items: ['/apod.html']
+            },
+            CallerReference: `Invalidate APOD cache ${new Date().getDate()}`
+        },
+    });
+
+    try {
+        client.send(command);
+    } catch {
+        console.error('Unable to invalidate cloudfront cache');
+    }
 }
