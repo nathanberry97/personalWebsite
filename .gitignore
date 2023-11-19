@@ -1,16 +1,12 @@
 *.js
+!src/js/navBarScroll.js
 !jest.config.js
 *.d.ts
 node_modules
-
-# CDK asset staging directory
-.cdk.staging
-cdk.out
-cdk.context.json
-
-# Ignore node files
-lib/
-node_modules/
+lib
 package-lock.json
 .env
 app/html/apod.html
+.cdk.staging
+cdk.out
+cdk.context.json
