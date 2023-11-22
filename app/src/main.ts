@@ -2,8 +2,7 @@ import {
     getData,
     formatData,
     writeApodHtmlFile,
-    writeHtmlFileToS3,
-    clearCacheCloudFront
+    writeHtmlFileToS3
 } from './nasaApodFunctions';
 
 async function main() {
@@ -11,8 +10,6 @@ async function main() {
     const htmlData = formatData(rawData);
     const htmlFile = writeApodHtmlFile(htmlData);
     writeHtmlFileToS3(htmlFile);
-    clearCacheCloudFront(process.env.DISTRIBUTION_ID_REDIRECT_BUCKET!);
-    clearCacheCloudFront(process.env.DISTRIBUTION_ID_WEBSITE_BUCKET!);
 }
 
 main();

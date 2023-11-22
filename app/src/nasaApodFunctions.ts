@@ -1,9 +1,8 @@
 import { apodData, htmlApodData } from "./types";
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import * as fs from 'fs';
 import axios from 'axios';
 import 'dotenv/config';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
-import { CloudFrontClient, CreateInvalidationCommand } from '@aws-sdk/client-cloudfront';
 
 export async function getData(): Promise<apodData>{
 
@@ -64,35 +63,15 @@ export function writeHtmlFileToS3(file: string){
     const client = new S3Client({ region: 'eu-west-2' });
 
     const command = new PutObjectCommand({
-        Bucket: 'nathanberry.co.uk',
+        Bucket: process.env.S3_BUCKET!,
         Key: 'apod.html',
-        Body: file
+        Body: file,
+        ContentType: 'text/html'
     });
 
     try {
         client.send(command);
     } catch {
         console.error('Unable to upload APOD html file to S3');
-    }
-}
-
-export function clearCacheCloudFront(distribution_id: string){
-    const client = new CloudFrontClient({ region: 'eu-west-2' });
-
-    const command = new CreateInvalidationCommand({
-        DistributionId: distribution_id,
-        InvalidationBatch: {
-            Paths: {
-                Quantity: 1,
-                Items: ['/apod.html']
-            },
-            CallerReference: `Invalidate APOD cache ${new Date().getDate()}`
-        },
-    });
-
-    try {
-        client.send(command);
-    } catch {
-        console.error('Unable to invalidate cloudfront cache');
     }
 }

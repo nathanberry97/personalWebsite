@@ -1,5 +1,5 @@
 # Create build
-FROM node:hydrogen-alpine AS build
+FROM --platform=linux/amd64 node:hydrogen-alpine AS build
 
 RUN apk update && apk --no-cache upgrade
 
