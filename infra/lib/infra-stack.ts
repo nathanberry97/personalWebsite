@@ -3,6 +3,7 @@ import { Construct } from 'constructs';
 import { websiteS3 } from './constructs/websiteS3';
 import { websiteCloudFront } from './constructs/websiteCloudFront';
 import { websiteRoute53 } from './constructs/websiteRoute53';
+import { websiteEcsService } from './constructs/websiteEcsService';
 
 export class InfraStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -40,6 +41,17 @@ export class InfraStack extends cdk.Stack {
       domainName: domain,
       websiteDistribution: cloudFront.websiteDistribution,
       redirectWebsiteDistribution: cloudFront.redirectWebsiteDistribution
+    });
+
+    /*
+     * Create and confiure ECS task
+     */
+    new websiteEcsService(this, 'ecsService', {
+        ecsClusterName: 'nasa_apod_html',
+        ecrRepoName: 'nasa_apod_html',
+        s3BucketHtmlArn: buckets.websiteBucket.bucketArn,
+        s3BucketHtmlArnObjects: buckets.websiteBucket.arnForObjects('*'),
+        vpcId: process.env.VPC_ID!
     });
   }
 }
