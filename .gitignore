@@ -4,7 +4,6 @@
 *.d.ts
 node_modules
 app/lib
-package-lock.json
 .env
 app/html/apod.html
 .cdk.staging
