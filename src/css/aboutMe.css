@@ -36,30 +36,47 @@ html, body{
 }
 
 .profile img{
- width: 200px;
+ width: 250px;
  border-radius: 50%;
  box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.5);
  margin-bottom: 20px;
 }
 
 .profile h1{
-  color: rgb( 177, 98, 134);
-  margin: 0;
-}
-
-.profile h4{
   color: rgba(235, 219, 178, 0.8);
   margin: 0;
 }
 
+.profile .name{
+  color: rgb( 177, 98, 134);
+}
+
+.profile .at{
+  color: #458588;
+}
+
+.profile h4{
+  color: rgba(235, 219, 178, 0.8);
+  margin-top: 10px;
+}
+
+.profile a{
+  color: rgba(235, 219, 178, 0.8);
+  text-decoration: none;
+}
+
+.profile a:hover{
+  text-decoration: underline;
+}
+
 .aboutme{
-  background-color: rgb(251, 241, 199);
+  background-color: #ebdbb2;
   border-radius: 15px;
   box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
 }
 
 .aboutme h2{
-  color: rgb(40, 40, 40);
+  color: #3c3836;
   margin-bottom: 0px;
   text-align: center;
 }
@@ -104,7 +121,7 @@ html, body{
   }
 
   .profile, .aboutme{
-    margin: 50px;
+    margin: 40px;
   }
 
   .headshot{
@@ -118,7 +135,7 @@ html, body{
   }
 
   .profile{
-    padding-bottom: 250px;
+    padding-bottom: 300px;
   }
 
   .headshot{
