@@ -43,12 +43,12 @@ html, body{
 }
 
 .profile h1{
-  color: rgba(235, 219, 178, 0.8);
+  color: #c6b998;
   margin: 0;
 }
 
 .profile .name{
-  color: rgb( 177, 98, 134);
+  color: #b16286;
 }
 
 .profile .at{
@@ -56,12 +56,12 @@ html, body{
 }
 
 .profile h4{
-  color: rgba(235, 219, 178, 0.8);
+  color: #c6b998;
   margin-top: 10px;
 }
 
 .profile a{
-  color: rgba(235, 219, 178, 0.8);
+  color: #c6b998;
   text-decoration: none;
 }
 
@@ -72,7 +72,7 @@ html, body{
 .aboutme{
   background-color: #ebdbb2;
   border-radius: 15px;
-  box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 5px 10px 0px #00000080;
 }
 
 .aboutme h2{
@@ -82,7 +82,7 @@ html, body{
 }
 
 .bio {
-  color: rgba(40, 40, 40, 0.8);
+  color: #4f4c44;
   width: 80%;
 }
 
@@ -105,10 +105,6 @@ html, body{
 .links a{
   padding: 5px;
   text-decoration: none;
-}
-
-.links a img:hover{
-  background-color: rgba(0, 0, 0, 0);
 }
 
 /* phone resize content */

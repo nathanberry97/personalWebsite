@@ -28,7 +28,7 @@ export function formatData(data: apodData): htmlApodData{
 
     if (data.copyright) {
         const formatCopyright = data.copyright.replace(/\n/g, ' ');
-        copyright = `<h4> Copyright:${formatCopyright} </h4>`;
+        copyright = `<h4> Copyright: ${formatCopyright} </h4>`;
     }
 
     let formattedApodData: htmlApodData = {
