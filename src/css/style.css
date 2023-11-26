@@ -8,6 +8,7 @@ html, body{
 
 body{
   background: #282828;
+  font-size: 18px;
 }
 
 .navbar {
@@ -29,8 +30,7 @@ body{
 }
 
 .navbar a:hover {
-  background: #626054;
-  border-radius: 10px;
+  text-decoration: underline;
 }
 
 .linksWidth {
@@ -41,15 +41,10 @@ body{
   color: #b16286;
 }
 
-/* phone resize content */
 @media only screen and (max-width: 650px){
-  .linksWidth{
-    width: 100%;
-  }
+  .linksWidth{ width: 100%; }
 }
 
 @media only screen and (max-height: 500px) and (orientation: landscape) {
-  .navbar{
-    visibility: hidden;
-  }
+  .navbar{ visibility: hidden; }
 }

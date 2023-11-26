@@ -3,6 +3,7 @@ html, body{
 }
 
 .apod {
+  font-family: 'Roboto', sans-serif;
   text-align: center;
   color: #ebdbb2;
   margin: 0;
@@ -19,7 +20,7 @@ html, body{
 }
 
 .apod a{
-  color: #b16286;
+  color: #458588;
   text-decoration: none;
 }
 
@@ -31,15 +32,22 @@ html, body{
   text-align: justify;
 }
 
-/* phone resize content */
-@media only screen and (max-width: 650px){
-  .apod {
-    width: 90%;
-  }
+@media only screen and (max-width: 2000px){
+  .apod { width: 50%; }
 }
 
-@media only screen and (max-height: 500px) and (orientation: landscape) {
-  .apod {
-    width: 70%;
-  }
+@media only screen and (max-width: 1500px){
+  .apod { width: 65%; }
+}
+
+@media only screen and (max-width: 1000px){
+  .apod { width: 80%; }
+}
+
+@media only screen and (max-width: 650px){
+  .apod { width: 90%; }
+}
+
+@media only screen and (max-height: 500px) and (orientation: landscape){
+  .apod { width: 70%; }
 }
