@@ -10,7 +10,7 @@ do
         --template ./template.html \
         -c ../css/style.css \
         -c ../css/blog.css \
-        -o ./src/blog/${entry%.*}.html
+        -o ../src/blog/${entry%.*}.html
   fi
 done
 
