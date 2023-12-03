@@ -9,3 +9,4 @@ app/html/apod.html
 .cdk.staging
 cdk.out
 cdk.context.json
+src/blog/*

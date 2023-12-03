@@ -31,10 +31,16 @@ export function formatData(data: apodData): htmlApodData{
         copyright = `<h4> Copyright: ${formatCopyright} </h4>`;
     }
 
+    let url = `<img src=${data.url}>`
+
+    if (data.url.match("youtube")) {
+        url = `<iframe width="960" height="540" src="${data.url}" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>`
+    }
+
     let formattedApodData: htmlApodData = {
         title: `<h1> ${data.title} </h1>`,
         date: `<h3> ${data.date} </h3>`,
-        image: `<img src=${data.url}>`,
+        image: url,
         copyright: copyright,
         explanation: `<p> ${data.explanation} </p>`
     }

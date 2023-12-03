@@ -19,6 +19,7 @@ jobs:
 
     - name: Install Dependencies
       run: |
+        sudo apt install pandoc
         cd ./infra
         npm ci
         npm run build
@@ -27,6 +28,11 @@ jobs:
       run: |
         cd ./infra
         npm run test
+
+    - name: Compile html articles
+      run: |
+        chmod +x ./scripts/createBlogPosts.sh
+        ./scripts/createBlogPosts.sh
 
     - name: cdk deploy
       uses: youyo/aws-cdk-github-actions@v2

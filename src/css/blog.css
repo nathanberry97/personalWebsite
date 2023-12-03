@@ -1,0 +1,62 @@
+body {
+  background: #282828;
+  flex-direction: column;
+  width: 25%;
+}
+
+p {
+  text-align: justify;
+  width: 100%;
+}
+
+h1 {
+  color: #b16286;
+  padding-top: 50px;
+}
+
+h3 {
+  margin-top: -25px;
+}
+
+pre, blockquote {
+    background: #333;
+    border: 1px solid #333;
+    color: #c6b998;
+    page-break-inside: avoid;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    width: 90%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+}
+
+pre {
+  border-left: 3px solid #458588;
+}
+
+img {
+  width: 100%;
+}
+
+/* Moblie view and responsive design */
+@media only screen and (max-width: 2000px){
+  body { width: 35%; }
+}
+
+@media only screen and (max-width: 1500px){
+  body { width: 45%; }
+}
+
+@media only screen and (max-width: 1000px){
+  body {
+    font-size: 18px;
+    width: 80%;
+  }
+
+  pre, blockquote {
+      width: 85%;
+  }
+}

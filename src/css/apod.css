@@ -1,53 +1,39 @@
-html, body{
-  overflow-x: auto;
-}
-
 .apod {
-  font-family: 'Roboto', sans-serif;
+  padding-top: 50px;
   text-align: center;
-  color: #ebdbb2;
   margin: 0;
   width: 40%
 }
 
 .apod h1{
-  padding-top: 50px;
   color: #b16286;
 }
 
-.apod img{
-  width: 100%;
-}
-
-.apod a{
-  color: #458588;
-  text-decoration: none;
-}
-
-.apod a:hover {
-  text-decoration: underline;
+.apod h3 {
+  margin-top: -25px;
 }
 
 .apod p{
   text-align: justify;
 }
 
+.apod img, iframe {
+  width: 100%;
+}
+
+.apod iframe {
+  height: 540px;
+}
+
+/* Moblie view and responsive design */
 @media only screen and (max-width: 2000px){
   .apod { width: 50%; }
 }
 
 @media only screen and (max-width: 1500px){
-  .apod { width: 65%; }
+  .apod { width: 70%; }
 }
 
 @media only screen and (max-width: 1000px){
-  .apod { width: 80%; }
-}
-
-@media only screen and (max-width: 650px){
-  .apod { width: 90%; }
-}
-
-@media only screen and (max-height: 500px) and (orientation: landscape){
-  .apod { width: 70%; }
+  .apod { width: 85%; }
 }

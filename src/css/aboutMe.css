@@ -1,20 +1,19 @@
-html, body{
-  height: 100%;
-  overflow: hidden !important;
-  padding-top: 0px;
-}
-
-.wrapper{
-  align-items: center;
-  display: flex;
+.wrapper {
+  padding-top: 150px;
   flex-direction: row;
+  max-width: 60%;
+  min-width: 600px;
   height: 80%;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0px;
-  max-width: 60%;
-  min-width: 600px;
-  padding-bottom: 55px;
+}
+
+/* About me conent */
+.header {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
 }
 
 .profile, .aboutme{    
@@ -41,9 +40,6 @@ html, body{
 }
 
 .aboutme {
-  font-family: 'Roboto', sans-serif;
-  font-size: 18px;
-  color: #c6b998;
   padding-left: 150px;
   align-items: left;
 }
@@ -54,6 +50,7 @@ html, body{
 
 .aboutme .name{
   color: #b16286;
+  text-decoration: underline;
 }
 
 .aboutme .at{
@@ -65,24 +62,32 @@ html, body{
   margin-bottom: 5px;
 }
 
-.aboutme a{
+.aboutme .company {
   color: #c6b998;
-  text-decoration: none;
 }
 
-.aboutme a:hover{
-  text-decoration: underline;
-}
-
-.bio {
+.aboutme .bio {
   margin-top: -5px;
   width: 90%;
 }
 
-.bio a{
-  color: #458588;
-  text-decoration: none;
+/* Blog content */
+.line{
+  margin-top: 5%;
+  height: 2px;
+  background: #333;
 }
+
+.blog {
+  margin-top: 2%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  color: #c6b998;
+  margin-left: 50px;
+  padding-left: 95px;
+}
+
+/* Moblie view and responsive design */
 
 @media only screen and (max-width: 2000px){
   .wrapper{ max-width: 70%; }
@@ -94,13 +99,14 @@ html, body{
 
 @media only screen and (max-width: 1000px){
   .wrapper{
-    flex-direction: column-reverse;
+    padding-top: 50px;
     height: auto;
     max-width: 90%;
+    min-width: 800px;
   }
 
-  .profile {
-    padding-top: 100px;
+  .header{
+    flex-direction: column-reverse;
   }
 
   .profile img {
@@ -111,39 +117,16 @@ html, body{
     padding-top: 25px;
     padding-left: 0px;
     text-align: center;
-    font-size: 17px;
   }
 
-  .bio {
+  .aboutme .bio {
     padding-top: 20px;
     text-align: justify;
     width: 100%;
   }
-}
 
-@media only screen and (max-width: 375px) and (max-height: 670px){
-  .profile img {
-    visibility: hidden;
-  }
-
-  .aboutme{
-    padding-bottom: 250px;
-  }
-}
-
-@media only screen and (max-height: 500px) and (orientation: landscape) {
-  .wrapper{
-    flex-direction: row;
-    padding-top: 25px;
-  }
-
-  .profile{
-    padding-left: 25px;
-    padding-bottom: 75px;
-  }
-
-  .aboutme {
-    padding-left: 75px;
-    text-align: left;
+  .blog {
+    margin-top: 0%;
+    margin-left: 140px;
   }
 }

@@ -1,16 +1,38 @@
-html, body{
+/* Standard styling */
+html, body {
+  overflow-y: auto;
+  overflow-x: hidden !important;
   align-items: center;
   display: flex;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   justify-content: center;
   margin: 0px;
 }
 
-body{
+body {
   background: #282828;
-  font-size: 18px;
+  font-size: 20px;
 }
 
+p, h1, h3, h4{
+  color: #c6b998;
+}
+
+li {
+  list-style-type: none;  
+  font-weight: bold;  
+}
+
+a {
+  color: #458588;
+  text-decoration: none;
+}
+
+a:hover{
+  text-decoration: underline;
+}
+
+/* Navbar styling */
 .navbar {
   background-color: #333;
   overflow: hidden;
@@ -33,18 +55,21 @@ body{
   text-decoration: underline;
 }
 
-.linksWidth {
+.navbar .linksWidth {
   width: 80%;
 }
 
-.current a{
-  color: #b16286;
+.navbar .current a{
+  color: #458588;
 }
 
-@media only screen and (max-width: 650px){
-  .linksWidth{ width: 100%; }
-}
+/* Moblie view */
+@media only screen and (max-width: 1000px){
+  body {
+    font-size: 18px;
+  }
 
-@media only screen and (max-height: 500px) and (orientation: landscape) {
-  .navbar{ visibility: hidden; }
+  .navbar .linksWidth {
+    width: 100%;
+  }
 }
