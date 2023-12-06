@@ -9,9 +9,7 @@
         <title>Hello World</title>
         <link>https://nathanberry.co.uk/blog/helloWorld.html</link>
         <pubDate>Sun, 03 Dec 2023 00:00:00 GMT</pubDate>
-        <description>
-            <p>Introduction to my new blog and a bit about me and what content I'll be featuring on my website.</p>
-        </description>
+        <description>Introduction to my new blog and what content I'll be featuring on my website.</description>
     </item>
 </channel>
 </rss>
