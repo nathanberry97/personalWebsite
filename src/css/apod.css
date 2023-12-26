@@ -1,39 +1,55 @@
+/*
+ * CONTENTS
+ * ========
+ * 00. APOD STYLING
+ * 01. RESPONSIVE DESIGN
+ */
+
+/*
+ * APOD STYLING
+ * ============
+ */
+
 .apod {
-  padding-top: 50px;
-  text-align: center;
-  margin: 0;
-  width: 40%
+    padding-top: 50px;
+    text-align: center;
+    margin: 0;
+    width: 40%
 }
 
 .apod h1{
-  color: #b16286;
+    color: #b16286;
 }
 
 .apod h3 {
-  margin-top: -25px;
+    margin-top: -25px;
 }
 
 .apod p{
-  text-align: justify;
+    text-align: justify;
 }
 
 .apod img, iframe {
-  width: 100%;
+    width: 100%;
 }
 
 .apod iframe {
-  height: 540px;
+    height: 540px;
 }
 
-/* Moblie view and responsive design */
+/* 
+ * 01. RESPONSIVE DESIGN
+ * =====================
+ */
+
 @media only screen and (max-width: 2000px){
-  .apod { width: 50%; }
+    .apod { width: 50%; }
 }
 
 @media only screen and (max-width: 1500px){
-  .apod { width: 70%; }
+    .apod { width: 70%; }
 }
 
 @media only screen and (max-width: 1000px){
-  .apod { width: 85%; }
+    .apod { width: 85%; }
 }

@@ -19,66 +19,65 @@ export interface ecsServiceProps{
 
 export class websiteEcsService extends Construct {
 
-  constructor(scope: Construct, id: string, props: ecsServiceProps) {
-    super(scope, id);
+    constructor(scope: Construct, id: string, props: ecsServiceProps) {
+        super(scope, id);
 
-    const apodHtmlCluster = new Cluster(this, 'ecsCluster', {
-        clusterName: props.ecsClusterName,
-        containerInsights: true,
-        vpc: Vpc.fromLookup(this, 'defaultVpc', { vpcId: props.vpcId }),
-    });
+        const apodHtmlCluster = new Cluster(this, 'ecsCluster', {
+            clusterName: props.ecsClusterName,
+            containerInsights: true,
+            vpc: Vpc.fromLookup(this, 'defaultVpc', { vpcId: props.vpcId }),
+        });
 
-    const taskDefinition = new FargateTaskDefinition(this, 'ecsTaskDefinition', {
-        cpu: 256,
-        memoryLimitMiB: 512,
-    });
+        const taskDefinition = new FargateTaskDefinition(this, 'ecsTaskDefinition', {
+            cpu: 256,
+            memoryLimitMiB: 512,
+        });
 
-    const ecsLogGroup = new LogGroup(this, 'htmlLogGroup', {
-        logGroupName: 'apodHtmlEcs',
-        retention: RetentionDays.ONE_DAY
-    });
+        const ecsLogGroup = new LogGroup(this, 'htmlLogGroup', {
+            logGroupName: 'apodHtmlEcs',
+            retention: RetentionDays.ONE_DAY
+        });
 
-    taskDefinition.addContainer('apodHtml', {
-        image: ContainerImage.fromEcrRepository(
-            Repository.fromRepositoryName(this, 'apodHtmlRepo', props.ecrRepoName), 'nasa_apod_html'
-        ),
-        cpu: 256,
-        memoryLimitMiB: 512,
-        logging: AwsLogDriver.awsLogs({
-            streamPrefix: 'apodHtmlEcs',
-            logGroup: ecsLogGroup
-        })
-        
-    });
+        taskDefinition.addContainer('apodHtml', {
+            image: ContainerImage.fromEcrRepository(
+                Repository.fromRepositoryName(this, 'apodHtmlRepo', props.ecrRepoName), 'nasa_apod_html'
+            ),
+            cpu: 256,
+            memoryLimitMiB: 512,
+            logging: AwsLogDriver.awsLogs({
+                streamPrefix: 'apodHtmlEcs',
+                logGroup: ecsLogGroup
+            })
+            
+        });
 
-    taskDefinition.addToTaskRolePolicy(
-        PolicyStatement.fromJson({
-            Effect: 'Allow',
-            Action: [
-                's3:PutObject',
-                's3:PutObjectAcl',
-                's3:GetObjectAcl',
-                's3:ListBucket',
-                's3:GetBucketLocation'
-            ],
-            Resource: [
-                props.s3BucketHtmlArn,
-                props.s3BucketHtmlArnObjects
-            ]
-        })
-    );
+        taskDefinition.addToTaskRolePolicy(
+            PolicyStatement.fromJson({
+                Effect: 'Allow',
+                Action: [
+                    's3:PutObject',
+                    's3:PutObjectAcl',
+                    's3:GetObjectAcl',
+                    's3:ListBucket',
+                    's3:GetBucketLocation'
+                ],
+                Resource: [
+                    props.s3BucketHtmlArn,
+                    props.s3BucketHtmlArnObjects
+                ]
+            })
+        );
 
-    const scheduledEcsTask = new EcsTask({
-        cluster: apodHtmlCluster,
-        taskDefinition: taskDefinition,
-        taskCount: 1,
-        subnetSelection: { subnetType: SubnetType.PUBLIC }
-    });
+        const scheduledEcsTask = new EcsTask({
+            cluster: apodHtmlCluster,
+            taskDefinition: taskDefinition,
+            taskCount: 1,
+            subnetSelection: { subnetType: SubnetType.PUBLIC }
+        });
 
-    new Rule(this, 'scheduledTaskHtml', {
-        schedule: Schedule.cron({ minute: '0', hour: '7' }),
-        targets: [ scheduledEcsTask ]
-    });
-
-  }
+        new Rule(this, 'scheduledTaskHtml', {
+            schedule: Schedule.cron({ minute: '0', hour: '7' }),
+            targets: [ scheduledEcsTask ]
+        });
+    }
 }

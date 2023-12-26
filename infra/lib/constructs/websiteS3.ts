@@ -5,63 +5,63 @@ import { RemovalPolicy } from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 
 export interface websiteValues{
-  domainName: string;
-  websiteIndex: string;
+    domainName: string;
+    websiteIndex: string;
 }
 
 export class websiteS3 extends Construct {
-  private __websiteBucket: Bucket;
-  private __redirectWebsiteBucket: Bucket;
+    private __websiteBucket: Bucket;
+    private __redirectWebsiteBucket: Bucket;
 
-  constructor(scope: Construct, id: string, props: websiteValues) {
-    super(scope, id);
+    constructor(scope: Construct, id: string, props: websiteValues) {
+        super(scope, id);
 
-    const websiteBucket = new Bucket(this, 'websiteBucket', {
-      bucketName: props.domainName,
-      accessControl: BucketAccessControl.PRIVATE,
-      blockPublicAccess: {
-        blockPublicAcls: false,
-        blockPublicPolicy: false,
-        ignorePublicAcls: false,
-        restrictPublicBuckets: false
-      },
-      websiteIndexDocument: props.websiteIndex,
-      removalPolicy: RemovalPolicy.DESTROY
-    });
-    this.__websiteBucket = websiteBucket;
+        const websiteBucket = new Bucket(this, 'websiteBucket', {
+            bucketName: props.domainName,
+            accessControl: BucketAccessControl.PRIVATE,
+            blockPublicAccess: {
+                blockPublicAcls: false,
+                blockPublicPolicy: false,
+                ignorePublicAcls: false,
+                restrictPublicBuckets: false
+            },
+            websiteIndexDocument: props.websiteIndex,
+            removalPolicy: RemovalPolicy.DESTROY
+        });
+        this.__websiteBucket = websiteBucket;
 
-    const redirectWebsiteBucket = new Bucket(this, 'websiteRedirectBucket', {
-      bucketName: `www.${props.domainName}`,
-      accessControl: BucketAccessControl.PRIVATE,
-      blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-      websiteRedirect: { hostName: `${props.domainName}` },
-      removalPolicy: RemovalPolicy.DESTROY
-    });
-    this.__redirectWebsiteBucket = redirectWebsiteBucket;
+        const redirectWebsiteBucket = new Bucket(this, 'websiteRedirectBucket', {
+            bucketName: `www.${props.domainName}`,
+            accessControl: BucketAccessControl.PRIVATE,
+            blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+            websiteRedirect: { hostName: `${props.domainName}` },
+            removalPolicy: RemovalPolicy.DESTROY
+        });
+        this.__redirectWebsiteBucket = redirectWebsiteBucket;
 
-    websiteBucket.addToResourcePolicy(
-      new PolicyStatement({
-        effect: Effect.ALLOW,
-        principals: [ new AnyPrincipal() ],
-        actions: [ 's3:GetObject' ],
-        resources: [
-          websiteBucket.arnForObjects('*'),
-          websiteBucket.bucketArn
-        ],
-      })
-    );
+        websiteBucket.addToResourcePolicy(
+            new PolicyStatement({
+                effect: Effect.ALLOW,
+                principals: [ new AnyPrincipal() ],
+                actions: [ 's3:GetObject' ],
+                resources: [
+                    websiteBucket.arnForObjects('*'),
+                    websiteBucket.bucketArn
+                ],
+            })
+        );
 
-    new BucketDeployment(this, 'uploadWebsite', {
-      destinationBucket: websiteBucket,
-      sources: [Source.asset('../src/')]
-    });
-  }
+        new BucketDeployment(this, 'uploadWebsite', {
+            destinationBucket: websiteBucket,
+            sources: [Source.asset('../src/')]
+        });
+    }
 
-  public get websiteBucket(): Bucket {
-    return this.__websiteBucket;
-  }
+    public get websiteBucket(): Bucket {
+        return this.__websiteBucket;
+    }
 
-  public get redirectWebsiteBucket(): Bucket {
-    return this.__redirectWebsiteBucket;
-  }
+    public get redirectWebsiteBucket(): Bucket {
+        return this.__redirectWebsiteBucket;
+    }
 }
