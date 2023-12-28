@@ -1,4 +1,4 @@
-# Creating your first neovim plugin
+# Creating your first Neovim plugin
 
 ### 2023-12-28
 
