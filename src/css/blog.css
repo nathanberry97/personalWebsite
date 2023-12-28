@@ -25,10 +25,21 @@ p {
 h1 {
     color: #b16286;
     padding-top: 50px;
+    width: 100%;
+    text-align: center;
 }
+
 
 h3 {
     margin-top: -25px;
+    width: 100%;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 0px;
+    width: 100%;
+    text-align: left;
 }
 
 pre, blockquote {
