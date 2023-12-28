@@ -65,9 +65,9 @@ end
 return M
 ```
 
-The **init.lua** file is where all the lua code for the plugin will go. In this
-example we are creating a function called **setup** which will be called in our
-config to enable the plugin.
+The **init.lua** file is where the magic happens. In this example we are
+creating a function called **setup** which will be called in our config to
+enable the plugin.
 
 The local variable **M** is used to store the functions and variables we want
 to export from the plugin. M is a common standard in lua standing for module
