@@ -11,7 +11,7 @@ and getting it ready for the year a head. I know many people like to modify
 their config every other second but I like to keep mine as simple as possible.
 
 When reviewing the plugins I had installed one of my more superficial plugins
-for tablines has been archived, admittedly if has been archived for a while now.
+for tablines has been archived, admittedly it has been archived for a while now.
 
 But it got me thinking how hard could it be to make a plugin for neovim, 
 especially a simple one like 
