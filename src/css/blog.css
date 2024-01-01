@@ -42,7 +42,7 @@ h2 {
     text-align: left;
 }
 
-pre, blockquote {
+pre {
     background: #333;
     border: 1px solid #333;
     color: #c6b998;
@@ -55,9 +55,6 @@ pre, blockquote {
     padding: 1em 1.5em;
     display: block;
     word-wrap: break-word;
-}
-
-pre {
     border-left: 3px solid #458588;
 }
 

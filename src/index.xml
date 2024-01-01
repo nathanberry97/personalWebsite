@@ -6,18 +6,25 @@
     <description>Recent content for Nathan Berrys's personal blog</description>
     <atom:link href="https://nathanberry.co.uk/index.xml" rel="self" type="application/rss+xml"/>
     <item>
+        <title>Year in review 2023</title>
+        <link>https://nathanberry.co.uk/blog/yearInReview2023.html</link>
+        <guid>https://nathanberry.co.uk/blog/yearInReview2023.html</guid>
+        <pubDate>Sun, 01 Jan 2024 17:00:00 +0000</pubDate>
+        <description>Review of 2023 and what I've been up to</description>
+    </item>
+    <item>
         <title>Creating your first Neovim plugin</title>
         <link>https://nathanberry.co.uk/blog/creatingYourFirstNeovimPlugin.html</link>
         <guid>https://nathanberry.co.uk/blog/creatingYourFirstNeovimPlugin.html</guid>
         <pubDate>Sun, 28 Dec 2023 22:00:00 +0000</pubDate>
-        <description>Overview of how to create your first neovim plugin</description>
+        <description>Overview of how to create your first Neovim plugin</description>
     </item>
     <item>
         <title>Hello World</title>
         <link>https://nathanberry.co.uk/blog/helloWorld.html</link>
         <guid>https://nathanberry.co.uk/blog/helloWorld.html</guid>
         <pubDate>Sun, 03 Dec 2023 20:00:00 +0000</pubDate>
-        <description>Introduction to my new blog and what content I'll be featuring on my website.</description>
+        <description>Introduction to my new blog and what content I'll be featuring on my website</description>
     </item>
 </channel>
 </rss>
