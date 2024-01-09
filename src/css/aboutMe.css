@@ -136,6 +136,7 @@
 
     .profile img {
         width: 215px;
+        border-radius: 50%;
     }
 
     .aboutme {
