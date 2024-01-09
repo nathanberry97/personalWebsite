@@ -52,8 +52,8 @@
 }
 
 .profile img{
-    width: 275px;
-    border-radius: 50%;
+    width: 300px;
+    border-radius: 3%;
     box-shadow: 0px 2px 4px 0px #00000080;
 }
 
