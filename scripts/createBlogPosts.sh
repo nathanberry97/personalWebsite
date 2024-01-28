@@ -9,8 +9,9 @@ do
         -s ./${entry} \
         --template ./template.html \
         -c ../css/style.css \
-        -c ../css/blog.css \
-        -o ../src/blog/${entry%.*}.html
+        -c ../css/blogPost.css \
+        -o ../src/blog/${entry%.*}.html \
+        --metadata pagetitle="Nathan Berry" 
   fi
 done
 

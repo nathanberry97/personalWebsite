@@ -1,0 +1,100 @@
+/*
+ * CONTENTS
+ * ========
+ * 00. BLOG STYLING
+ * 01. RESPONSIVE DESIGN
+ */
+
+/*
+ * 00. BLOG STYLING
+ * ================
+ */
+
+body {
+    flex-direction: column;
+    width: 35%;
+}
+
+p {
+    text-align: justify;
+    margin: 10px;
+    width: 100%;
+}
+
+h1 {
+    color: #f0f0f0;
+    padding-top: 50px;
+    width: 100%;
+    text-align: left;
+}
+
+
+h3 {
+    color: #C8C7C4;
+    padding-left: 0px;
+    margin-top: -25px;
+    width: 100%;
+    text-align: right;
+}
+
+h2 {
+    margin-bottom: 0px;
+    width: 100%;
+    text-align: left;
+}
+
+pre {
+    background: #1a1821;
+    border: 1px solid #1a1821;
+    color: #C8C7C4;
+    page-break-inside: avoid;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    width: 90%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+    border-left: 3px solid #e1415d;
+}
+
+img, iframe {
+    width: 85%;
+    border-radius: 3%;
+    box-shadow: 0px 2px 4px 0px #00000080;
+}
+
+iframe {
+    height: 540px;
+}
+
+/*
+ * 01. RESPONSIVE DESIGN
+ * =====================
+ */
+
+@media only screen and (max-width: 2000px){
+    body { width: 40%; }
+}
+
+@media only screen and (max-width: 1500px){
+    body { width: 45%; }
+}
+
+@media only screen and (max-width: 1000px){
+    body {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 800px){
+    body {
+        font-size: 18px;
+        width: 80%;
+    }
+
+    pre, blockquote {
+        width: 85%;
+    }
+}
