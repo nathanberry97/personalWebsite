@@ -25,6 +25,11 @@ export class websiteCloudFront extends Construct {
 
         const websiteDistribution = new Distribution(this, 'cloudfrontDistribution', {
             defaultRootObject: 'index.html',
+            errorResponses: [{
+                httpStatus: 404,
+                responseHttpStatus: 200,
+                responsePagePath: 'error.html',
+            }],
             domainNames: [props.domainName],
             certificate: cert,
             defaultBehavior: {

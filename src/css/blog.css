@@ -1,87 +1,92 @@
 /*
  * CONTENTS
  * ========
- * 00. BLOG STYLING
- * 01. RESPONSIVE DESIGN
+ * 00. WRAPPER CONTAINER
+ * 01. BLOG
+ * 02. RESPONSIVE DESIGN
  */
 
 /*
- * 00. BLOG STYLING
- * ================
+ * 00. WRAPPER CONTAINER
+ * =====================
  */
 
-body {
-    background: #282828;
-    flex-direction: column;
-    width: 25%;
-}
-
-p {
-    text-align: justify;
-    margin: 10px;
-    width: 100%;
-}
-
-h1 {
-    color: #b16286;
+.wrapper {
     padding-top: 50px;
-    width: 100%;
-    text-align: center;
+    flex-direction: row;
+    max-width: 60%;
+    min-width: 800px;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
 }
 
+/*
+ * 01. BLOG
+ * ========
+ */
 
-h3 {
-    margin-top: -25px;
-    width: 100%;
-    text-align: center;
+.blog {
+    margin-top: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #C8C7C4;
+    margin-left: 50px;
+    padding-left: 95px;
 }
 
-h2 {
+.blog h1{
+    text-decoration: dotted underline;
+    text-decoration-color: #e1415d;
     margin-bottom: 0px;
-    width: 100%;
+}
+
+.blog p{
+    width: 85%;
     text-align: left;
 }
 
-pre {
-    background: #333;
-    border: 1px solid #333;
-    color: #c6b998;
-    page-break-inside: avoid;
-    font-size: 15px;
-    line-height: 1.6;
-    margin-bottom: 1.6em;
-    width: 90%;
-    overflow: auto;
-    padding: 1em 1.5em;
-    display: block;
-    word-wrap: break-word;
-    border-left: 3px solid #458588;
+.blog .intro{
+    margin-top: 5px;
+    font-size: 20px;
+    margin-bottom: 35px;
 }
 
-img {
-    width: 100%;
+.blog .date{
+    font-size: 17px;
 }
 
 /*
- * 01. RESPONSIVE DESIGN
+ * 02. RESPONSIVE DESIGN 
  * =====================
  */
 
 @media only screen and (max-width: 2000px){
-    body { width: 35%; }
+    .wrapper{ max-width: 70%; }
 }
 
 @media only screen and (max-width: 1500px){
-    body { width: 45%; }
+    .wrapper{ max-width: 75%; }
+    .blog p{ width: 80%; }
 }
 
 @media only screen and (max-width: 1000px){
-    body {
-        font-size: 18px;
-        width: 80%;
+    .blog p { width: 75%; }
+}
+
+@media only screen and (max-width: 800px){
+    .wrapper{
+        padding-top: 50px;
+        height: auto;
+        max-width: 90%;
+        min-width: 800px;
     }
 
-    pre, blockquote {
-        width: 85%;
+    .blog {
+        margin-top: 0%;
+        margin-left: 140px;
     }
+
+    .blog p { width: 60%; }
 }
