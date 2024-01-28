@@ -28,7 +28,7 @@ export class websiteCloudFront extends Construct {
             errorResponses: [{
                 httpStatus: 404,
                 responseHttpStatus: 200,
-                responsePagePath: 'error.html',
+                responsePagePath: '/error.html',
             }],
             domainNames: [props.domainName],
             certificate: cert,
