@@ -13,6 +13,10 @@ setup: ## Install pre-commit and enable hooks
 run: ## Run backend for APOD html page
 	@cd apod && go run src/*.go
 
+.PHONY: test
+test: ## Test backend for APOD html page
+	@cd apod && go test src/*.go -v
+
 .PHONY: compile
 compile: ## Compile blog posts into html
 	@chmod +x scripts/createBlogPosts.sh

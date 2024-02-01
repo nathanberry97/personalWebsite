@@ -8,11 +8,7 @@ import (
 	"strings"
 )
 
-func getData() Apod {
-	// Set the url for the request
-	secret := os.Getenv("NASA_API_KEY")
-	url := "https://api.nasa.gov/planetary/apod?api_key=" + secret
-
+func getData(url string) Apod {
 	// Make the request
 	res, err := http.Get(url)
 	checkErr(err)
@@ -36,11 +32,11 @@ func formatData(apodData Apod) ApodHtml {
 		image = "<iframe width=\"960\" height=\"540\" src=\"" + apodData.Url + "\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen=\"\"></iframe>"
 	}
 
-	// Check if there is a copyRight associated with the image
-	copyRight := "<h4> CopyRight: <a href=\"https://apod.nasa.gov/apod/astropix.html\">NASA APOD</a> </h4>"
+	// Check if there is a copyright associated with the image
+	copyRight := "<h4> Copyright: <a href=\"https://apod.nasa.gov/apod/astropix.html\">NASA APOD</a> </h4>"
 	if apodData.CopyRight != "" {
 		formatCopyRight := strings.Replace(apodData.CopyRight, "\n", " ", -1)
-		copyRight = "<h4> CopyRight:" + formatCopyRight + "</h4>"
+		copyRight = "<h4> Copyright: " + formatCopyRight + " </h4>"
 	}
 
 	// Format the data into ApodHtml struct
@@ -54,9 +50,9 @@ func formatData(apodData Apod) ApodHtml {
 	return apodHtml
 }
 
-func updateHtmlTemplate(apodHtml ApodHtml) string {
+func updateHtmlTemplate(apodHtml ApodHtml, templatePath string) string {
 	// Read the html template
-	htmlTemplate, err := os.ReadFile("./template.html")
+	htmlTemplate, err := os.ReadFile(templatePath)
 	checkErr(err)
 
 	// Replace the template with the data
