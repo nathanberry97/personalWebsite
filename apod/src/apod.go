@@ -8,6 +8,7 @@ import (
 	"strings"
 
 	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/aws/session"
 	"github.com/aws/aws-sdk-go/service/s3"
 )
 
@@ -69,7 +70,15 @@ func updateHtmlTemplate(apodHtml ApodHtml, templatePath string) string {
 	return html
 }
 
-func uploadToS3(html string, svc *s3.S3, bucket string) {
+func uploadToS3(html string, region string, bucket string) {
+	// Create a new session
+	sess := session.Must(session.NewSession(&aws.Config{
+		Region: aws.String(region),
+	}))
+
+	// Create a new S3 client
+	svc := s3.New(sess)
+
 	// Upload the html file to S3
 	_, err := svc.PutObject(&s3.PutObjectInput{
 		Bucket:      aws.String(bucket),

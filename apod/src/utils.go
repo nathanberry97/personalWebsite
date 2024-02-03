@@ -6,10 +6,6 @@ import (
 	"os"
 	"strings"
 	"testing"
-
-	"github.com/aws/aws-sdk-go/aws"
-	"github.com/aws/aws-sdk-go/aws/session"
-	"github.com/aws/aws-sdk-go/service/s3"
 )
 
 /*
@@ -49,19 +45,4 @@ func assert(t *testing.T, expected string, actual string) {
 	if expected != actual {
 		t.Errorf("Expected %s, got %s", expected, actual)
 	}
-}
-
-/*
- * Utility function to define S3 client
- */
-func s3Client(region string) *s3.S3 {
-	// Create a new session
-	sess := session.Must(session.NewSession(&aws.Config{
-		Region: aws.String(region),
-	}))
-
-	// Create a new S3 client
-	svc := s3.New(sess)
-
-	return svc
 }
