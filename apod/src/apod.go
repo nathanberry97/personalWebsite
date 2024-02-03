@@ -6,6 +6,9 @@ import (
 	"net/http"
 	"os"
 	"strings"
+
+	"github.com/aws/aws-sdk-go/aws"
+	"github.com/aws/aws-sdk-go/service/s3"
 )
 
 func getData(url string) Apod {
@@ -66,13 +69,14 @@ func updateHtmlTemplate(apodHtml ApodHtml, templatePath string) string {
 	return html
 }
 
-func saveHtml(html string) {
-	// Create the html file
-	file, err := os.Create("./apod.html")
-	checkErr(err)
-	defer file.Close()
+func uploadToS3(html string, svc *s3.S3, bucket string) {
+	// Upload the html file to S3
+	_, err := svc.PutObject(&s3.PutObjectInput{
+		Bucket:      aws.String(bucket),
+		Key:         aws.String("apod.html"),
+		ContentType: aws.String("text/html"),
+		Body:        strings.NewReader(html),
+	})
 
-	// Write the html to the file
-	_, err = file.WriteString(html)
 	checkErr(err)
 }
