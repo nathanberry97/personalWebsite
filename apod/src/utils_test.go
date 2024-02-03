@@ -11,17 +11,18 @@ import (
  */
 func TestSetEnv(t *testing.T) {
 	// Arrange
-	os.Create(".env")
-	file, _ := os.OpenFile(".env", os.O_APPEND|os.O_WRONLY, 0644)
+	testFile := ".testEnv"
+	os.Create(testFile)
+	file, _ := os.OpenFile(testFile, os.O_APPEND|os.O_WRONLY, 0644)
 	file.WriteString("TEST_ENV='test'")
 	file.Close()
 
 	// Act
-	setEnv()
+	setEnv(testFile)
 
 	// Assert
 	assert(t, "test", os.Getenv("TEST_ENV"))
-	os.Remove(".env")
+	os.Remove(testFile)
 }
 
 /*

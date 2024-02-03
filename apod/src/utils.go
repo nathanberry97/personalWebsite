@@ -11,8 +11,8 @@ import (
 /*
  * Utility function to set the environment variables
  */
-func setEnv() {
-	file, err := os.Open("./.env")
+func setEnv(envFile string) {
+	file, err := os.Open(envFile)
 	checkErr(err)
 	defer file.Close()
 

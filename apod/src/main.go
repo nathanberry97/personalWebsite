@@ -4,7 +4,7 @@ import "os"
 
 func main() {
 	// Set the environment variables
-	setEnv()
+	setEnv("./.env")
 	region := os.Getenv("AWS_REGION")
 	bucket := os.Getenv("S3_BUCKET")
 	secret := os.Getenv("NASA_API_KEY")
