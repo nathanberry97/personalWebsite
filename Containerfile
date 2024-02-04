@@ -1,25 +1,22 @@
 # Create build
-FROM --platform=linux/amd64 node:hydrogen-alpine AS build
-
-RUN apk update && apk --no-cache upgrade
+FROM --platform=linux/amd64 golang:1.21.6-alpine3.19 AS build
 
 WORKDIR /build
 
-COPY ./app/src ./src
-COPY ./app/package.json ./
-COPY ./app/tsconfig.json ./
+COPY ./apod/go.mod ./
+COPY ./apod/go.sum ./
+RUN go mod download
 
-RUN npm install
-RUN npm run build
+COPY ./apod/src/ ./src/
+RUN go build -o ./bin/apod ./src/*.go
 
 # Create final image
 FROM build
 
 WORKDIR /app
 
-COPY ./app/.env /app/
-COPY ./app/html/ /app/html/
-COPY --from=build /build/lib/ /app/lib/
-COPY --from=build /build/node_modules/ /app/node_modules/
+COPY ./apod/.env ./
+COPY ./apod/template.html ./
+COPY --from=build /build/bin/ /app/bin/
 
-CMD ["node", "/app/lib/main.js"]
+CMD ["/app/bin/apod"]

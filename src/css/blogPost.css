@@ -22,7 +22,7 @@ p {
 }
 
 h1 {
-    color: #f0f0f0;
+    color: #F0F0F0;
     padding-top: 50px;
     width: 100%;
     text-align: left;
@@ -44,8 +44,8 @@ h2 {
 }
 
 pre {
-    background: #1a1821;
-    border: 1px solid #1a1821;
+    background: #1A1821;
+    border: 1px solid #1A1821;
     color: #C8C7C4;
     page-break-inside: avoid;
     font-size: 15px;
@@ -56,7 +56,7 @@ pre {
     padding: 1em 1.5em;
     display: block;
     word-wrap: break-word;
-    border-left: 3px solid #e1415d;
+    border-left: 3px solid #8CAAEE;
 }
 
 img, iframe {

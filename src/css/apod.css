@@ -18,7 +18,7 @@
 }
 
 .apod h1{
-    color: #f0f0f0;
+    color: #F0F0F0;
     text-align: left;
 }
 
@@ -55,8 +55,10 @@
 
 @media only screen and (max-width: 1500px){
     .apod { width: 70%; }
+    .apod img, iframe { width: 90%; }
 }
 
 @media only screen and (max-width: 1000px){
     .apod { width: 85%; }
+    .apod img, iframe { width: 95%; }
 }

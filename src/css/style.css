@@ -41,7 +41,7 @@ li {
 }
 
 a {
-    color: #f0f0f0;
+    color: #F0F0F0;
     text-decoration: none;
 }
 
@@ -61,7 +61,7 @@ a:hover{
  */
 
 .navbar {
-    background-color: #1a1821;
+    background-color: #1A1821;
     overflow: hidden;
     position: fixed;
     top: 0px;
@@ -71,7 +71,7 @@ a:hover{
 }
 
 .navbar a{
-    color: #f0f0f0;
+    color: #F0F0F0;
     display: block;
     float: right;
     padding: 14px 16px;
@@ -81,7 +81,7 @@ a:hover{
 
 .navbar a:hover {
     text-decoration: underline;
-    text-decoration-color: #e1415d;
+    text-decoration-color: #8CAAEE;
 }
 
 .navbar .linksWidth {
@@ -89,8 +89,8 @@ a:hover{
 }
 
 .navbar .current a{
-    color: #e1415d;
-    text-decoration-color: #f0f0f0;
+    color: #8CAAEE;
+    text-decoration-color: #F0F0F0;
 }
 
 /* 
