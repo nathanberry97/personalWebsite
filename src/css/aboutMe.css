@@ -70,7 +70,7 @@
 .aboutme h4{ font-size: 25px; }
 
 .aboutme .name{
-    color: #e1415d;
+    color: #8CAAEE;
     text-decoration: underline;
 }
 
@@ -100,7 +100,7 @@
 .line{
     margin-top: 5%;
     height: 2px;
-    background: #1a1821;
+    background: #1A1821;
 }
 
 .blog {
@@ -114,7 +114,7 @@
 
 .blog h1{
     text-decoration: dotted underline;
-    text-decoration-color: #e1415d;
+    text-decoration-color: #8CAAEE;
 }
 
 .blog .date{
@@ -151,6 +151,10 @@
         padding-top: 20px;
         text-align: justify;
         width: 100%;
+    }
+
+    .profile img{
+        width: 300px;
     }
 
     .blog {

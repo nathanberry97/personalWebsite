@@ -29,3 +29,8 @@ test: ## Test backend for APOD html page
 .PHONY: clean
 clean: ## Clean up build artifacts
 	@rm -rf apod/bin
+
+.PHONY: deploy
+deploy: ## Deploy container image to AWS
+	@chmod +x scripts/pushContainerBuild.sh
+	@scripts/pushContainerBuild.sh
