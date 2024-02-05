@@ -11,7 +11,6 @@ do
         -c ../css/style.css \
         -c ../css/blogPost.css \
         -o ../src/blog/${entry%.*}.html \
-        --metadata pagetitle="Nathan Berry" 
+        --metadata pagetitle="Nathan Berry"
   fi
 done
-

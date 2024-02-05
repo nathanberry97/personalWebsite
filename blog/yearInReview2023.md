@@ -8,7 +8,7 @@ Some of the bits and bobs I've muddled through during the past year and goals I 
 ```
 
 I'm writing this blog post to reflect on my 2023 accomplishments and
-and what I want to achieve in 2024.
+what I want to achieve in 2024.
 I hope that others will find this blog post interesting and that it will
 inspire them to do the same. I'm not sure if I'll be able to keep up with
 writing a yearly review every year, but I'll try my best.

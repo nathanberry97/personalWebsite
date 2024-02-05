@@ -6,7 +6,7 @@
  * 02. RESPONSIVE DESIGN
  */
 
-/* 
+/*
  * 00. STANDARD STYLING
  * ====================
  */
@@ -36,8 +36,8 @@ p {
 }
 
 li {
-    list-style-type: none;  
-    font-weight: bold;  
+    list-style-type: none;
+    font-weight: bold;
 }
 
 a {
@@ -55,7 +55,7 @@ a:hover{
     text-decoration-color: #C8C7C4;
 }
 
-/* 
+/*
  * 01. NAVBAR STYLING
  * ==================
  */
@@ -93,8 +93,8 @@ a:hover{
     text-decoration-color: #F0F0F0;
 }
 
-/* 
- * 02. RESPONSIVE DESIGN 
+/*
+ * 02. RESPONSIVE DESIGN
  * =====================
  */
 

@@ -13,8 +13,8 @@ their config every other second but I like to keep mine as simple as possible.
 When reviewing the plugins I had installed one of my more superficial plugins
 for tablines has been archived, admittedly it has been archived for a while now.
 
-But it got me thinking how hard could it be to make a plugin for neovim, 
-especially a simple one like 
+But it got me thinking how hard could it be to make a plugin for neovim,
+especially a simple one like
 [tabline.vim](https://github.com/mkitt/tabline.vim).
 As it turns out it's not that hard resulting in the creation of
 [dumbtab.nvim](https://github.com/nathanberry97/dumbtab.nvim).
@@ -57,7 +57,7 @@ For example if we wanted to require the **example** plugin we would use
 local M = {}
 
 M.setup = function()
-  vim.keymap.set('n', '<leader>s', function() 
+  vim.keymap.set('n', '<leader>s', function()
     vim.o.spell = not vim.o.spell
   end)
 end
@@ -123,4 +123,4 @@ way to learn lua and to contribute to the neovim community.
 I hope this post has helped you understand how to create a plugin for neovim.
 Feel free to check out
 [dumbtab.nvim](https://github.com/nathanberry97/dumbtab.nvim)
-the plugin I created which inspired this post. 
+the plugin I created which inspired this post.

@@ -1,5 +1,6 @@
 # Personal website
 
+![linting](https://github.com/nathanberry97/personalWebsite/actions/workflows/lintingPipeline.yml/badge.svg)
 ![deployment](https://github.com/nathanberry97/personalWebsite/actions/workflows/deploymentPipeline.yml/badge.svg)
 
 > A simple webpage hosted through CloudFront in AWS and deployed through GitHub
