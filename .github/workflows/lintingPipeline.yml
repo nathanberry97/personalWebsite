@@ -1,9 +1,6 @@
 name: Lint website
 
 on:
-  push:
-    branches:
-      - main
   pull_request:
     branches:
       - main
@@ -26,9 +23,8 @@ jobs:
       with:
         node-version: 18
 
-    - name: Install Dependencies
+    - name: Install pre-commit Dependencies
       run: |
-        sudo apt install pandoc
         pip install pre-commit
         make setup
 

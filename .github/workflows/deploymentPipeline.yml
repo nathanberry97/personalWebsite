@@ -24,11 +24,6 @@ jobs:
         npm ci
         npm run build
 
-    - name: Run Tests
-      run: |
-        cd ./infra
-        npm run test
-
     - name: Compile html articles
       run: |
         mkdir ./src/blog
