@@ -48,7 +48,7 @@ export class websiteEcsService extends Construct {
                 streamPrefix: 'apodHtmlEcs',
                 logGroup: ecsLogGroup
             })
-            
+
         });
 
         taskDefinition.addToTaskRolePolicy(
