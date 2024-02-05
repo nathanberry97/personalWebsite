@@ -2,7 +2,11 @@ name: Lint website
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   Deploy:
@@ -12,6 +16,11 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Install go
+      uses: actions/setup-go@v5
+      with:
+        go-version: 1.21.6
+
     - name: Install node
       uses: actions/setup-node@v3
       with:
@@ -20,11 +29,24 @@ jobs:
     - name: Install Dependencies
       run: |
         sudo apt install pandoc
+        pip install pre-commit
+        make setup
+
+    - name: Install Infra Dependencies
+      run: |
         cd ./infra
         npm ci
         npm run build
 
-    - name: Run Tests
+    - name: Validate pre-commit
+      run: |
+        pre-commit run --all
+
+    - name: Run Apod Tests
+      run: |
+        make test
+
+    - name: Run Infra Tests
       run: |
         cd ./infra
         npm run test
