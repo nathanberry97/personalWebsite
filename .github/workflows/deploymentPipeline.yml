@@ -13,14 +13,13 @@ jobs:
               uses: actions/checkout@v4
 
             - name: Install node
-              uses: actions/setup-node@v3
+              uses: actions/setup-node@v4
               with:
                   node-version: 20
 
             - name: Install Dependencies and build infra
               run: |
                   sudo apt install pandoc
-                  sudo apt install podman
                   cd ./infra
                   npm ci
                   npm run build
