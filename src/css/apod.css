@@ -14,26 +14,27 @@
     padding-top: 50px;
     text-align: center;
     margin: 0;
-    width: 40%
+    width: 40%;
 }
 
-.apod h1{
-    color: #F0F0F0;
+.apod h1 {
+    color: #f0f0f0;
     text-align: left;
 }
 
 .apod h3 {
-    color: #C8C7C4;
+    color: #c8c7c4;
     margin-top: -25px;
     text-align: right;
 }
 
-.apod p{
+.apod p {
     text-align: justify;
     font-size: 20px;
 }
 
-.apod img, iframe {
+.apod img,
+iframe {
     width: 85%;
     box-shadow: 0px 2px 4px 0px #00000080;
     border-radius: 3%;
@@ -48,17 +49,31 @@
  * =====================
  */
 
-@media only screen and (max-width: 2000px){
-    .apod { width: 50%; }
-    .apod p{ font-size: 18px; }
+@media only screen and (max-width: 2000px) {
+    .apod {
+        width: 50%;
+    }
+    .apod p {
+        font-size: 18px;
+    }
 }
 
-@media only screen and (max-width: 1500px){
-    .apod { width: 70%; }
-    .apod img, iframe { width: 90%; }
+@media only screen and (max-width: 1500px) {
+    .apod {
+        width: 70%;
+    }
+    .apod img,
+    iframe {
+        width: 90%;
+    }
 }
 
-@media only screen and (max-width: 1000px){
-    .apod { width: 85%; }
-    .apod img, iframe { width: 95%; }
+@media only screen and (max-width: 1000px) {
+    .apod {
+        width: 85%;
+    }
+    .apod img,
+    iframe {
+        width: 95%;
+    }
 }

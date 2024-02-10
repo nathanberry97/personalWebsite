@@ -16,13 +16,13 @@ body {
 }
 
 h1 {
-    color: #8CAAEE;
+    color: #8caaee;
     padding-top: 250px;
     font-size: 150px;
     width: 100%;
     text-align: center;
     margin-bottom: 0px;
-    text-decoration: dotted underline;
+    text-decoration: underline;
 }
 
 h2 {
@@ -38,23 +38,27 @@ h2 {
  * =====================
  */
 
-@media only screen and (max-width: 2000px){
-    body { width: 35%; }
+@media only screen and (max-width: 2000px) {
+    body {
+        width: 35%;
+    }
     h1 {
         padding-top: 200px;
         font-size: 125px;
     }
 }
 
-@media only screen and (max-width: 1500px){
-    body { width: 45%; }
+@media only screen and (max-width: 1500px) {
+    body {
+        width: 45%;
+    }
     h1 {
         padding-top: 150px;
         font-size: 100px;
     }
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1000px) {
     body {
         width: 80%;
     }

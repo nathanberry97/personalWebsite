@@ -8,7 +8,7 @@
 
 This website is currently live which you can view here:
 
-- [Personal Website](https://nathanberry.co.uk/)
+-   [Personal Website](https://nathanberry.co.uk/)
 
 ## Website
 
@@ -17,9 +17,9 @@ the user to different webpages such as github and linkedin.
 
 The webpage is created with the following:
 
-- HTML
-- CSS
-- JS
+-   HTML
+-   CSS
+-   JS
 
 ## APOD webpage
 
@@ -30,8 +30,8 @@ day a 7 UTC to update with the current Astronomy Picture of the Day
 
 If you would like to run you need to set the following environment variables:
 
-- `export NSAS_API_KEY=YOUR_KEY`
-- `export S3_BUCKET=YOUR_BUCKET`
+-   `export NSAS_API_KEY=YOUR_KEY`
+-   `export S3_BUCKET=YOUR_BUCKET`
 
 ## AWS CDK
 

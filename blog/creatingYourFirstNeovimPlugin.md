@@ -49,7 +49,7 @@ documentation within neovim.
 With this file structure in place we can start writing our plugin. When requiring
 the plugin we will use the name of the directory within the **lua** directory.
 For example if we wanted to require the **example** plugin we would use
-*require('example')*.
+_require('example')_.
 
 ## Lua
 
@@ -105,7 +105,7 @@ Now it is time to cover everyone's favourite part of programming, documentation.
 When creating a plugin it is important to document it so that other people can
 use it. The **example.txt** file is used for this purpose. The first line of
 the file is the title of the plugin, this is what will be shown when you run
-*help example* in neovim.
+_help example_ in neovim.
 
 When writing the documentation it is important to use the correct syntax so
 that neovim can parse it correctly. The syntax is very similar to markdown

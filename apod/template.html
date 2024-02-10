@@ -1,48 +1,55 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
+    <head>
+        <title>Nathan Berry</title>
+        <meta charset="utf-8" />
+        <meta name="theme-color" content="#1a1821" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" type="text/css" href="css/apod.css" />
+        <link rel="stylesheet" type="text/css" href="css/style.css" />
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
+            rel="stylesheet"
+        />
+    </head>
 
-<head>
-  <title>Nathan Berry</title>
-  <meta charset="utf-8">
-  <meta name="theme-color" content="#1a1821"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/apod.css">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet">
-</head>
+    <body>
+        <div class="navbar" id="navbar">
+            <div class="linksWidth">
+                <div class="current"><a>APOD</a></div>
+                <a href="blog.html">Blog</a>
+                <a href="index.html">Home</a>
+            </div>
+        </div>
 
-<body>
+        <div class="apod">
+            <!-- prettier-ignore -->
+            {{title}}
 
-  <div class="navbar" id="navbar">
-    <div class="linksWidth">
-      <div class="current"><a>APOD</a></div>
-      <a href="blog.html">Blog</a>
-      <a href="index.html">Home</a>
-    </div>
-  </div>
+            <!-- prettier-ignore -->
+            {{date}}
 
-  <div class="apod">
+            <!-- prettier-ignore -->
+            {{image}}
 
-    {{title}}
+            <!-- prettier-ignore -->
+            {{copyRight}}
 
-    {{date}}
+            <!-- prettier-ignore -->
+            {{explanation}}
 
-    {{image}}
+            <p>
+                So what the hell is
+                <a href="https://apod.nasa.gov/apod/astropix.html">APOD</a>?
+                Well it stands for Astronomy Picture of the Day. This page is
+                updated daily thanks to the
+                <a href="https://api.nasa.gov/">NASA API</a> and the magic of
+                <a href="https://github.com/nathanberry97/personalWebsite"
+                    >containers</a
+                >.
+            </p>
+        </div>
 
-    {{copyRight}}
-
-    {{explanation}}
-
-    <p>
-    So what the hell is <a href="https://apod.nasa.gov/apod/astropix.html">APOD</a>?
-    Well it stands for Astronomy Picture of the Day.
-    This page is updated daily thanks to the <a href="https://api.nasa.gov/">NASA API</a>
-    and the magic of <a href="https://github.com/nathanberry97/personalWebsite">containers</a>.
-    </p>
-
-  </div>
-
-  <script src="./js/navBarScroll.js"></script>
-
-</body>
+        <script src="./js/navBarScroll.js"></script>
+    </body>
 </html>

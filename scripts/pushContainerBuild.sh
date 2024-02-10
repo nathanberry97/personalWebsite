@@ -11,6 +11,7 @@ login_ecr() {
 }
 
 build_container_image() {
+    cd ./apod
     podman build -t nasa_apod_html .
 }
 

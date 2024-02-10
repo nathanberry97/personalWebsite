@@ -22,15 +22,14 @@ p {
 }
 
 h1 {
-    color: #F0F0F0;
+    color: #f0f0f0;
     padding-top: 50px;
     width: 100%;
     text-align: left;
 }
 
-
 h3 {
-    color: #C8C7C4;
+    color: #c8c7c4;
     padding-left: 0px;
     margin-top: -25px;
     width: 100%;
@@ -44,9 +43,9 @@ h2 {
 }
 
 pre {
-    background: #1A1821;
-    border: 1px solid #1A1821;
-    color: #C8C7C4;
+    background: #1a1821;
+    border: 1px solid #1a1821;
+    color: #c8c7c4;
     page-break-inside: avoid;
     font-size: 15px;
     line-height: 1.6;
@@ -56,10 +55,11 @@ pre {
     padding: 1em 1.5em;
     display: block;
     word-wrap: break-word;
-    border-left: 3px solid #8CAAEE;
+    border-left: 3px solid #8caaee;
 }
 
-img, iframe {
+img,
+iframe {
     width: 85%;
     border-radius: 3%;
     box-shadow: 0px 2px 4px 0px #00000080;
@@ -74,27 +74,32 @@ iframe {
  * =====================
  */
 
-@media only screen and (max-width: 2000px){
-    body { width: 40%; }
+@media only screen and (max-width: 2000px) {
+    body {
+        width: 40%;
+    }
 }
 
-@media only screen and (max-width: 1500px){
-    body { width: 45%; }
+@media only screen and (max-width: 1500px) {
+    body {
+        width: 45%;
+    }
 }
 
-@media only screen and (max-width: 1000px){
+@media only screen and (max-width: 1000px) {
     body {
         width: 50%;
     }
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 800px) {
     body {
         font-size: 18px;
         width: 80%;
     }
 
-    pre, blockquote {
+    pre,
+    blockquote {
         width: 85%;
     }
 }

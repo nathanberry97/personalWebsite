@@ -2,7 +2,6 @@
 
 ### 2024-01-01
 
-
 ```
 Some of the bits and bobs I've muddled through during the past year and goals I want to achieve during 2024
 ```
