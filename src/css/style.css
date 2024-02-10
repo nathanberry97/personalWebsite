@@ -11,12 +11,13 @@
  * ====================
  */
 
-html, body {
+html,
+body {
     overflow-y: auto;
     overflow-x: hidden !important;
     align-items: center;
     display: flex;
-    font-family: 'Roboto', sans-serif;
+    font-family: "Roboto", sans-serif;
     justify-content: center;
     margin: 0px;
 }
@@ -26,12 +27,15 @@ body {
     font-size: 20px;
 }
 
-h1, h2, h3, h4{
-    color: #FAF9F6;
+h1,
+h2,
+h3,
+h4 {
+    color: #faf9f6;
 }
 
 p {
-    color: #C8C7C4;
+    color: #c8c7c4;
     font-size: 20px;
 }
 
@@ -41,18 +45,23 @@ li {
 }
 
 a {
-    color: #F0F0F0;
+    color: #f0f0f0;
     text-decoration: none;
 }
 
 p a {
     text-decoration: underline;
-    text-decoration-color: #C8C7C4;
+    text-decoration-color: #c8c7c4;
 }
 
-a:hover{
-    text-decoration: double underline;
-    text-decoration-color: #C8C7C4;
+a:hover {
+    text-decoration: underline;
+    text-decoration-color: #c8c7c4;
+}
+
+p a:hover {
+    text-decoration: underline;
+    text-decoration-color: #8caaee;
 }
 
 /*
@@ -61,7 +70,7 @@ a:hover{
  */
 
 .navbar {
-    background-color: #1A1821;
+    background-color: #1a1821;
     overflow: hidden;
     position: fixed;
     top: 0px;
@@ -70,8 +79,8 @@ a:hover{
     font-size: 25px;
 }
 
-.navbar a{
-    color: #F0F0F0;
+.navbar a {
+    color: #f0f0f0;
     display: block;
     float: right;
     padding: 14px 16px;
@@ -81,16 +90,16 @@ a:hover{
 
 .navbar a:hover {
     text-decoration: underline;
-    text-decoration-color: #8CAAEE;
+    text-decoration-color: #8caaee;
 }
 
 .navbar .linksWidth {
     width: 80%;
 }
 
-.navbar .current a{
-    color: #8CAAEE;
-    text-decoration-color: #F0F0F0;
+.navbar .current a {
+    color: #8caaee;
+    text-decoration: none;
 }
 
 /*
@@ -98,24 +107,44 @@ a:hover{
  * =====================
  */
 
-@media only screen and (max-width: 2000px){
-    p { font-size: 16px; }
-    .navbar { font-size: 20px; }
-    .navbar .linksWidth { width: 85%; }
+@media only screen and (max-width: 2000px) {
+    p {
+        font-size: 16px;
+    }
+    .navbar {
+        font-size: 20px;
+    }
+    .navbar .linksWidth {
+        width: 85%;
+    }
 }
 
-@media only screen and (max-width: 1500px){
-    p { font-size: 14px; }
-    .navbar { font-size: 18px; }
-    .navbar .linksWidth { width: 85%; }
+@media only screen and (max-width: 1500px) {
+    p {
+        font-size: 14px;
+    }
+    .navbar {
+        font-size: 18px;
+    }
+    .navbar .linksWidth {
+        width: 85%;
+    }
 }
 
-@media only screen and (max-width: 1000px){
-    body { font-size: 18px; }
-    .navbar .linksWidth { width: 95%; }
+@media only screen and (max-width: 1000px) {
+    body {
+        font-size: 18px;
+    }
+    .navbar .linksWidth {
+        width: 95%;
+    }
 }
 
-@media only screen and (max-width: 800px){
-    .navbar .linksWidth { width: 100%; }
-    p { font-size: 16px; }
+@media only screen and (max-width: 800px) {
+    .navbar .linksWidth {
+        width: 100%;
+    }
+    p {
+        font-size: 16px;
+    }
 }

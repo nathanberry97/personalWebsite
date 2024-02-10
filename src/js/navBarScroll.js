@@ -7,7 +7,7 @@
 // Set the previous scroll position to the current scroll position
 let prevScrollPos = window.scrollY;
 
-window.onscroll = function() {
+window.onscroll = function () {
     /*
      * Get relevant scroll positions
      */
@@ -29,11 +29,11 @@ window.onscroll = function() {
      * If the user meets one of the conditions, show the navbar
      * Otherwise, hide the navbar
      */
-    if ( checkOne || checkTwo || checkThree ) {
+    if (checkOne || checkTwo || checkThree) {
         document.getElementById("navbar").style.top = "0";
     } else {
         document.getElementById("navbar").style.top = "-50px";
     }
 
     prevScrollPos = currentScrollPos;
-}
+};

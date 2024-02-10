@@ -34,7 +34,8 @@
     flex-direction: row;
 }
 
-.profile, .aboutme{
+.profile,
+.aboutme {
     display: flex;
     flex-direction: column;
     flex: 1;
@@ -44,14 +45,14 @@
     text-align: justify;
 }
 
-.profile{
+.profile {
     align-items: center;
     padding-top: 25px;
     margin-bottom: 5px;
     text-align: center;
 }
 
-.profile img{
+.profile img {
     width: 350px;
     border-radius: 3%;
     box-shadow: 0px 2px 4px 0px #00000080;
@@ -62,23 +63,25 @@
     align-items: left;
 }
 
-.aboutme h1{
+.aboutme h1 {
     margin: 0;
     font-size: 60px;
 }
 
-.aboutme h4{ font-size: 25px; }
+.aboutme h4 {
+    font-size: 25px;
+}
 
-.aboutme .name{
-    color: #8CAAEE;
+.aboutme .name {
+    color: #8caaee;
     text-decoration: underline;
 }
 
-.aboutme .at{
-    color: #C8C7C4;
+.aboutme .at {
+    color: #c8c7c4;
 }
 
-.aboutme h4{
+.aboutme h4 {
     margin-top: 5px;
     margin-bottom: 5px;
 }
@@ -97,27 +100,27 @@
  * ========
  */
 
-.line{
+.line {
     margin-top: 5%;
     height: 2px;
-    background: #1A1821;
+    background: #1a1821;
 }
 
 .blog {
     margin-top: 2%;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: #C8C7C4;
+    color: #c8c7c4;
     margin-left: 50px;
     padding-left: 95px;
 }
 
-.blog h1{
-    text-decoration: dotted underline;
-    text-decoration-color: #8CAAEE;
+.blog h1 {
+    text-decoration: underline;
+    text-decoration-color: #8caaee;
 }
 
-.blog .date{
+.blog .date {
     font-size: 17px;
 }
 
@@ -126,17 +129,27 @@
  * =====================
  */
 
-@media only screen and (max-width: 2000px){
-    .wrapper{ max-width: 70%; }
-    .aboutme h1{ font-size: 50px; }
-    .aboutme h4{ font-size: 20px; }
-    .profile img{ width: 325px; }
+@media only screen and (max-width: 2000px) {
+    .wrapper {
+        max-width: 70%;
+    }
+    .aboutme h1 {
+        font-size: 50px;
+    }
+    .aboutme h4 {
+        font-size: 20px;
+    }
+    .profile img {
+        width: 325px;
+    }
 }
 
-@media only screen and (max-width: 1500px){
-    .header{ flex-direction: column-reverse; }
+@media only screen and (max-width: 1500px) {
+    .header {
+        flex-direction: column-reverse;
+    }
 
-    .wrapper{
+    .wrapper {
         max-width: 85%;
         padding-top: 50px;
     }
@@ -153,7 +166,7 @@
         width: 100%;
     }
 
-    .profile img{
+    .profile img {
         width: 300px;
     }
 
@@ -163,20 +176,20 @@
     }
 }
 
-@media only screen and (max-width: 1000px){
-    .wrapper{
+@media only screen and (max-width: 1000px) {
+    .wrapper {
         height: auto;
         max-width: 90%;
         min-width: 800px;
     }
 }
 
-@media only screen and (max-width: 800px){
+@media only screen and (max-width: 800px) {
     .profile img {
         width: 250px;
         border-radius: 50%;
     }
-    .aboutme h1{
+    .aboutme h1 {
         font-size: 45px;
     }
 }
