@@ -5,7 +5,6 @@ node_modules
 .cdk.staging
 cdk.out
 cdk.context.json
-cloudformation.yaml
 
 # Ignore the build directory for go
 apod/.env

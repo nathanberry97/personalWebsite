@@ -12,3 +12,4 @@ skip-check:
     - CKV_AWS_56
     - CKV_AWS_68
     - CKV_AWS_86
+    - CKV_SECRET_3 # Mistaking one of the resource numbers in CDK as Azure secret
