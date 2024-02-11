@@ -3,6 +3,7 @@ CDK
 CloudFront
 ECR
 ECS
+EventBridge
 GameBoy-like
 IaC
 JS
@@ -12,6 +13,8 @@ Netrw
 Playdate
 Pygame
 RSS
+Route53
+S3
 TUI
 Twilio
 apod
@@ -25,6 +28,7 @@ lua
 nasaImageOfTheDay
 neovim
 nom
+pandoc
 repo
 tablines
 webpage

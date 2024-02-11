@@ -6,7 +6,7 @@ explain:
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: \033[36m\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 .PHONY: setup
-setup: ## Install pre-commit, and install npm packages
+setup: ## Install pre-commit hooks and npm packages
 	@pre-commit install
 	@cd ./infra && npm ci
 
@@ -39,9 +39,3 @@ checkov: ## Run checkov to check for security issues
 	@cd infra && npx cdk synth > cloudformation.yaml
 	@checkov -f infra/cloudformation.yaml
 	@rm -rf infra/cloudformation.yaml
-
-.PHONY: deploy
-deploy: ## Deploy container image to AWS
-	@chmod +x scripts/pushContainerBuild.sh
-	@scripts/pushContainerBuild.sh
-	@cd infra && npm run deploy

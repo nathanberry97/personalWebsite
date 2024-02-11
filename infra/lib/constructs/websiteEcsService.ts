@@ -98,7 +98,7 @@ export class websiteEcsService extends Construct {
                 minute: (time.getMinutes() + 5).toString(),
                 hour: time.getHours().toString(),
                 day: time.getDate().toString(),
-                month: time.getMonth().toString(),
+                month: (time.getMonth() + 1).toString(),
                 year: time.getFullYear().toString(),
             }),
             targets: [scheduledEcsTask],
