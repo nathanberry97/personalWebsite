@@ -89,13 +89,13 @@ export class websiteEcsService extends Construct {
         });
 
         /**
-         * Run the ECS task 5 minutes after deployment:
+         * Run the ECS task 3 minutes after deployment:
          *   - This is due to BucketDeployment overwriting the apod.html file
          */
         const time = new Date();
         new Rule(this, "runEcsTaskOnDeployment", {
             schedule: Schedule.cron({
-                minute: (time.getMinutes() + 5).toString(),
+                minute: (time.getMinutes() + 3).toString(),
                 hour: time.getHours().toString(),
                 day: time.getDate().toString(),
                 month: (time.getMonth() + 1).toString(),
