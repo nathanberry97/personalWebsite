@@ -6,6 +6,13 @@
     <description>Recent content for Nathan Berrys's personal blog</description>
     <atom:link href="https://nathanberry.co.uk/index.xml" rel="self" type="application/rss+xml"/>
     <item>
+        <title>Fuzzy Session</title>
+        <link>https://nathanberry.co.uk/blog/fzfSession.html</link>
+        <guid>https://nathanberry.co.uk/blog/fzfSession.html</guid>
+        <pubDate>Sun, 18 Feb 2024 17:00:00 +0000</pubDate>
+        <description>Implementing fzf into your tmux workflow</description>
+    </item>
+    <item>
         <title>Year in review 2023</title>
         <link>https://nathanberry.co.uk/blog/yearInReview2023.html</link>
         <guid>https://nathanberry.co.uk/blog/yearInReview2023.html</guid>
