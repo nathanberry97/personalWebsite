@@ -82,13 +82,13 @@ iframe {
 
 @media only screen and (max-width: 1500px) {
     body {
-        width: 45%;
+        width: 50%;
     }
 }
 
 @media only screen and (max-width: 1000px) {
     body {
-        width: 50%;
+        width: 60%;
     }
 }
 
