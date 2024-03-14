@@ -53,6 +53,7 @@ iframe {
     .apod {
         width: 50%;
     }
+
     .apod p {
         font-size: 18px;
     }
@@ -62,6 +63,7 @@ iframe {
     .apod {
         width: 70%;
     }
+
     .apod img,
     iframe {
         width: 90%;
@@ -72,6 +74,7 @@ iframe {
     .apod {
         width: 85%;
     }
+
     .apod img,
     iframe {
         width: 95%;

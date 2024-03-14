@@ -70,9 +70,8 @@ p a:hover {
  */
 
 .navbar {
-    background-color: #1a1821;
     overflow: hidden;
-    position: fixed;
+    position: absolute;
     top: 0px;
     width: 100%;
     transition: top 0.5s;
@@ -109,11 +108,13 @@ p a:hover {
 
 @media only screen and (max-width: 2000px) {
     p {
-        font-size: 16px;
+        font-size: 17px;
     }
+
     .navbar {
         font-size: 20px;
     }
+
     .navbar .linksWidth {
         width: 85%;
     }
@@ -121,11 +122,13 @@ p a:hover {
 
 @media only screen and (max-width: 1500px) {
     p {
-        font-size: 14px;
+        font-size: 16px;
     }
+
     .navbar {
         font-size: 18px;
     }
+
     .navbar .linksWidth {
         width: 85%;
     }
@@ -135,6 +138,7 @@ p a:hover {
     body {
         font-size: 18px;
     }
+
     .navbar .linksWidth {
         width: 95%;
     }
@@ -144,6 +148,7 @@ p a:hover {
     .navbar .linksWidth {
         width: 100%;
     }
+
     p {
         font-size: 16px;
     }
