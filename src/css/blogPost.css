@@ -2,7 +2,8 @@
  * CONTENTS
  * ========
  * 00. BLOG STYLING
- * 01. RESPONSIVE DESIGN
+ * 01. TO TOP BUTTON DESIGN
+ * 02. RESPONSIVE DESIGN
  */
 
 /*
@@ -70,7 +71,32 @@ iframe {
 }
 
 /*
- * 01. RESPONSIVE DESIGN
+ * 01. TO TOP BUTTON DESIGN
+ * ========================
+ */
+
+.toTop {
+    display: none; /* Hidden by default */
+    margin-top: 5px;
+    margin-bottom: 10px;
+    float: right;
+    border: 1px solid #111016;
+    background-color: #111016;
+    color: #c8c7c4;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+.toTop:hover {
+    border: 1px solid #262330;
+    background-color: #262330;
+    transition: 0.3s;
+}
+
+/*
+ * 02. RESPONSIVE DESIGN
  * =====================
  */
 
