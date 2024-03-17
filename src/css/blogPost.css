@@ -128,4 +128,9 @@ iframe {
     blockquote {
         width: 85%;
     }
+
+    .toTop {
+        border: 1px solid #262330;
+        background-color: #262330;
+    }
 }
