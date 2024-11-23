@@ -19,8 +19,9 @@ jobs:
 
             - name: Install Dependencies and build infra
               run: |
-                  sudo apt install pandoc
-                  sudo apt install podman
+                  sudo apt-get update
+                  sudo apt-get install pandoc
+                  sudo apt-get install podman
                   cd ./infra
                   npm ci
                   npm run build
