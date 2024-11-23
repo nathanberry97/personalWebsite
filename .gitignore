@@ -16,3 +16,6 @@ src/blog/*
 # Ensure the following files are not ignored
 !src/js/navBarScroll.js
 !jest.config.js
+
+# Ignore DS_Store files
+.DS_Store
