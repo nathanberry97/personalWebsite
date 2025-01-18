@@ -32,19 +32,6 @@ jobs:
                   chmod +x ./scripts/createBlogPosts.sh
                   ./scripts/createBlogPosts.sh
 
-            - name: deploy container build
-              run: |
-                  chmod +x scripts/createApodEnv.sh
-                  chmod +x scripts/pushContainerBuild.sh
-                  ./scripts/createApodEnv.sh
-                  ./scripts/pushContainerBuild.sh
-              env:
-                  NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
-                  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-                  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-                  ACCOUNT_NUM: ${{secrets.ACCOUNT_NUM}}
-                  REGION: "eu-west-2"
-
             - name: cdk deploy
               uses: youyo/aws-cdk-github-actions@v2
               with:
