@@ -202,10 +202,6 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .profile img {
-        width: 200px;
-    }
-
     .aboutme h1 {
         font-size: 45px;
     }
