@@ -114,4 +114,8 @@
     .blog p {
         width: 60%;
     }
+
+    .blog .date {
+        font-size: 15px;
+    }
 }

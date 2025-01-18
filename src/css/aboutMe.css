@@ -175,7 +175,8 @@
     }
 
     .profile img {
-        width: 275px;
+        width: 250px;
+        border-radius: 50%;
     }
 
     .blog {
@@ -202,8 +203,7 @@
 
 @media only screen and (max-width: 800px) {
     .profile img {
-        width: 250px;
-        border-radius: 50%;
+        width: 200px;
     }
 
     .aboutme h1 {
