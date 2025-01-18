@@ -1,8 +1,4 @@
-import {
-    Bucket,
-    BucketAccessControl,
-    BlockPublicAccess,
-} from "aws-cdk-lib/aws-s3";
+import { Bucket, BucketAccessControl, BlockPublicAccess } from "aws-cdk-lib/aws-s3";
 import { PolicyStatement, Effect, AnyPrincipal } from "aws-cdk-lib/aws-iam";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { RemovalPolicy } from "aws-cdk-lib";
@@ -34,17 +30,13 @@ export class websiteS3 extends Construct {
         });
         this.__websiteBucket = websiteBucket;
 
-        const redirectWebsiteBucket = new Bucket(
-            this,
-            "websiteRedirectBucket",
-            {
-                bucketName: `www.${props.domainName}`,
-                accessControl: BucketAccessControl.PRIVATE,
-                blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
-                websiteRedirect: { hostName: `${props.domainName}` },
-                removalPolicy: RemovalPolicy.DESTROY,
-            },
-        );
+        const redirectWebsiteBucket = new Bucket(this, "websiteRedirectBucket", {
+            bucketName: `www.${props.domainName}`,
+            accessControl: BucketAccessControl.PRIVATE,
+            blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
+            websiteRedirect: { hostName: `${props.domainName}` },
+            removalPolicy: RemovalPolicy.DESTROY,
+        });
         this.__redirectWebsiteBucket = redirectWebsiteBucket;
 
         websiteBucket.addToResourcePolicy(
@@ -52,10 +44,7 @@ export class websiteS3 extends Construct {
                 effect: Effect.ALLOW,
                 principals: [new AnyPrincipal()],
                 actions: ["s3:GetObject"],
-                resources: [
-                    websiteBucket.arnForObjects("*"),
-                    websiteBucket.bucketArn,
-                ],
+                resources: [websiteBucket.arnForObjects("*"), websiteBucket.bucketArn],
             }),
         );
 

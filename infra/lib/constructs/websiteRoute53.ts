@@ -19,17 +19,13 @@ export class websiteRoute53 extends Construct {
 
         new ARecord(this, "websiteDns", {
             zone: hostedZone,
-            target: RecordTarget.fromAlias(
-                new CloudFrontTarget(props.websiteDistribution),
-            ),
+            target: RecordTarget.fromAlias(new CloudFrontTarget(props.websiteDistribution)),
         });
 
         new ARecord(this, "redirectWebsiteDns", {
             zone: hostedZone,
             recordName: "www",
-            target: RecordTarget.fromAlias(
-                new CloudFrontTarget(props.redirectWebsiteDistribution),
-            ),
+            target: RecordTarget.fromAlias(new CloudFrontTarget(props.redirectWebsiteDistribution)),
         });
     }
 }
