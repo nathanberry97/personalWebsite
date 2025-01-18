@@ -16,22 +16,15 @@ compile: ## Compile blog posts into html
 	@scripts/createBlogPosts.sh
 
 .PHONY: build
-build: ## Build backend for APOD html page
-	@cd apod && go build -o bin/apod src/*.go
+build: ## Build infra for AWS
 	@cd infra && npm run build
 
-.PHONY: run
-run: build ## Build and run backend for APOD html page
-	@cd apod && ./bin/apod
-
 .PHONY: test
-test: ## Test backend for APOD html page and infra tests
-	@cd apod && go test src/*.go -v
+test: ## Test infra for AWS
 	@cd infra && npm test
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	@rm -rf apod/bin
 	@cd infra && npm run clean
 
 .PHONY: checkov

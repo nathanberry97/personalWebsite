@@ -82,7 +82,7 @@ p a:hover {
     color: #f0f0f0;
     display: block;
     float: right;
-    padding: 14px 16px;
+    padding: 14px 10px;
     text-align: center;
     text-decoration: none;
 }
@@ -99,6 +99,11 @@ p a:hover {
 .navbar .current a {
     color: #8caaee;
     text-decoration: none;
+}
+
+.navbar .socials {
+    width: 20px;
+    padding: 2px;
 }
 
 /*

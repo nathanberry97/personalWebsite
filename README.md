@@ -30,20 +30,6 @@ The webpage is created with the following:
 -   CSS
 -   JS
 
-## APOD webpage
-
-The apod webpage is updated daily using the [NASA API](https://api.nasa.gov/).
-
-This has been added to a container and pushed to AWS ECR which ECS will use each
-day at 7 UTC to update with the current Astronomy Picture of the Day.
-
-If you would like to run you need to set the following environment variables:
-
--   `export NSAS_API_KEY=YOUR_KEY`
--   `export S3_BUCKET=YOUR_BUCKET`
-
-This application is written in Go and can be found in the `apod` directory.
-
 ## AWS CDK
 
 The infrastructure is created using the AWS CDK. The following resources are
@@ -52,8 +38,6 @@ created:
 -   S3 bucket for the website
 -   CloudFront distribution
 -   Route53 hosted zone
--   ECS cluster
--   EventBridge rule
 
 The deployment of the infrastructure is done through GitHub Actions. But you
 can install the dependencies and build the infrastructure using the following
@@ -68,4 +52,3 @@ make build
 >
 > -   `export ACCOUNT_NUM=xxxxxxxxxxxx`
 > -   `export REGION=eu-west-2`
-> -   `export VPC_ID=vpc-xxxxxxxxxxxx`

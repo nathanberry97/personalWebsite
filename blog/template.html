@@ -1,31 +1,24 @@
 <!doctype html>
-<html
-    xmlns="http://www.w3.org/1999/xhtml"
-    lang="$lang$"
-    xml:lang="$lang$"
-    $if(dir)$
-    dir="$dir$"
-    $endif$
->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="$lang$" xml:lang="$lang$" $if(dir)$ dir="$dir$" $endif$>
     <head>
         <meta charset="utf-8" />
-        <meta name="theme-color" content="#111016" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="icon" type="image/x-icon" href="../images/headshot.jpeg" />
-        <link
-            href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto"
-            rel="stylesheet"
+        <meta name="theme-color" content="#111016" />
+        <meta
+            name="description"
+            content="Nathan Berry - Software Engineer passionate about command-line development and technology. Read my blog for insights on tech and life."
         />
+        <link rel="icon" type="image/x-icon" href="../images/headshot.jpeg" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Roboto" rel="stylesheet" />
         <meta name="generator" content="pandoc" />
         $for(author-meta)$
         <meta name="author" content="$author-meta$" />
         $endfor$ $if(date-meta)$
         <meta name="dcterms.date" content="$date-meta$" />
         $endif$ $if(keywords)$
-        <meta
-            name="keywords"
-            content="$for(keywords)$$keywords$$sep$, $endfor$"
-        />
+        <meta name="keywords" content="$for(keywords)$$keywords$$sep$, $endfor$" />
         $endif$ $if(description-meta)$
         <meta name="description" content="$description-meta$" />
         $endif$
@@ -35,8 +28,7 @@
         </style>
         $for(css)$
         <link rel="stylesheet" href="$css$" />
-        $endfor$ $for(header-includes)$ $header-includes$ $endfor$ $if(math)$
-        $math$ $endif$
+        $endfor$ $for(header-includes)$ $header-includes$ $endfor$ $if(math)$ $math$ $endif$
         <!--[if lt IE 9]>
             <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
         <![endif]-->
@@ -44,7 +36,10 @@
     <body>
         <div class="navbar" id="navbar">
             <div class="linksWidth">
-                <a href="../apod.html">APOD</a>
+                <a href="https://github.com/nathanberry97"> <img src="../images/github.png" class="socials" /></a>
+                <a href="https://www.linkedin.com/in/nathan-berry-7b8191115/">
+                    <img src="../images/linkedin.png" class="socials"
+                /></a>
                 <a href="../blog.html">Blog</a>
                 <a href="../index.html">Home</a>
             </div>
