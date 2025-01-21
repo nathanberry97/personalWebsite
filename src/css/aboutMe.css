@@ -153,30 +153,13 @@
 }
 
 @media only screen and (max-width: 1500px) {
-    .header {
-        flex-direction: column-reverse;
-    }
-
     .wrapper {
         max-width: 85%;
         padding-top: 50px;
     }
 
-    .aboutme {
-        padding-top: 25px;
-        padding-left: 0px;
-        text-align: center;
-    }
-
-    .aboutme .bio {
-        padding-top: 20px;
-        text-align: justify;
-        width: 100%;
-    }
-
     .profile img {
-        width: 250px;
-        border-radius: 50%;
+        width: 275px;
     }
 
     .blog {
@@ -194,6 +177,27 @@
         height: auto;
         max-width: 90%;
         min-width: 800px;
+    }
+
+    .header {
+        flex-direction: column-reverse;
+    }
+
+    .aboutme {
+        padding-top: 25px;
+        padding-left: 0px;
+        text-align: center;
+    }
+
+    .aboutme .bio {
+        padding-top: 20px;
+        text-align: justify;
+        width: 100%;
+    }
+
+    .profile img {
+        width: 250px;
+        border-radius: 50%;
     }
 
     .blog p {
