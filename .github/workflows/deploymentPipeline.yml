@@ -28,7 +28,7 @@ jobs:
 
             - name: Compile html articles
               run: |
-                  mkdir ./src/blog
+                  mkdir ./static/blog
                   chmod +x ./scripts/createBlogPosts.sh
                   ./scripts/createBlogPosts.sh
 
