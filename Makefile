@@ -14,6 +14,7 @@ setup: ## Install pre-commit hooks and npm packages
 compile: ## Compile blog posts into html
 	@chmod +x scripts/createBlogPosts.sh
 	@scripts/createBlogPosts.sh
+	@go run scripts/parseBlogFeed.go
 
 .PHONY: build
 build: ## Build infra for AWS
@@ -25,6 +26,10 @@ test: ## Test infra for AWS
 
 .PHONY: clean
 clean: ## Clean up build artifacts
+	@rm static/index.html
+	@rm static/index.xml
+	@rm static/blog.html
+	@rm static/blog/*
 	@cd infra && npm run clean
 
 .PHONY: checkov

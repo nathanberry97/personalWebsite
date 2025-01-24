@@ -2,11 +2,12 @@ package main
 
 import (
 	"bufio"
-	"html/template"
+	htmlTemplate "html/template"
 	"os"
 	"path/filepath"
 	"sort"
 	"strings"
+	textTemplate "text/template"
 	"time"
 )
 
@@ -38,16 +39,16 @@ func main() {
 		latestPosts = latestPosts[:3]
 	}
 
-	indexTemplate := template.Must(template.ParseFiles("templates/index.html"))
-	blogTemplate := template.Must(template.ParseFiles("templates/blog.html"))
-	rssTemplate := template.Must(template.ParseFiles("templates/index.xml"))
+	indexTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/index.html"))
+	blogTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/blog.html"))
+	rssTemplate := textTemplate.Must(textTemplate.ParseFiles("templates/index.xml"))
 
 	createHtml("static/index.html", indexTemplate, latestPosts)
 	createHtml("static/blog.html", blogTemplate, blogPosts)
 	createRss("static/index.xml", rssTemplate, blogPosts)
 }
 
-func createHtml(filePath string, tmpl *template.Template, posts []BlogPost) {
+func createHtml(filePath string, tmpl *htmlTemplate.Template, posts []BlogPost) {
 	outputFile, err := os.Create(filePath)
 	if err != nil {
 		panic(err)
@@ -60,7 +61,7 @@ func createHtml(filePath string, tmpl *template.Template, posts []BlogPost) {
 	}
 }
 
-func createRss(filePath string, tmpl *template.Template, posts []BlogPost) {
+func createRss(filePath string, tmpl *textTemplate.Template, posts []BlogPost) {
 	url := "https://nathanberry.co.uk"
 	feed := RSSFeed{
 		Title:       "Nathan Berry",
