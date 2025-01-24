@@ -40,11 +40,11 @@ func main() {
 
 	indexTemplate := template.Must(template.ParseFiles("templates/index.html"))
 	blogTemplate := template.Must(template.ParseFiles("templates/blog.html"))
-	rssTemplate := template.Must(template.ParseFiles("templates/index.rss"))
+	rssTemplate := template.Must(template.ParseFiles("templates/index.xml"))
 
 	createHtml("static/index.html", indexTemplate, latestPosts)
 	createHtml("static/blog.html", blogTemplate, blogPosts)
-	createRss("static/index.rss", rssTemplate, blogPosts)
+	createRss("static/index.xml", rssTemplate, blogPosts)
 }
 
 func createHtml(filePath string, tmpl *template.Template, posts []BlogPost) {
