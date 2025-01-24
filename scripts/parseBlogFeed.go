@@ -17,6 +17,20 @@ type BlogPost struct {
 	ParsedDate time.Time
 }
 
+type RSSItem struct {
+	Title   string
+	Link    string
+	PubDate string
+}
+
+type RSSFeed struct {
+	Title       string
+	Link        string
+	Description string
+	AtomLink    string
+	Items       []RSSItem
+}
+
 func main() {
 	blogPosts := getBlogPosts()
 	latestPosts := blogPosts
@@ -26,9 +40,11 @@ func main() {
 
 	indexTemplate := template.Must(template.ParseFiles("templates/index.html"))
 	blogTemplate := template.Must(template.ParseFiles("templates/blog.html"))
+	rssTemplate := template.Must(template.ParseFiles("templates/index.rss"))
 
 	createHtml("static/index.html", indexTemplate, latestPosts)
 	createHtml("static/blog.html", blogTemplate, blogPosts)
+	createRss("static/index.rss", rssTemplate, blogPosts)
 }
 
 func createHtml(filePath string, tmpl *template.Template, posts []BlogPost) {
@@ -39,6 +55,35 @@ func createHtml(filePath string, tmpl *template.Template, posts []BlogPost) {
 	defer outputFile.Close()
 
 	err = tmpl.Execute(outputFile, posts)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func createRss(filePath string, tmpl *template.Template, posts []BlogPost) {
+	url := "https://nathanberry.co.uk"
+	feed := RSSFeed{
+		Title:       "Nathan Berry",
+		Link:        url,
+		Description: "Recent content for Nathan Berrys's personal blog",
+		AtomLink:    url + "/index.xml",
+	}
+
+	for _, post := range posts {
+		feed.Items = append(feed.Items, RSSItem{
+			Title:   post.Title,
+			Link:    url + "/" + post.Link,
+			PubDate: post.ParsedDate.Format("Mon, 02 Jan 2006 15:04:05 -0700"),
+		})
+	}
+
+	outputFile, err := os.Create(filePath)
+	if err != nil {
+		panic(err)
+	}
+	defer outputFile.Close()
+
+	err = tmpl.Execute(outputFile, feed)
 	if err != nil {
 		panic(err)
 	}
