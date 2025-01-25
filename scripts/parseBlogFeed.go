@@ -128,6 +128,7 @@ func getBlogPosts() []BlogPost {
 		}
 
 		htmlLink := strings.TrimSuffix(file.Name(), ".md") + ".html"
+		htmlLink = "blog" + strings.TrimPrefix(htmlLink, "posts")
 
 		blogPosts = append(blogPosts, BlogPost{
 			Title:      title,
