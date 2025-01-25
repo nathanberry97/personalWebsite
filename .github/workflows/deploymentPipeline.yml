@@ -50,3 +50,6 @@ jobs:
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
                   ACCOUNT_NUM: ${{secrets.ACCOUNT_NUM}}
                   REGION: "eu-west-2"
+
+            - name: check static files
+              run: ls -l ./static
