@@ -33,10 +33,10 @@ jobs:
 
             - name: Compile website
               run: |
-                  go run scripts/parseBlogFeed.go
                   mkdir ./static/blog
                   chmod +x ./scripts/parseBlogPosts.sh
                   ./scripts/createBlogPosts.sh
+                  go run scripts/parseBlogFeed.go
 
             - name: cdk deploy
               uses: youyo/aws-cdk-github-actions@v2
