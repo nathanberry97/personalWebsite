@@ -12,8 +12,8 @@ setup: ## Install pre-commit hooks and npm packages
 
 .PHONY: compile
 compile: ## Compile blog posts into html
-	@chmod +x scripts/createBlogPosts.sh
-	@scripts/createBlogPosts.sh
+	@chmod +x scripts/parseBlogPosts.sh
+	@scripts/parseBlogPosts.sh
 	@go run scripts/parseBlogFeed.go
 
 .PHONY: build
