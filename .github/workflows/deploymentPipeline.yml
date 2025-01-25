@@ -35,7 +35,7 @@ jobs:
               run: |
                   mkdir ./static/blog
                   chmod +x ./scripts/parseBlogPosts.sh
-                  ./scripts/createBlogPosts.sh
+                  ./scripts/parseBlogPosts.sh
                   go run scripts/parseBlogFeed.go
 
             - name: cdk deploy
