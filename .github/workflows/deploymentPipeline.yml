@@ -17,6 +17,11 @@ jobs:
               with:
                   node-version: 20
 
+            - name: Install go
+              uses: actions/setup-go@v5
+              with:
+                  go-version: 1.23.4
+
             - name: Install Dependencies and build infra
               run: |
                   sudo apt-get update
@@ -26,11 +31,12 @@ jobs:
                   npm ci
                   npm run build
 
-            - name: Compile html articles
+            - name: Compile website
               run: |
-                  mkdir ./src/blog
-                  chmod +x ./scripts/createBlogPosts.sh
+                  mkdir ./static/blog
+                  chmod +x ./scripts/parseBlogPosts.sh
                   ./scripts/createBlogPosts.sh
+                  go run scripts/parseBlogFeed.go
 
             - name: cdk deploy
               uses: youyo/aws-cdk-github-actions@v2

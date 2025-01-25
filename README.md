@@ -10,6 +10,26 @@ This website is currently live which you can view here:
 
 -   [Personal Website](https://nathanberry.co.uk/)
 
+## Commands when running locally
+
+List of commands while using `make`:
+
+```
+personalWebsite
+
+Usage:
+  setup                 Install pre-commit hooks and npm packages
+  compile               Compile blog posts into html
+  local                 Run a local webserver to host website locally
+  build                 Build infra for AWS
+  test                  Test infra for AWS
+  clean                 Clean up build artifacts
+  checkov               Run checkov to check for security issues
+```
+
+> When using `make compile` or `make local` you will need to have `podman`
+> installed
+
 ## GitHub actions
 
 The repo has been configured to automatically deploy any changes to the source
@@ -30,14 +50,19 @@ The webpage is created with the following:
 -   CSS
 -   JS
 
+> Some of the HTML is complied during the build using `golang` and `templates`
+> to help automate the process of creating new blog content.
+> If you are interested in how this is done along side the blog posts conversion
+> you can find the code in `/scripts`.
+
 ## AWS CDK
 
-The infrastructure is created using the AWS CDK. The following resources are
+The infrastructure is created using the `AWS CDK`. The following resources are
 created:
 
--   S3 bucket for the website
--   CloudFront distribution
--   Route53 hosted zone
+-   `S3` bucket for the website
+-   `CloudFront` distribution
+-   `Route53` hosted zone
 
 The deployment of the infrastructure is done through GitHub Actions. But you
 can install the dependencies and build the infrastructure using the following

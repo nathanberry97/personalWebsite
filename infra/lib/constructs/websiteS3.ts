@@ -50,7 +50,7 @@ export class websiteS3 extends Construct {
 
         new BucketDeployment(this, "uploadWebsite", {
             destinationBucket: websiteBucket,
-            sources: [Source.asset("../src/")],
+            sources: [Source.asset("../static/")],
         });
     }
 
