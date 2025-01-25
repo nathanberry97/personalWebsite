@@ -17,7 +17,7 @@ static/index.xml
 static/blog.html
 
 # Ensure the following files are not ignored
-!src/js/navBarScroll.js
+!static/js/navBarScroll.js
 !jest.config.js
 
 # Ignore DS_Store files
