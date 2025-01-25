@@ -2,7 +2,7 @@ name: Deploy website
 
 on:
     push:
-        branches: [main]
+        branches: [main, fix-deployment-js-bug]
 
 jobs:
     Deploy:
