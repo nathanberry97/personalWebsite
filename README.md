@@ -10,6 +10,26 @@ This website is currently live which you can view here:
 
 -   [Personal Website](https://nathanberry.co.uk/)
 
+## Commands when running locally
+
+List of commands while using `make`:
+
+```
+personalWebsite
+
+Usage:
+  setup                 Install pre-commit hooks and npm packages
+  compile               Compile blog posts into html
+  local                 Run a local webserver to host website locally
+  build                 Build infra for AWS
+  test                  Test infra for AWS
+  clean                 Clean up build artifacts
+  checkov               Run checkov to check for security issues
+```
+
+> When using `make compile` or `make local` you will need to have `podman`
+> installed
+
 ## GitHub actions
 
 The repo has been configured to automatically deploy any changes to the source

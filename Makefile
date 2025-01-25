@@ -15,6 +15,14 @@ compile: ## Compile blog posts into html
 	@chmod +x scripts/parseBlogPosts.sh
 	@scripts/parseBlogPosts.sh
 	@go run scripts/parseBlogFeed.go
+	@podman build -t webserver_personal_website .
+
+.PHONY: local
+local: compile ## Run a local webserver to host website locally
+	@podman run --name personal_website -dit \
+  	 -p 8080:80 \
+  	 -v ${PWD}/static:/usr/local/apache2/htdocs/:Z \
+  	 webserver_personal_website
 
 .PHONY: build
 build: ## Build infra for AWS
@@ -31,6 +39,8 @@ clean: ## Clean up build artifacts
 	@rm static/blog.html
 	@rm static/blog/*
 	@cd infra && npm run clean
+	@podman stop personal_website
+	@podman rm personal_website
 
 .PHONY: checkov
 checkov: ## Run checkov to check for security issues
