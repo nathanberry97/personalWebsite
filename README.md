@@ -30,14 +30,19 @@ The webpage is created with the following:
 -   CSS
 -   JS
 
+> Some of the HTML is complied during the build using `golang` and `templates`
+> to help automate the process of creating new blog content.
+> If you are interested in how this is done along side the blog posts conversion
+> you can find the code in `/scripts`.
+
 ## AWS CDK
 
-The infrastructure is created using the AWS CDK. The following resources are
+The infrastructure is created using the `AWS CDK`. The following resources are
 created:
 
--   S3 bucket for the website
--   CloudFront distribution
--   Route53 hosted zone
+-   `S3` bucket for the website
+-   `CloudFront` distribution
+-   `Route53` hosted zone
 
 The deployment of the infrastructure is done through GitHub Actions. But you
 can install the dependencies and build the infrastructure using the following
