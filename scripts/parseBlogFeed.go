@@ -91,16 +91,16 @@ func createRss(filePath string, tmpl *textTemplate.Template, posts []BlogPost) {
 }
 
 func getBlogPosts() []BlogPost {
-	blogDir := "blog"
+	postsDir := "posts"
 	var blogPosts []BlogPost
 
-	files, err := os.ReadDir(blogDir)
+	files, err := os.ReadDir(postsDir)
 	if err != nil {
 		panic(err)
 	}
 
 	for _, file := range files {
-		filePath := filepath.Join(blogDir, file.Name())
+		filePath := filepath.Join(postsDir, file.Name())
 
 		file, err := os.Open(filePath)
 		if err != nil {

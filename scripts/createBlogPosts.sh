@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd ./blog
+cd ./posts
 
 for entry in *
 do
