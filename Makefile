@@ -12,6 +12,8 @@ setup: ## Install pre-commit hooks and npm packages
 
 .PHONY: compile
 compile: ## Compile blog posts into html
+	@mkdir -p static/css static/blog
+	@sass --no-source-map scss/index.scss static/css/style.css
 	@chmod +x scripts/parseBlogPosts.sh
 	@scripts/parseBlogPosts.sh
 	@go run scripts/parseBlogFeed.go
@@ -41,6 +43,7 @@ clean: ## Clean up build artifacts
 	@cd infra && npm run clean
 	@podman stop personal_website
 	@podman rm personal_website
+	@rm static/css/style.css
 
 .PHONY: checkov
 checkov: ## Run checkov to check for security issues

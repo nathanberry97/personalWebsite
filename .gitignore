@@ -15,6 +15,7 @@ static/blog/*
 static/index.html
 static/index.xml
 static/blog.html
+static/css/style.css
 
 # Ensure the following files are not ignored
 !static/js/navBarScroll.js
