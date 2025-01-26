@@ -36,7 +36,7 @@ jobs:
 
             - name: Compile website
               run: |
-                  mkdir static/blog
+                  mkdir -p static/blog static/css
                   chmod +x scripts/parseBlogPosts.sh
                   ./scripts/parseBlogPosts.sh
                   go run scripts/parseBlogFeed.go
