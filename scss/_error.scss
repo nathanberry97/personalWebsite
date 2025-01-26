@@ -1,0 +1,82 @@
+@use "variables";
+
+/**
+ * CONTENTS
+ * ========
+ * 00. BLOG STYLING
+ * 01. RESPONSIVE DESIGN
+ */
+
+/**
+ * 00. BLOG STYLING
+ * ================
+ */
+
+.wrapper-error {
+    body {
+        flex-direction: column;
+        width: 25%;
+    }
+
+    h1 {
+        color: variables.$accent;
+        padding-top: 250px;
+        font-size: 150px;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 0px;
+        text-decoration: underline;
+    }
+
+    h2 {
+        padding-top: 0px;
+        margin-top: 0px;
+        width: 100%;
+        text-align: center;
+        font-size: 35px;
+    }
+}
+
+/**
+ * 01. RESPONSIVE DESIGN
+ * =====================
+ */
+
+@media only screen and (max-width: 2000px) {
+    .wrapper-error {
+        body {
+            width: 35%;
+        }
+
+        h1 {
+            padding-top: 200px;
+            font-size: 125px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1500px) {
+    .wrapper-error {
+        body {
+            width: 45%;
+        }
+
+        h1 {
+            padding-top: 150px;
+            font-size: 100px;
+        }
+    }
+}
+
+@media only screen and (max-width: 1000px) {
+    .wrapper-error {
+        body {
+            width: 80%;
+        }
+
+        h1 {
+            padding-top: 100px;
+            font-size: 90px;
+        }
+    }
+}
