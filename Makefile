@@ -13,7 +13,7 @@ setup: ## Install pre-commit hooks and npm packages
 .PHONY: compile
 compile: ## Compile blog posts into html
 	@mkdir -p static/css static/blog
-	@sass --no-source-map scss/style.scss static/css/style.css
+	@sass --no-source-map scss/index.scss static/css/style.css
 	@chmod +x scripts/parseBlogPosts.sh
 	@scripts/parseBlogPosts.sh
 	@go run scripts/parseBlogFeed.go

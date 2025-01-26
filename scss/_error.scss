@@ -12,7 +12,7 @@
  * ================
  */
 
-.wrapper-error {
+main.error {
     body {
         flex-direction: column;
         width: 25%;
@@ -43,7 +43,7 @@
  */
 
 @media only screen and (max-width: 2000px) {
-    .wrapper-error {
+    main.error {
         body {
             width: 35%;
         }
@@ -56,7 +56,7 @@
 }
 
 @media only screen and (max-width: 1500px) {
-    .wrapper-error {
+    main.error {
         body {
             width: 45%;
         }
@@ -69,7 +69,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .wrapper-error {
+    main.error {
         body {
             width: 80%;
         }

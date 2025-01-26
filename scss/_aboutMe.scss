@@ -14,7 +14,7 @@
  * =====================
  */
 
-.wrapper-aboutme {
+main.aboutme {
     padding-top: 100px;
     flex-direction: row;
     max-width: 65%;
@@ -134,7 +134,7 @@
  */
 
 @media only screen and (max-width: 2000px) {
-    .wrapper-aboutme {
+    main.aboutme {
         max-width: 70%;
         .aboutme {
             h1 {
@@ -155,8 +155,8 @@
 }
 
 @media only screen and (max-width: 1500px) {
-    .wrapper-aboutme {
-        max-width: 85%;
+    main.aboutme {
+        max-width: 87.5%;
         padding-top: 50px;
         .profile {
             img {
@@ -176,7 +176,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .wrapper-aboutme {
+    main.aboutme {
         height: auto;
         max-width: 90%;
         min-width: 800px;
@@ -213,7 +213,7 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .wrapper-aboutme {
+    main.aboutme {
         .aboutme {
             h1 {
                 font-size: 45px;

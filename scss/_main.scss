@@ -70,7 +70,7 @@ a {
  * ==================
  */
 
-.navbar {
+header.navbar {
     overflow: hidden;
     position: absolute;
     top: 0px;
@@ -119,7 +119,7 @@ a {
         font-size: 17px;
     }
 
-    .navbar {
+    header.navbar {
         font-size: 20px;
 
         .linksWidth {
@@ -137,7 +137,7 @@ a {
         font-size: 16px;
     }
 
-    .navbar {
+    header.navbar {
         font-size: 18px;
 
         .linksWidth {
@@ -155,7 +155,7 @@ a {
         font-size: 18px;
     }
 
-    .navbar {
+    header.navbar {
         .linksWidth {
             width: 95%;
         }
@@ -167,7 +167,7 @@ a {
         font-size: 16px;
     }
 
-    .navbar {
+    header.navbar {
         .linksWidth {
             width: 100%;
         }

@@ -13,7 +13,7 @@
  * =====================
  */
 
-.wrapper-blog {
+main.blogFeed {
     padding-top: 50px;
     flex-direction: row;
     max-width: 60%;
@@ -81,13 +81,13 @@
  */
 
 @media only screen and (max-width: 2000px) {
-    .wrapper-blog {
+    main.blogFeed {
         max-width: 70%;
     }
 }
 
 @media only screen and (max-width: 1500px) {
-    .wrapper-blog {
+    main.blogFeed {
         max-width: 75%;
         .blog {
             p {
@@ -98,7 +98,7 @@
 }
 
 @media only screen and (max-width: 1000px) {
-    .wrapper-blog {
+    main.blogFeed {
         .blog {
             p {
                 width: 75%;
@@ -108,11 +108,12 @@
 }
 
 @media only screen and (max-width: 800px) {
-    .wrapper-blog {
+    main.blogFeed {
         padding-top: 50px;
         height: auto;
         max-width: 90%;
         min-width: 800px;
+
         .blog {
             margin-top: 0%;
             margin-left: 140px;
