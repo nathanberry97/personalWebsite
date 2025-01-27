@@ -55,15 +55,15 @@ As you can probably tell I wasn't the biggest fan of the process.
 ## It's going to get easier
 
 This is where I decided to make the process better, I wanted it to be like how
-my blog posts are generated to HTML form markdown (If you are curious I use
+my blog posts are generated to HTML from markdown (If you are curious I use
 [Pandoc](https://pandoc.org/) to achieve this).
 I knew it would only take a few hours to implement this feature.
 But like all my other side projects, I put it to the back of my mind.
 
 When it finally became time to start implementing the automation I knew I
 wanted to use [Go](https://go.dev/).
-As I quite like programming with Go and thought it would be a great choice for
-a CLI application.
+As I quite like programming in the language and thought it would be a great
+choice for a CLI application.
 
 With that plan in mind, I looked into how to create templates.
 Here are the two packages I decided to use:
@@ -90,8 +90,6 @@ which in reality wasn't anything too complicated.
 
 The next task was to update the files to support the template packages I was
 using, I'm just going to cover the HTML files in this post.
-To dynamically generate a list of blog posts, I updated my HTML files to use Go
-templates.
 The following snippet loops through the posts and inserts their details into
 the HTML:
 
@@ -113,7 +111,7 @@ inserted,
 and {{end}} denotes the end of the range loop.
 
 From that I needed to make sure my data structure had a Link, Title, and Date
-field; plus it was an array like so []BlogPost.
+field; plus it was an array of all my blog posts.
 Once I had all that working all I needed to do was run the execute function
 provided by the template package and I was golden!
 
