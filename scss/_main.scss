@@ -6,6 +6,7 @@
  * 00. STANDARD STYLING
  * 01. NAVBAR
  * 02. RESPONSIVE DESIGN
+ * 03. FIREFOX-SPECIFIC STYLES
  */
 
 /**
@@ -106,10 +107,18 @@ header.navbar {
     .socials {
         width: 20px;
         padding: 4px;
+
+        @media only screen and (max-width: 2000px) {
+            padding: 2px;
+        }
+
+        @media only screen and (max-width: 800px) {
+            padding: 1px;
+        }
     }
 }
 
-/*
+/**
  * 02. RESPONSIVE DESIGN
  * =====================
  */
@@ -124,10 +133,6 @@ header.navbar {
 
         .linksWidth {
             width: 85%;
-        }
-
-        .socials {
-            padding: 2px;
         }
     }
 }
@@ -171,9 +176,16 @@ header.navbar {
         .linksWidth {
             width: 100%;
         }
+    }
+}
 
-        .socials {
-            padding: 1px;
-        }
+/**
+ * 03. FIREFOX-SPECIFIC STYLES
+ * ===========================
+ */
+
+@-moz-document url-prefix() {
+    header.navbar .socials {
+        padding: 0px;
     }
 }
