@@ -1,6 +1,6 @@
 # Go Beyond Static
 
-### 2025-01-26
+### 2025-01-27
 
 ```
 Go Beyond Static: Effortless Blog Automation
@@ -37,7 +37,7 @@ Here's an example of what that looked like:
   <li>
     <a href="blog/example.html">Example</a>
   </li>
-  <span class="date">2025-01-26</span>
+  <span class="date">2025-01-27</span>
 </p>
 ```
 
