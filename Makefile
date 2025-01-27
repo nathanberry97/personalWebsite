@@ -43,6 +43,7 @@ clean: ## Clean up build artifacts
 	@cd infra && npm run clean
 	@podman stop personal_website
 	@podman rm personal_website
+	@podman system prune -a -f
 	@rm static/css/style.css
 
 .PHONY: checkov

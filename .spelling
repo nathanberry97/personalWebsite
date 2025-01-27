@@ -1,5 +1,7 @@
 APOD
+BlogPost
 CDK
+CLI
 CloudFront
 Ctrl-f
 ECR
@@ -12,6 +14,7 @@ JS
 Lua
 Neovim
 Netrw
+Pandoc
 Playdate
 Primeagen's
 Pygame
@@ -35,6 +38,7 @@ dotfiles
 fzf
 fzf-sessioniser
 github
+html
 keymap
 linkedin
 lua
@@ -47,6 +51,7 @@ repos
 ripgrep
 selectRepo
 soydevs
+structs
 switchSession
 tablines
 tmux
