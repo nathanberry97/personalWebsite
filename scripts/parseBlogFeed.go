@@ -39,9 +39,9 @@ func main() {
 		latestPosts = latestPosts[:3]
 	}
 
-	indexTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/index.html"))
-	blogTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/blog.html"))
-	rssTemplate := textTemplate.Must(textTemplate.ParseFiles("templates/index.xml"))
+	indexTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/index.tmpl"))
+	blogTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/blog.tmpl"))
+	rssTemplate := textTemplate.Must(textTemplate.ParseFiles("templates/index.xml.tmpl"))
 
 	createHtml("static/index.html", indexTemplate, latestPosts)
 	createHtml("static/blog.html", blogTemplate, blogPosts)

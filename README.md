@@ -24,11 +24,11 @@ Usage:
   build                 Build infra for AWS
   test                  Test infra for AWS
   clean                 Clean up build artifacts
+  cleanContainer        Clean up container build artifacts
   checkov               Run checkov to check for security issues
 ```
 
-> When using `make compile` or `make local` you will need to have `podman`
-> installed
+> When using `make local` you will need to have `podman` installed
 
 ## GitHub actions
 
