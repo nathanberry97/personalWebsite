@@ -15,12 +15,13 @@
 
 body.blogposts {
     flex-direction: column;
-    width: 35%;
+    width: 40%;
 
     p {
         text-align: justify;
         margin: 10px;
         width: 100%;
+        word-spacing: 2px;
     }
 
     h1 {
@@ -77,7 +78,7 @@ body.blogposts {
      */
 
     .toTop {
-        display: none; /* Hidden by default */
+        display: none;
         margin-top: 5px;
         margin-bottom: 10px;
         float: right;
@@ -102,12 +103,6 @@ body.blogposts {
  * =====================
  */
 
-@media only screen and (max-width: 2000px) {
-    body.blogposts {
-        width: 40%;
-    }
-}
-
 @media only screen and (max-width: 1500px) {
     body.blogposts {
         width: 50%;
@@ -124,6 +119,10 @@ body.blogposts {
     body.blogposts {
         font-size: 18px;
         width: 80%;
+
+        p {
+            word-spacing: 1px;
+        }
 
         pre,
         blockquote {
