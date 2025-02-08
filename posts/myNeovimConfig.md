@@ -11,8 +11,8 @@ over a year.
 The biggest change I made was removing Copilot from my plugins.
 Comparing that to when I started using vim back in 2021 I couldn't help but
 update my config daily.
-Now that my configuration is somewhat stable, I thought I'd share the
-plugins, keybindings, and tweaks I have implemented.
+Now that my configuration is somewhat stable, I thought I'd share an overview
+of plugins, keybindings, and tweaks I've implemented.
 Hopefully, you'll find something useful to implement into your own
 configuration.
 
@@ -32,8 +32,9 @@ want to manually navigate files I'll just use
 If you aren't interested in reading this post and just want to check out my
 dotfiles here is the [repo](https://github.com/nathanberry97/dotfiles),
 you'll find all the files relating to my neovim config in the nvim directory.
-I'll assume if you haven't ran off you are interested in my opinions, I'll
-cover just things I think are important else we'll be here all day.
+I'll assume if you haven't ran off you are interested in my opinions,
+I'm only going to cover things I think are important else we'll be here all
+day.
 The topics I am going to cover are: plugins, keybindings, and tweaks.
 
 ## Plugins
@@ -58,7 +59,7 @@ From all the plugins I use I would say
 are the most important to my workflow.
 So I am going to only cover those 3 in this section, that doesn't mean I think
 the other plugins aren't worth talking about.
-Just that they don't help as much as getting me in that flow state, plus I'm
+Just that they don't help as much as getting me into the flow state, plus I'm
 not trying to make this post into an essay...
 
 Let's begin with [fzf.vim](https://github.com/junegunn/fzf.vim).
@@ -70,10 +71,9 @@ felt faster when using.
 Admittedly, this was back in 2023, so take it with a grain of salt.
 
 I really think people should use some sort of fuzzy finding in there work flow,
-nothing is more painful than seeing someone struggle to find a file or find
-where a function is being used.
+nothing is more painful than seeing someone struggle to find a file.
 For me I feel that [fzf.vim](https://github.com/junegunn/fzf.vim) helps to add
-this feature to neovim, I know a lot of neovim purist would be disgusted that
+this feature into neovim, I know a lot of neovim purist would be disgusted that
 the plugin is written in vim script.
 But I feel like it just works and it works well, but if you prefer some other
 fuzzy finding tool use that; all I recommend is you use fuzzy finding as it is
@@ -124,32 +124,30 @@ vim.keymap.set('n', 'gr', vim.lsp.buf.references, {})
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 ```
 
-In terms of my setup with LSP I find using
+In terms of my setup with the LSP I find using
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 makes the whole process feel seamless,
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 is a completion engine which enables for autocompletion.
 Basically it helps to unlock the full potential of using LSPs in your
-configuration.
+config.
 
 If I were to write my config again I would probably only install
 [fzf.vim](https://github.com/junegunn/fzf.vim),
 [mason](https://github.com/williamboman/mason.nvim), and
 [nvim-cmp](https://github.com/hrsh7th/nvim-cmp).
-Then only adding other plugins when I hit pain points in my work follow,
+Then only adding other plugins when I hit pain points in my work flow,
 as I know it is tempting to install loads of other plugins but I feel
 that its only going to slow you down in the long run.
 
-## keybindings
+## Keybindings
 
-Now moving on to some of my favourite keybindings I use.
-I have covered some of my keybindings I use with some of the plugins I use
-but here are some handy ones to have configured too:
+Now moving on to some of my favourite keybindings I use, just to note I set
+space as my leader key because I find this most comfortable.
+So with out anything further to do here are some of my favourite bindings I
+use:
 
 ```
--- Leader and key mappings
-vim.g.mapleader = ' '
-
 -- Standard key mappings
 vim.keymap.set('n', '-', ':Ex<CR>')
 vim.keymap.set('n', '<leader>s', function() vim.o.spell = not vim.o.spell end)
@@ -157,16 +155,15 @@ vim.keymap.set('n', '<leader>r', [[:%s/<C-r><C-w>//g<Left><Left>]])
 vim.keymap.set('n', '<C-f>', '<cmd>silent !tmux neww tmux-sessioniser<CR>')
 ```
 
-I set space as my leader key because I find this most comfortable.
 The first keybinding I use is setting hyphen to get me into
 [netrw](https://neovim.io/doc/user/pi_netrw.html),
 this is when I don't use
 [fzf.vim](https://github.com/junegunn/fzf.vim) to navigate the file system.
 
 I set leader s to toggle spelling on and off, as when I am writing
-markdown I like to have a spell checker enabled and I find this as being
-a pretty straight forward solution. But somehow how I still manage to add
-typos...
+markdown I like to have a spell checker enabled.
+I find this a pretty straight forward solution.
+But somehow how I still manage to add typos...
 
 Next we come on to how I do find and replace in a file which is set to leader
 r, it is pretty useful to be fair.
@@ -183,10 +180,9 @@ it works.
 
 Lastly I'm going to cover some tweaks which I think helps to make my neovim
 experience a lot better.
-These are just some standard settings which I like to set, I'm only going to
-highlight a select few as I'm sure you aren't interested in me explaining
+These are just some standard settings which I like to set.
+I'm only going to highlight a select few, as I'm sure you aren't interested in
 every setting I have configured and why.
-With out further to do here are some of my favourite settings I set:
 
 ```
 -- Standard settings
@@ -200,12 +196,12 @@ The first one is to hide the status bar, I know that a lot of people love
 having this showing and use
 [lualine.nvim](https://github.com/nvim-lualine/lualine.nvim)
 to style it.
-For me I've always thought this just was unnecessary and kinda not useful,
+For me I've always thought this just was unnecessary and not useful,
 perhaps it is because I like a cleaner look.
 
 Next because I use
 [netrw](https://neovim.io/doc/user/pi_netrw.html)
-I set the banner to be off as it is ugly!
+I set the banner to be off, as it is ugly!
 I don't know why they have it on by default, as it kinda reminds be of entering
 nano and having all the commands plastered all over the place.
 
@@ -216,7 +212,7 @@ overlapping the line it is a sign I've probably nested too much in one
 function.
 When this happens it is usually time for a refactor.
 
-Lastly I have probably my favourite setting I have enabled is copying directly
+Lastly I have probably my favourite setting enabled which is copying directly
 to my clipboard.
 It makes it very easy and straightforward to copy something from my editor
 and paste it in other applications for example.
@@ -231,4 +227,4 @@ your workflow.
 If you are interested here is a link to my
 [dotfiles](https://github.com/nathanberry97/dotfiles).
 I hope you learned a thing or two from some of my favourite features I have
-enabled in my config, or at the very least found it an interesting read.
+enabled, or at the very least found it an interesting read.
