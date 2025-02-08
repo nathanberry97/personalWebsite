@@ -39,13 +39,18 @@ func main() {
 		latestPosts = latestPosts[:3]
 	}
 
+	rssFeed := blogPosts
+	if len(blogPosts) > 15 {
+		latestPosts = latestPosts[:15]
+	}
+
 	indexTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/index.tmpl"))
 	blogTemplate := htmlTemplate.Must(htmlTemplate.ParseFiles("templates/blog.tmpl"))
 	rssTemplate := textTemplate.Must(textTemplate.ParseFiles("templates/index.xml.tmpl"))
 
 	createHtml("static/index.html", indexTemplate, latestPosts)
 	createHtml("static/blog.html", blogTemplate, blogPosts)
-	createRss("static/index.xml", rssTemplate, blogPosts)
+	createRss("static/index.xml", rssTemplate, rssFeed)
 }
 
 func createHtml(filePath string, tmpl *htmlTemplate.Template, posts []BlogPost) {
