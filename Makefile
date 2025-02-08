@@ -20,8 +20,8 @@ compile: ## Compile blog posts into html
 
 .PHONY: local
 local: compile ## Run a local webserver to host website locally
-	@podman build -t webserver_personal_website .
-	@podman run --name personal_website -dit \
+	@docker build -t webserver_personal_website .
+	@docker run --name personal_website -dit \
   	 -p 8080:80 \
   	 -v ${PWD}/static:/usr/local/apache2/htdocs/:Z \
   	 webserver_personal_website
@@ -45,9 +45,8 @@ clean: ## Clean up build artifacts
 
 .PHONY: cleanContainer
 cleanContainer: ## Clean up container build artifacts
-	@podman stop personal_website
-	@podman rm personal_website
-	@podman system prune -a -f
+	@docker stop personal_website
+	@docker rm personal_website
 
 .PHONY: checkov
 checkov: ## Run checkov to check for security issues

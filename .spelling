@@ -2,6 +2,7 @@ APOD
 CDK
 CLI
 CloudFront
+Config
 Ctrl-f
 ECR
 ECS
@@ -10,7 +11,10 @@ Fzf
 GameBoy-like
 IaC
 JS
+LSP
+LSPs
 Lua
+NERDTree
 Neovim
 Netrw
 Pandoc
@@ -26,10 +30,13 @@ S3
 TUI
 Twilio
 apod
+autocompletion
 aws
 bouldering
 cd
 checkIfSessionExists
+cli
+colorcolumn
 config
 createNewSession
 ctrl-f
@@ -40,10 +47,15 @@ github
 html
 keymap
 linkedin
+lsp
 lua
+nano
 nasaImageOfTheDay
 neovim
+netrw
 nom
+nvim
+nvim-cmp
 pandoc
 repo
 repos
@@ -56,5 +68,6 @@ tablines
 tmux
 tmux-sessioniser
 tmux-sessionizer
+treesitter
 webpage
 webpages
