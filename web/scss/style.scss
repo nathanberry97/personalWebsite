@@ -20,7 +20,7 @@ $colour-text-header: #faf9f6;
  * 03. BLOG FEED
  * 04. BLOG POSTS
  * 05. ERROR
- * 06. TO TOP BUTTON DESIGN
+ * 06. TO TOP
  * 07. RESPONSIVE DESIGN
  */
 
@@ -299,6 +299,7 @@ main.blogFeed {
   iframe {
     height: 540px;
   }
+
 }
 
 // 05. ERROR
@@ -327,19 +328,18 @@ main.error {
   }
 }
 
-// 06. TO TOP BUTTON DESIGN
+// 06. TO TOP
 .toTop {
+  font-family: $font-family-base;
   display: none;
-  margin-top: 5px;
-  margin-bottom: 10px;
-  float: right;
+  margin: 15px auto;
   border: 1px solid $colour-bg-primary;
-  background-color: $colour-bg-secondary;
+  background-color: $colour-bg-primary;
   color: $colour-text-primary;
   cursor: pointer;
   padding: 5px;
   border-radius: 10px;
-  font-size: 14px;
+  font-size: 16px;
 
   &:hover {
     border: 1px solid $colour-bg-secondary;
@@ -347,6 +347,7 @@ main.error {
     transition: 0.3s;
   }
 }
+
 
 // 07. RESPONSIVE DESIGN
 @media only screen and (max-width: 2000px) {
