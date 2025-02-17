@@ -12,7 +12,7 @@ setup: ## Install pre-commit hooks and npm packages
 .PHONY: compile
 compile: ## Compile blog posts into html
 	@mkdir -p web/static/css web/static/blog
-	@sass --no-source-map web/scss/index.scss web/static/css/style.css
+	@sass --no-source-map web/scss/style.scss web/static/css/style.css
 	@go run cmd/app/main.go
 
 .PHONY: local

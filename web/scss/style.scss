@@ -1,0 +1,526 @@
+$font-family-base: "JetBrains Mono", serif;
+
+$colour-bg-primary: #111016;
+$colour-bg-secondary: #262330;
+
+$colour-accent: #8caaee;
+$colour-divider: #1a1821;
+$colour-shadow: #00000080;
+
+$colour-text-primary: #c8c7c4;
+$colour-text-secondary: #f0f0f0;
+$colour-text-header: #faf9f6;
+
+/**
+ * CONTENTS
+ * ========
+ * 00. STANDARD STYLING
+ * 01. NAVBAR
+ * 02. ABOUT ME
+ * 03. BLOG FEED
+ * 04. BLOG POSTS
+ * 05. ERROR
+ * 06. TO TOP BUTTON DESIGN
+ * 07. RESPONSIVE DESIGN
+ */
+
+// 00. STANDARD STYLING
+html,
+body {
+  font-family: $font-family-base;
+  overflow-y: auto;
+  overflow-x: hidden !important;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 0px;
+}
+
+body {
+  background: $colour-bg-primary;
+  font-size: 20px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: $colour-text-header;
+}
+
+p {
+  color: $colour-text-primary;
+  font-size: 20px;
+
+  a {
+    text-decoration: underline;
+    text-decoration-color: $colour-text-primary;
+
+    &:hover {
+      text-decoration-color: $colour-accent;
+    }
+  }
+}
+
+li {
+  list-style-type: none;
+  font-weight: bold;
+}
+
+a {
+  color: $colour-text-secondary;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-color: $colour-text-primary;
+  }
+}
+
+// 01. NAVBAR STYLING
+header.navbar {
+  overflow: hidden;
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  padding-left: 45%;
+  transition: top 0.5s;
+  font-size: 20px;
+
+  a {
+    color: $colour-text-secondary;
+    display: block;
+    float: left;
+    padding: 14px 10px;
+    text-align: center;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: none;
+      color: $colour-accent;
+    }
+  }
+}
+
+// 02. ABOUT ME
+main.aboutme {
+  padding-top: 100px;
+  flex-direction: row;
+  max-width: 45%;
+  min-width: 600px;
+  height: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0px;
+
+  .header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  .aboutme {
+    align-items: left;
+
+    h1 {
+      margin: 0;
+      font-size: 60px;
+    }
+
+    h4 {
+      font-size: 25px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+
+    .name {
+      color: $colour-accent;
+      text-decoration: underline;
+    }
+
+    .at {
+      color: $colour-text-primary;
+    }
+
+    .company {
+      text-decoration: none;
+    }
+
+    .bio {
+      margin-top: -5px;
+      width: 90%;
+    }
+  }
+
+  .divider {
+    margin-top: 5%;
+    height: 2px;
+    background: $colour-divider;
+    border: none;
+  }
+
+  .blog {
+    margin-top: 2%;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: $colour-text-primary;
+
+    p {
+      width: 85%;
+      text-align: left;
+    }
+
+    h1 {
+      text-decoration: underline;
+      text-decoration-color: $colour-accent;
+    }
+
+    .date {
+      font-size: 17px;
+    }
+  }
+}
+
+// 03. BLOG FEED
+main.blogFeed {
+  padding-top: 100px;
+  flex-direction: row;
+
+  .blog {
+    margin-top: 2%;
+    padding-bottom: 10px;
+    color: $colour-text-primary;
+    margin-left: 50px;
+    padding-left: 95px;
+
+    max-width: 45%;
+    min-width: 600px;
+    height: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+
+    h1 {
+      text-decoration: underline;
+      text-decoration-color: $colour-accent;
+      margin-bottom: 0px;
+    }
+
+    p {
+      width: 100%;
+      text-align: left;
+    }
+
+    .intro {
+      margin-top: 5px;
+      font-size: 20px;
+      margin-bottom: 35px;
+    }
+
+    .date {
+      font-size: 17px;
+    }
+
+    .links {
+      width: 100%;
+
+      li {
+        a {
+          display: inline-block;
+          max-width: 100%;
+          overflow-wrap: break-word;
+          word-wrap: break-word;
+          word-break: break-word;
+          text-overflow: ellipsis;
+          white-space: normal;
+        }
+      }
+    }
+  }
+}
+
+// 04. BLOG POSTS
+.blogposts {
+  flex-direction: column;
+  width: 45%;
+
+  p {
+    text-align: justify;
+    width: 100%;
+    padding-bottom: 15px;
+  }
+
+  h1 {
+    color: $colour-text-secondary;
+    padding-top: 100px;
+    width: 100%;
+    text-align: left;
+  }
+
+  h3 {
+    color: $colour-text-primary;
+    padding-left: 0px;
+    margin-top: -25px;
+    width: 100%;
+    text-align: right;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+    width: 100%;
+    text-align: left;
+  }
+
+  pre {
+    font-family: $font-family-base;
+    background: $colour-divider;
+    border: 1px solid $colour-divider;
+    color: $colour-text-primary;
+    page-break-inside: avoid;
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    margin: 0 auto 1.6em;
+    width: 90%;
+    overflow: auto;
+    padding: 1em 1.5em;
+    display: block;
+    word-wrap: break-word;
+    border-left: 3px solid $colour-accent;
+  }
+
+  img,
+  iframe {
+    width: 100%;
+    border-radius: 3%;
+    box-shadow: 0px 2px 4px 0px $colour-shadow;
+  }
+
+  iframe {
+    height: 540px;
+  }
+}
+
+// 05. ERROR
+main.error {
+  body {
+    flex-direction: column;
+    width: 25%;
+  }
+
+  h1 {
+    color: $colour-accent;
+    padding-top: 250px;
+    font-size: 150px;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 0px;
+    text-decoration: underline;
+  }
+
+  h2 {
+    padding-top: 0px;
+    margin-top: 0px;
+    width: 100%;
+    text-align: center;
+    font-size: 35px;
+  }
+}
+
+// 06. TO TOP BUTTON DESIGN
+.toTop {
+  display: none;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  float: right;
+  border: 1px solid $colour-bg-primary;
+  background-color: $colour-bg-secondary;
+  color: $colour-text-primary;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 10px;
+  font-size: 14px;
+
+  &:hover {
+    border: 1px solid $colour-bg-secondary;
+    background-color: $colour-bg-secondary;
+    transition: 0.3s;
+  }
+}
+
+// 07. RESPONSIVE DESIGN
+@media only screen and (max-width: 2000px) {
+  p {
+    font-size: 17px;
+  }
+
+  header.navbar {
+    font-size: 20px;
+  }
+
+  main.aboutme {
+    .aboutme {
+      h1 {
+        font-size: 50px;
+      }
+
+      h4 {
+        font-size: 20px;
+      }
+    }
+  }
+
+  main.blogFeed {
+    max-width: 70%;
+  }
+
+  .blogposts {
+    width: 50%;
+  }
+
+  main.error {
+    body {
+      width: 35%;
+    }
+
+    h1 {
+      padding-top: 200px;
+      font-size: 125px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  p {
+    font-size: 16px;
+  }
+
+  header.navbar {
+    font-size: 18px;
+  }
+
+  main.aboutme {
+    max-width: 50%;
+
+    .blog {
+      margin-top: 0%;
+
+      p {
+        width: 80%;
+      }
+    }
+  }
+
+  main.blogFeed {
+    max-width: 75%;
+
+    .blog {
+      p {
+        width: 80%;
+      }
+    }
+  }
+
+  main.error {
+    body {
+      width: 45%;
+    }
+
+    h1 {
+      padding-top: 150px;
+      font-size: 100px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  body {
+    font-size: 18px;
+  }
+
+  main.aboutme {
+    .blog {
+      p {
+        width: 75%;
+      }
+    }
+  }
+
+  main.blogFeed {
+    .blog {
+      p {
+        width: 75%;
+      }
+    }
+  }
+
+  .blogposts {
+    width: 60%;
+  }
+
+  main.error {
+    body {
+      width: 80%;
+    }
+
+    h1 {
+      padding-top: 100px;
+      font-size: 90px;
+    }
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  p {
+    font-size: 16px;
+  }
+
+  main.aboutme {
+    .aboutme {
+      h1 {
+        font-size: 45px;
+      }
+    }
+
+    .blog {
+      p {
+        width: 60%;
+      }
+    }
+  }
+
+  main.blogFeed {
+    padding-top: 50px;
+    height: auto;
+    max-width: 90%;
+    min-width: 800px;
+
+    .blog {
+      margin-top: 0%;
+      margin-left: 140px;
+
+      p {
+        width: 60%;
+      }
+
+      .date {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .blogposts {
+    font-size: 18px;
+    width: 85%;
+
+    pre,
+    blockquote {
+      width: 85%;
+    }
+  }
+
+  .toTop {
+    border: 1px solid $colour-bg-secondary;
+    background-color: $colour-bg-secondary;
+  }
+}
