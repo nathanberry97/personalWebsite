@@ -8,48 +8,30 @@ explain:
 .PHONY: setup
 setup: ## Install pre-commit hooks and npm packages
 	@pre-commit install
-	@cd ./infra && npm ci
 
 .PHONY: compile
 compile: ## Compile blog posts into html
-	@mkdir -p static/css static/blog
-	@sass --no-source-map scss/index.scss static/css/style.css
-	@chmod +x scripts/parseBlogPosts.sh
-	@scripts/parseBlogPosts.sh
-	@go run scripts/parseBlogFeed.go
+	@mkdir -p web/static/css web/static/blog
+	@sass --no-source-map web/scss/index.scss web/static/css/style.css
+	@go run cmd/app/main.go
 
 .PHONY: local
 local: compile ## Run a local webserver to host website locally
-	@docker build -t webserver_personal_website .
+	@docker build -t webserver_personal_website -f infra/docker/Dockerfile .
 	@docker run --name personal_website -dit \
   	 -p 8080:80 \
-  	 -v ${PWD}/static:/usr/local/apache2/htdocs/:Z \
+  	 -v ${PWD}/web/static:/usr/local/apache2/htdocs/:Z \
   	 webserver_personal_website
-
-.PHONY: build
-build: ## Build infra for AWS
-	@cd infra && npm run build
-
-.PHONY: test
-test: ## Test infra for AWS
-	@cd infra && npm test
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	@rm static/index.html
-	@rm static/index.xml
-	@rm static/blog.html
-	@rm static/blog/*
-	@cd infra && npm run clean
-	@rm static/css/style.css
+	@rm web/static/home
+	@rm web/static/feed.xml
+	@rm web/static/blog
+	@rm web/static/blog/*
+	@rm web/static/css/style.css
 
 .PHONY: cleanContainer
 cleanContainer: ## Clean up container build artifacts
 	@docker stop personal_website
 	@docker rm personal_website
-
-.PHONY: checkov
-checkov: ## Run checkov to check for security issues
-	@cd infra && npx cdk synth > cloudformation.yaml
-	@checkov -f infra/cloudformation.yaml
-	@rm -rf infra/cloudformation.yaml
