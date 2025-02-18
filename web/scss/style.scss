@@ -150,6 +150,7 @@ main.aboutme {
 
   .divider {
     margin-top: 5%;
+    margin-bottom: 0%;
     height: 2px;
     background: $colour-divider;
     border: none;
@@ -182,10 +183,22 @@ main.aboutme {
       color: $colour-accent;
       text-decoration: none;
     }
+
+    img.outward-icon {
+      top: 2.5px;
+      width: 20px;
+      height: 20px;
+      position: relative;
+      transition: transform 0.2s ease-in-out;
+    }
+
+    &:hover img.outward-icon {
+      transform: translate(5px, -5px);
+    }
   }
 
   .links {
-    margin-bottom: 10px;
+    margin-bottom: 15px;
   }
 }
 
