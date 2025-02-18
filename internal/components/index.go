@@ -17,6 +17,7 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData) {
 		"web/templates/home/home.tmpl",
 		"web/templates/home/fragments/about.tmpl",
 		"web/templates/home/fragments/blog.tmpl",
+		"web/templates/home/fragments/links.tmpl",
 	))
 
 	outputPath := "web/static/index.html"
@@ -37,6 +38,7 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData) {
 			"CompanyURL":  about.CompanyURL,
 			"LinkedinURL": about.LinkedinURL,
 			"GithubURL":   about.GithubURL,
+			"Email":       about.Email,
 		},
 	)
 	if err != nil {

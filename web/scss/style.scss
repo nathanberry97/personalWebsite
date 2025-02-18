@@ -142,10 +142,6 @@ main.aboutme {
       color: $colour-text-primary;
     }
 
-    .company {
-      text-decoration: none;
-    }
-
     .bio {
       margin-top: -5px;
       width: 90%;
@@ -159,7 +155,8 @@ main.aboutme {
     border: none;
   }
 
-  .blog {
+  .blog,
+  .links {
     margin-top: 2%;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -178,6 +175,17 @@ main.aboutme {
     .date {
       font-size: 17px;
     }
+  }
+
+  .allPosts {
+    &:hover {
+      color: $colour-accent;
+      text-decoration: none;
+    }
+  }
+
+  .links {
+    margin-bottom: 10px;
   }
 }
 

@@ -10,9 +10,8 @@ setup: ## Install pre-commit hooks and npm packages
 	@pre-commit install
 
 .PHONY: compile
-compile: ## Compile blog posts into html
+compile: clean ## Compile blog posts into html
 	@mkdir -p web/static/css web/static/blog
-	@sass --no-source-map web/scss/style.scss web/static/css/style.css
 	@go run cmd/app/main.go
 
 .PHONY: local
@@ -25,11 +24,12 @@ local: compile ## Run a local webserver to host website locally
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	@rm web/static/home
-	@rm web/static/feed.xml
-	@rm web/static/blog
+	@rm web/static/index.html
+	@rm web/static/index.xml
+	@rm web/static/error.html
+	@rm web/static/blog.html
 	@rm web/static/blog/*
-	@rm web/static/css/style.css
+	@rm web/static/css/*
 
 .PHONY: cleanContainer
 cleanContainer: ## Clean up container build artifacts

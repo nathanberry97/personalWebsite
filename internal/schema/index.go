@@ -42,10 +42,12 @@ type AboutData struct {
 	LinkedinURL string
 	GithubURL   string
 	Bio         string
+	Email       string
 }
 
 type MetadataData struct {
 	Title       string
 	Description string
 	ThemeColour string
+	CSSFile     string
 }

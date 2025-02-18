@@ -8,12 +8,15 @@ import (
 	"github.com/nathanberry97/personalWebsite/internal/pandoc"
 	"github.com/nathanberry97/personalWebsite/internal/parser"
 	"github.com/nathanberry97/personalWebsite/internal/schema"
+	"github.com/nathanberry97/personalWebsite/internal/scss"
 )
 
 func main() {
 	/**
-	 * Generate reusable components
+	 * Generate reusable components and Compile SCSS
 	 */
+	hashedCSS := scss.CompileSCSS("web/scss/style.scss", "web/static/css")
+
 	navbar := components.Navbar([]schema.NavbarData{
 		{Href: "/", Text: "[h] home"},
 		{Href: "/blog.html", Text: "[b] blog"},
@@ -24,6 +27,7 @@ func main() {
 		Title:       "Nathan Berry",
 		Description: "Software Engineer passionate about command-line development and technology. Read my blog for insights on tech and life.",
 		ThemeColour: "#111016",
+		CSSFile:     hashedCSS,
 	})
 
 	/**
@@ -52,6 +56,7 @@ func main() {
 			CompanyURL:  "https://www.zest.uk.com/",
 			LinkedinURL: "https://www.linkedin.com/in/nathan-berry-7b8191115/",
 			GithubURL:   "https://github.com/nathanberry97",
+			Email:       "hey@nathanberry.co.uk",
 		},
 	)
 	components.Blog(metadata, navbar, components.Feed(blogPosts))
