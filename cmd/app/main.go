@@ -56,7 +56,7 @@ func main() {
 			CompanyURL:  "https://www.zest.uk.com/",
 			LinkedinURL: "https://www.linkedin.com/in/nathan-berry-7b8191115/",
 			GithubURL:   "https://github.com/nathanberry97",
-			Email:       "hey@nathanberry.co.uk",
+			Email:       "nathanberry97@gmail.com",
 		},
 	)
 	components.Blog(metadata, navbar, components.Feed(blogPosts))
@@ -76,7 +76,7 @@ func main() {
 	/**
 	 * Create blog posts
 	 */
-	templatePath, err := components.BlogPostTemplate(metadata, navbar)
+	templatePath, err := components.BlogPostTemplate(metadata, navbar, "Nathan")
 	if err != nil {
 		fmt.Println("Error generating template:", err)
 		return

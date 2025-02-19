@@ -186,8 +186,8 @@ main.aboutme {
       color: $colour-text-primary;
     }
 
-    .bio {
-      margin-top: -5px;
+    p {
+      margin-top: 10px;
     }
   }
 
@@ -314,14 +314,10 @@ main.blogFeed {
 
 // 05. ERROR
 main.error {
-  body {
-    flex-direction: column;
-    width: 25%;
-  }
+  width: 25%;
 
   h1 {
     color: $colour-accent;
-    padding-top: 250px;
     font-size: 150px;
     width: 100%;
     text-align: center;
@@ -330,7 +326,6 @@ main.error {
   }
 
   h2 {
-    padding-top: 0px;
     margin-top: 0px;
     width: 100%;
     text-align: center;
@@ -339,147 +334,10 @@ main.error {
 }
 
 // 06. RESPONSIVE DESIGN
-// @media only screen and (max-width: 2000px) {
-//   p {
-//     font-size: 17px;
-//   }
-//
-//   header.navbar {
-//     font-size: 20px;
-//   }
-//
-//   main.aboutme {
-//     .aboutme {
-//       h1 {
-//         font-size: 50px;
-//       }
-//
-//       h4 {
-//         font-size: 20px;
-//       }
-//     }
-//   }
-//
-//   .blogPosts {
-//     width: 50%;
-//   }
-//
-//   main.error {
-//     body {
-//       width: 35%;
-//     }
-//
-//     h1 {
-//       padding-top: 200px;
-//       font-size: 125px;
-//     }
-//   }
-// }
-//
-// @media only screen and (max-width: 1500px) {
-//   p {
-//     font-size: 16px;
-//   }
-//
-//   header.navbar {
-//     font-size: 18px;
-//   }
-//
-//   main {
-//     max-width: 55%;
-//
-//     .blog {
-//       p {
-//         width: 80%;
-//       }
-//     }
-//   }
-//
-//   main.error {
-//     body {
-//       width: 45%;
-//     }
-//
-//     h1 {
-//       padding-top: 150px;
-//       font-size: 100px;
-//     }
-//   }
-// }
-//
-// @media only screen and (max-width: 1000px) {
-//   body {
-//     font-size: 18px;
-//   }
-//
-//   main {
-//     .blog {
-//       p {
-//         width: 75%;
-//       }
-//     }
-//   }
-//
-//   .blogPosts {
-//     width: 60%;
-//   }
-//
-//   main.error {
-//     body {
-//       width: 80%;
-//     }
-//
-//     h1 {
-//       padding-top: 100px;
-//       font-size: 90px;
-//     }
-//   }
-// }
-//
-// @media only screen and (max-width: 800px) {
-//   p {
-//     font-size: 16px;
-//   }
-//
-//   main {
-//     .blog {
-//       p {
-//         width: 60%;
-//       }
-//
-//       .date {
-//         font-size: 15px;
-//       }
-//     }
-//   }
-//
-//   main.aboutme {
-//     .aboutme {
-//       h1 {
-//         font-size: 45px;
-//       }
-//     }
-//   }
-//
-//   main.blogFeed {
-//     padding-top: 50px;
-//     height: auto;
-//     max-width: 90%;
-//     min-width: 800px;
-//   }
-//
-//   .blogPosts {
-//     font-size: 18px;
-//     width: 85%;
-//
-//     pre,
-//     blockquote {
-//       width: 85%;
-//     }
-//
-//     .toTop {
-//       border: 1px solid $colour-bg-secondary;
-//       background-color: $colour-bg-secondary;
-//     }
-//   }
-// }
+@media only screen and (max-width: 2000px) {}
+
+@media only screen and (max-width: 1500px) {}
+
+@media only screen and (max-width: 1000px) {}
+
+@media only screen and (max-width: 800px) {}

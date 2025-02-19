@@ -165,7 +165,7 @@ func Feed(posts []schema.BlogPost) template.HTML {
 	return template.HTML(sb.String())
 }
 
-func BlogPostTemplate(metadata, navbar template.HTML) (string, error) {
+func BlogPostTemplate(metadata, navbar template.HTML, name string) (string, error) {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/blogPost/blogPost.tmpl",
@@ -180,6 +180,7 @@ func BlogPostTemplate(metadata, navbar template.HTML) (string, error) {
 	data := map[string]interface{}{
 		"Metadata": metadata,
 		"Navbar":   navbar,
+		"Name":     name,
 	}
 	if err := tmpl.Execute(tmpFile, data); err != nil {
 		return "", fmt.Errorf("error executing template: %w", err)
