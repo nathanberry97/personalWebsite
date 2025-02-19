@@ -24,12 +24,12 @@ local: compile ## Run a local webserver to host website locally
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	@rm web/static/index.html
-	@rm web/static/index.xml
-	@rm web/static/error.html
-	@rm web/static/blog.html
-	@rm web/static/blog/*
-	@rm web/static/css/*
+	@rm web/static/index.html || true
+	@rm web/static/index.xml || true
+	@rm web/static/error.html || true
+	@rm web/static/blog.html || true
+	@rm web/static/blog/* || true
+	@rm web/static/css/* || true
 
 .PHONY: cleanContainer
 cleanContainer: ## Clean up container build artifacts

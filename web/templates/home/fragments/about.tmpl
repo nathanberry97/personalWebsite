@@ -1,11 +1,9 @@
 {{ define "About" }}
 <div class="header">
-    <div class="aboutme">
-        <h1>Hi I'm <span class="name">{{ .Name }}</span></h1>
-        <h4>Software Engineer<span class="at">@</span><a href="{{ .CompanyURL }}" class="company">{{ .CompanyName }}</a></h4>
-        <div class="bio">
-            <p>Welcome to my little corner of the internet. I'm a big advocate of doing everything from the command line, with a passion for all things development. Feel free to get in contact through my <a href="{{ .LinkedinURL }}">LinkedIn</a> or view my personal projects on <a href="{{ .GithubURL }}"}>Github</a>.</p>
-        </div>
+    <h1>Hi I'm <span class="name">{{ .Name }}</span></h1>
+    <h4>Software Engineer<span class="at">@</span><a href="{{ .CompanyURL }}" class="company">{{ .CompanyName }}</a></h4>
+    <div class="bio">
+        <p>Welcome to my little corner of the internet. I'm a big advocate of doing everything from the command line, with a passion for all things development. Feel free to get in contact through my <a href="{{ .LinkedinURL }}">LinkedIn</a> or view my personal projects on <a href="{{ .GithubURL }}"}>Github</a>.</p>
     </div>
 </div>
 {{ end }}
