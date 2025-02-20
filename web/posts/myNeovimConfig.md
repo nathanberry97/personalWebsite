@@ -18,7 +18,7 @@ configuration.
 
 ## Preview
 
-![](../images/blog/myNeovimConfig/neovim.png)
+![](/images/blog/myNeovimConfig/neovim.png)
 
 As you can see I think we can agree that I like to keep my configuration
 minimal.

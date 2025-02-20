@@ -61,7 +61,7 @@ I knew it would only take a few hours to implement this feature.
 But like all my other side projects, I put it to the back of my mind.
 
 When it finally became time to start implementing the automation I knew I
-wanted to use [Go](https://go.dev/).
+wanted to use [Golang](https://go.dev/).
 As I quite like programming in the language and thought it would be a great
 choice for a CLI application.
 

@@ -37,7 +37,7 @@ used.
 
 ## What is fzf-sessioniser?
 
-![](../images/blog/fuzzySession/fzf-sessioniser.png)
+![](/images/blog/fuzzySession/fzf-sessioniser.png)
 
 What is fzf-sessioniser you might be thinking? It is a way to
 quickly create or switch to a tmux session using fzf.

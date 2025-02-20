@@ -26,13 +26,13 @@ $colour-text-header: #faf9f6;
 // 00. STANDARD STYLING
 html,
 body {
-  font-family: $font-family-base;
-  overflow-y: auto;
-  overflow-x: hidden !important;
   align-items: center;
   display: flex;
+  font-family: $font-family-base;
   justify-content: center;
   margin: 0px;
+  overflow-x: hidden !important;
+  overflow-y: auto;
 }
 
 body {
@@ -62,9 +62,8 @@ p {
 }
 
 ul {
-  padding: 0;
   width: 100%;
-  max-width: 100%;
+  padding: 0;
 
   li {
     list-style-type: none;
@@ -72,7 +71,6 @@ ul {
     display: flex;
     align-items: center;
     padding: 0px;
-    width: 100%;
     gap: 10px;
 
     a {
@@ -85,14 +83,14 @@ ul {
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-  }
 
-  small {
-    flex: 0 0 auto;
-    font-weight: normal;
-    text-align: left;
-    white-space: nowrap;
-    min-width: 10%;
+    small {
+      flex: 0 0 auto;
+      font-weight: normal;
+      text-align: left;
+      white-space: nowrap;
+      min-width: 10%;
+    }
   }
 }
 
@@ -139,19 +137,20 @@ main {
 
 // 01. NAVBAR STYLING
 header.navbar {
-  overflow: hidden;
   position: absolute;
+  overflow-x: hidden !important;
   top: 10px;
-  width: 100%;
-  padding-left: 45%;
+  padding: 10px 0;
+  background: $colour-bg-primary;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  transform: translateX(-50%);
   transition: top 0.5s;
+  left: 30%;
 
   a {
     color: $colour-text-secondary;
-    display: block;
-    float: left;
-    padding: 14px 10px;
-    text-align: center;
     text-decoration: none;
 
     &:hover {
@@ -159,6 +158,23 @@ header.navbar {
       color: $colour-accent;
     }
   }
+
+  // top: 10px;
+  // width: max-content;
+
+  // a {
+  //   color: $colour-text-secondary;
+  //   display: block;
+  //   float: left;
+  //   padding: 14px 10px;
+  //   text-align: center;
+  //   text-decoration: none;
+
+  //   &:hover {
+  //     text-decoration: none;
+  //     color: $colour-accent;
+  //   }
+  // }
 }
 
 // 02. ABOUT ME
@@ -334,10 +350,145 @@ main.error {
 }
 
 // 06. RESPONSIVE DESIGN
-@media only screen and (max-width: 2000px) {}
+@media only screen and (max-width: 2000px) {
+  header.navbar {
+    left: 27.5%;
+  }
 
-@media only screen and (max-width: 1500px) {}
+  main,
+  .blogPosts {
+    max-width: 50%;
+    min-width: 700px;
+  }
 
-@media only screen and (max-width: 1000px) {}
+  main {
+    padding-top: 125px;
+  }
 
-@media only screen and (max-width: 800px) {}
+  ul {
+    li {
+      width: 97.5%;
+    }
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  body {
+    font-size: 16px;
+  }
+
+  header.navbar {
+    left: 25%;
+  }
+
+  main,
+  .blogPosts {
+    max-width: 55%;
+  }
+
+  main {
+    padding-top: 100px;
+  }
+
+  main.aboutme {
+    .header {
+      h1 {
+        font-size: 56px;
+      }
+
+      h4 {
+        font-size: 21px;
+      }
+    }
+
+    .allPosts {
+      img.outward-icon {
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+
+  .blogPosts {
+
+    pre,
+    .toTop {
+      font-size: 14px;
+    }
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  header.navbar {
+    left: 22.5%;
+  }
+
+  main,
+  .blogPosts {
+    max-width: 65%;
+    min-width: 500px;
+  }
+
+  main {
+    padding-top: 85px;
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  header.navbar {
+    left: 42.5%;
+    gap: 15px;
+    min-width: 80%;
+  }
+
+  main,
+  .blogPosts {
+    max-width: 90%;
+    min-width: 90%;
+  }
+
+  main.aboutme {
+    .header {
+      margin-bottom: 30px;
+    }
+  }
+
+  ul {
+    width: 82.5%;
+  }
+
+  main.aboutme {
+    .header {
+      h1 {
+        font-size: 40px;
+      }
+
+      h4 {
+        font-size: 19px;
+      }
+    }
+
+    ul {
+      width: 80%;
+    }
+  }
+
+  .blogPosts {
+    h1 {
+      padding-top: 50px;
+    }
+
+    h3 {
+      margin-top: 0px;
+    }
+
+    pre {
+      width: 80%;
+    }
+
+    .toTop {
+      border: 1px solid $colour-bg-secondary;
+      background-color: $colour-bg-secondary;
+    }
+  }
+}

@@ -20,7 +20,7 @@ func main() {
 	navbar := components.Navbar([]schema.NavbarData{
 		{Href: "/", Text: "[h] home"},
 		{Href: "/blog.html", Text: "[b] blog"},
-		{Href: "https://github.com/nathanberry97", Text: "[p] projects"},
+		{Href: "https://github.com/nathanberry97", Text: "[g] github"},
 	})
 
 	metadata := components.Metadata(schema.MetadataData{
