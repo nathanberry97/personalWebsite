@@ -17,7 +17,6 @@ setup: clean ## Setup build dir and copy over assets
 
 .PHONY: compile
 compile: setup ## Compile blog posts into html
-	@mkdir -p web/static/css web/static/blog
 	@go run cmd/app/main.go
 
 .PHONY: local
@@ -30,4 +29,4 @@ local: compile ## Run a local webserver to host website locally
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	@rm -rf build || true
+	@rm -rf build/* || true

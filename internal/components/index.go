@@ -22,10 +22,10 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir
 		"web/templates/home/fragments/links.tmpl",
 	))
 
-	outputPath := filepath.Join(buildDir + "index.html")
+	outputPath := filepath.Join(buildDir, "index.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to create file %s: %v", outputPath, err)
 	}
 
 	err = tmpl.ExecuteTemplate(
@@ -44,7 +44,7 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir
 		},
 	)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to execute template %s: %v", "base.tmpl", err)
 	}
 
 	fmt.Println("Generated:", outputPath)
@@ -56,10 +56,10 @@ func Blog(metadata, navbar, feed template.HTML, buildDir string) {
 		"web/templates/blog/blog.tmpl",
 	))
 
-	outputPath := filepath.Join(buildDir + "blog.html")
+	outputPath := filepath.Join(buildDir, "blog.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to create file %s: %v", outputPath, err)
 	}
 
 	err = tmpl.ExecuteTemplate(
@@ -72,7 +72,7 @@ func Blog(metadata, navbar, feed template.HTML, buildDir string) {
 		},
 	)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to execute template %s: %v", "base.tmpl", err)
 	}
 
 	fmt.Println("Generated:", outputPath)
@@ -84,10 +84,10 @@ func Error(metadata, navbar template.HTML, buildDir string) {
 		"web/templates/error/error.tmpl",
 	))
 
-	outputPath := filepath.Join(buildDir + "error.html")
+	outputPath := filepath.Join(buildDir, "error.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to create file %s: %v", outputPath, err)
 	}
 
 	err = tmpl.ExecuteTemplate(
@@ -99,7 +99,7 @@ func Error(metadata, navbar template.HTML, buildDir string) {
 		},
 	)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to execute template %s: %v", "base.tmpl", err)
 	}
 
 	fmt.Println("Generated:", outputPath)
@@ -116,16 +116,16 @@ func RSSFeed(posts []schema.BlogPost, feedData schema.RSSFeed, buildDir string) 
 		})
 	}
 
-	outputPath := filepath.Join(buildDir + "feed.xml")
+	outputPath := filepath.Join(buildDir, "feed.xml")
 	outputFile, err := os.Create(outputPath)
 	if err != nil {
-		panic(err)
+		log.Fatalf("Failed to create RSS feed file %s: %v", outputPath, err)
 	}
 	defer outputFile.Close()
 
 	err = tmpl.Execute(outputFile, feedData)
 	if err != nil {
-		panic(err)
+		log.Fatalf("Failed to execute RSS feed template for %s: %v", outputPath, err)
 	}
 
 	fmt.Println("Generated:", outputPath)
@@ -137,7 +137,7 @@ func Metadata(data schema.MetadataData) template.HTML {
 	var sb strings.Builder
 	err := tmpl.Execute(&sb, data)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to execute metadata template: %v", err)
 	}
 
 	return template.HTML(sb.String())
@@ -149,7 +149,7 @@ func Navbar(links []schema.NavbarData) template.HTML {
 	var sb strings.Builder
 	err := tmpl.Execute(&sb, links)
 	if err != nil {
-		log.Fatalf("Error executing template: %v", err)
+		log.Fatalf("Failed to execute navbar template: %v", err)
 	}
 
 	return template.HTML(sb.String())
@@ -161,7 +161,7 @@ func Feed(posts []schema.BlogPost) template.HTML {
 	var sb strings.Builder
 	err := tmpl.Execute(&sb, posts)
 	if err != nil {
-		log.Fatal(err)
+		log.Fatalf("Failed to execute feed template: %v", err)
 	}
 
 	return template.HTML(sb.String())
@@ -175,7 +175,7 @@ func BlogPostTemplate(metadata, navbar template.HTML, name string) (string, erro
 
 	tmpFile, err := os.CreateTemp("", "blogPost-*.tmpl")
 	if err != nil {
-		return "", fmt.Errorf("failed to create temp file: %w", err)
+		return "", fmt.Errorf("failed to create temporary file for blog post template: %w", err)
 	}
 	defer tmpFile.Close()
 
@@ -185,7 +185,7 @@ func BlogPostTemplate(metadata, navbar template.HTML, name string) (string, erro
 		"Name":     name,
 	}
 	if err := tmpl.Execute(tmpFile, data); err != nil {
-		return "", fmt.Errorf("error executing template: %w", err)
+		return "", fmt.Errorf("failed to execute blog post template for %s: %w", name, err)
 	}
 
 	return tmpFile.Name(), nil

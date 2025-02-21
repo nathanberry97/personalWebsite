@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 	"path/filepath"
 
@@ -14,19 +15,19 @@ import (
 
 func main() {
 	// Decare vars
-	buildDir := "build/"
-	name := "Nathan"
-	fullName := name + " Berry"
-	rssDescription := "Recent content for Nathan Berrys's personal blog"
-	companyName := "Zest"
-	companyURL := "https://www.zest.uk.com/"
-	linkedinURL := "https://www.linkedin.com/in/nathan-berry-7b8191115/"
-	githubURL := "https://github.com/nathanberry97"
-	email := "nathanberry97@gmail.com"
-	dns := "https://nathanberry.co.uk"
+	const buildDir = "build/"
+	const name = "Nathan"
+	const fullName = name + " Berry"
+	const rssDescription = "Recent content for Nathan Berrys's personal blog"
+	const companyName = "Zest"
+	const companyURL = "https://www.zest.uk.com/"
+	const linkedinURL = "https://www.linkedin.com/in/nathan-berry-7b8191115/"
+	const githubURL = "https://github.com/nathanberry97"
+	const email = "nathanberry97@gmail.com"
+	const dns = "https://nathanberry.co.uk"
 
 	// Generate reusable components and Compile SCSS
-	hashedCSS := scss.CompileSCSS("web/assets/scss/style.scss", filepath.Join(buildDir+"css"))
+	hashedCSS := scss.CompileSCSS("web/assets/scss/style.scss", filepath.Join(buildDir, "css"))
 
 	navbar := components.Navbar([]schema.NavbarData{
 		{Href: "/", Text: "[h] home"},
@@ -36,11 +37,13 @@ func main() {
 
 	generalMetadata := components.Metadata(schema.GetMetadataData(
 		hashedCSS,
+		fullName,
 		[]string{"scrambleHeader.js"},
 	))
 
 	blogPostsMetadata := components.Metadata(schema.GetMetadataData(
 		hashedCSS,
+		fullName,
 		[]string{"scrambleHeader.js", "toTop.js"},
 	))
 
@@ -87,9 +90,8 @@ func main() {
 	// Create blog posts
 	templatePath, err := components.BlogPostTemplate(blogPostsMetadata, navbar, name)
 	if err != nil {
-		fmt.Println("Error generating template:", err)
-		return
+		log.Fatal(fmt.Sprintf("Failed to generate blog post template for %s: %v", name, err))
 	}
 	defer os.Remove(templatePath)
-	pandoc.ConvertMarkdown("./web/posts", filepath.Join(buildDir+"blog"), templatePath)
+	pandoc.ConvertMarkdown("./web/posts", filepath.Join(buildDir, "blog"), templatePath)
 }

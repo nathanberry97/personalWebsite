@@ -4,6 +4,7 @@ import (
 	"crypto/sha256"
 	"fmt"
 	"io"
+	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
@@ -14,18 +15,18 @@ func CompileSCSS(inputPath, outputDir string) string {
 
 	cmd := exec.Command("sass", inputPath, tempOutput, "--no-source-map")
 	if err := cmd.Run(); err != nil {
-		panic(err)
+		log.Fatal(fmt.Sprintf("SCSS compilation failed: %v", err))
 	}
 
 	file, err := os.Open(tempOutput)
 	if err != nil {
-		panic(err)
+		log.Fatal(fmt.Sprintf("Failed to open temporary output file %s: %v", tempOutput, err))
 	}
 	defer file.Close()
 
 	hasher := sha256.New()
 	if _, err := io.Copy(hasher, file); err != nil {
-		panic(err)
+		log.Fatal(fmt.Sprintf("Failed to copy contents of %s to hasher: %v", tempOutput, err))
 	}
 	hash := fmt.Sprintf("%x", hasher.Sum(nil))[:8]
 
@@ -33,7 +34,8 @@ func CompileSCSS(inputPath, outputDir string) string {
 	finalOutput := filepath.Join(outputDir, hashedFilename)
 
 	if err := os.Rename(tempOutput, finalOutput); err != nil {
-		panic(err)
+		os.Remove(tempOutput)
+		log.Fatal(fmt.Sprintf("Failed to rename temporary file %s to final output %s: %v", tempOutput, finalOutput, err))
 	}
 
 	fmt.Println("Compiled :", inputPath, "->", finalOutput)
