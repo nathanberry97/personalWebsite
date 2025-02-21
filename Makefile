@@ -30,3 +30,19 @@ local: compile ## Run a local webserver to host website locally
 .PHONY: clean
 clean: ## Clean up build artifacts
 	@rm -rf build/* || true
+
+.PHONY: installCDK
+installCDK: ## Build infra for AWS
+	@cd ./infra/cdk && npm ci
+
+.PHONY: buildCDK
+buildCDK: installCDK ## Build infra for AWS
+	@cd infra/cdk && npm run build
+
+.PHONY: testCDK
+testCDK: ## Test infra for AWS
+	@cd infra/cdk && npm test
+
+.PHONY: cleanCDK
+cleanCDK: ## Test infra for AWS
+	@cd infra/cdk && npm run clean
