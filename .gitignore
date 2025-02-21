@@ -2,6 +2,7 @@
 *.html
 *.xml
 *.css
+build/*
 
 # Ignore DS_Store files
 .DS_Store

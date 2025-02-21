@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"os"
+	"path/filepath"
 
 	"github.com/nathanberry97/personalWebsite/internal/components"
 	"github.com/nathanberry97/personalWebsite/internal/pandoc"
@@ -12,27 +13,38 @@ import (
 )
 
 func main() {
-	/**
-	 * Generate reusable components and Compile SCSS
-	 */
-	hashedCSS := scss.CompileSCSS("web/scss/style.scss", "web/static/css")
+	// Decare vars
+	buildDir := "build/"
+	name := "Nathan"
+	fullName := name + " Berry"
+	rssDescription := "Recent content for Nathan Berrys's personal blog"
+	companyName := "Zest"
+	companyURL := "https://www.zest.uk.com/"
+	linkedinURL := "https://www.linkedin.com/in/nathan-berry-7b8191115/"
+	githubURL := "https://github.com/nathanberry97"
+	email := "nathanberry97@gmail.com"
+	dns := "https://nathanberry.co.uk"
+
+	// Generate reusable components and Compile SCSS
+	hashedCSS := scss.CompileSCSS("web/assets/scss/style.scss", filepath.Join(buildDir+"css"))
 
 	navbar := components.Navbar([]schema.NavbarData{
 		{Href: "/", Text: "[h] home"},
 		{Href: "/blog.html", Text: "[b] blog"},
-		{Href: "https://github.com/nathanberry97", Text: "[g] github"},
+		{Href: githubURL, Text: "[g] github"},
 	})
 
-	metadata := components.Metadata(schema.MetadataData{
-		Title:       "Nathan Berry",
-		Description: "Software Engineer passionate about command-line development and technology. Read my blog for insights on tech and life.",
-		ThemeColour: "#111016",
-		CSSFile:     hashedCSS,
-	})
+	generalMetadata := components.Metadata(schema.GetMetadataData(
+		hashedCSS,
+		[]string{"scrambleHeader.js"},
+	))
 
-	/**
-	 * Get blog posts
-	 */
+	blogPostsMetadata := components.Metadata(schema.GetMetadataData(
+		hashedCSS,
+		[]string{"scrambleHeader.js", "toTop.js"},
+	))
+
+	// Get blog posts
 	blogPosts := parser.GetBlogPosts()
 	latestPosts, rssPosts := blogPosts, blogPosts
 
@@ -43,44 +55,41 @@ func main() {
 		rssPosts = rssPosts[:15]
 	}
 
-	/**
-	 * Create static content
-	 */
+	// Create static content
 	components.Home(
-		metadata,
+		generalMetadata,
 		navbar,
 		components.Feed(latestPosts),
 		schema.AboutData{
-			Name:        "Nathan",
-			CompanyName: "Zest",
-			CompanyURL:  "https://www.zest.uk.com/",
-			LinkedinURL: "https://www.linkedin.com/in/nathan-berry-7b8191115/",
-			GithubURL:   "https://github.com/nathanberry97",
-			Email:       "nathanberry97@gmail.com",
+			Name:        name,
+			CompanyName: companyName,
+			CompanyURL:  companyURL,
+			LinkedinURL: linkedinURL,
+			GithubURL:   githubURL,
+			Email:       email,
 		},
+		buildDir,
 	)
-	components.Blog(metadata, navbar, components.Feed(blogPosts))
-	components.Error(metadata, navbar)
+	components.Blog(generalMetadata, navbar, components.Feed(blogPosts), buildDir)
+	components.Error(generalMetadata, navbar, buildDir)
 
-	url := "https://nathanberry.co.uk"
 	components.RSSFeed(
 		rssPosts,
 		schema.RSSFeed{
-			Title:       "Nathan Berry",
-			Link:        url,
-			Description: "Recent content for Nathan Berrys's personal blog",
-			AtomLink:    url + "/index.xml",
+			Title:       fullName,
+			Link:        dns,
+			Description: rssDescription,
+			AtomLink:    dns + "/feed.xml",
 		},
+		buildDir,
 	)
 
-	/**
-	 * Create blog posts
-	 */
-	templatePath, err := components.BlogPostTemplate(metadata, navbar, "Nathan")
+	// Create blog posts
+	templatePath, err := components.BlogPostTemplate(blogPostsMetadata, navbar, name)
 	if err != nil {
 		fmt.Println("Error generating template:", err)
 		return
 	}
 	defer os.Remove(templatePath)
-	pandoc.ConvertMarkdown("./web/posts", "./web/static/blog", templatePath)
+	pandoc.ConvertMarkdown("./web/posts", filepath.Join(buildDir+"blog"), templatePath)
 }

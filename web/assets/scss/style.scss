@@ -183,7 +183,7 @@ main.aboutme {
 
       a {
         text-decoration: underline;
-        text-decoration-color: $colour-bg-secondary;
+        text-decoration-color: $colour-divider;
 
         &:hover {
           text-decoration-color: $colour-text-primary;
@@ -477,12 +477,18 @@ main.error {
 
   main,
   .blogPosts {
+    padding-top: 0;
     max-width: 90%;
     min-width: 90%;
+
+    h1 {
+      padding-top: 65px;
+    }
   }
 
   main.aboutme {
     .header {
+      padding-top: 20px;
       margin-bottom: 30px;
 
       h1 {
@@ -495,15 +501,7 @@ main.error {
     }
   }
 
-  main.blogFeed {
-    padding-top: 70px;
-  }
-
   .blogPosts {
-    h1 {
-      padding-top: 50px;
-    }
-
     h3 {
       margin-top: 0px;
     }

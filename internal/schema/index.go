@@ -50,4 +50,15 @@ type MetadataData struct {
 	Description string
 	ThemeColour string
 	CSSFile     string
+	JSFiles     []string
+}
+
+func GetMetadataData(hashedCSS string, JSFiles []string) MetadataData {
+	return MetadataData{
+		Title:       "Nathan Berry",
+		Description: "Software Engineer passionate about command-line development and technology.",
+		ThemeColour: "#111016",
+		CSSFile:     hashedCSS,
+		JSFiles:     JSFiles,
+	}
 }

@@ -5,13 +5,15 @@ import (
 	"html/template"
 	"log"
 	"os"
+	"path/filepath"
 	"strings"
 	templateRSS "text/template"
+	"time"
 
 	"github.com/nathanberry97/personalWebsite/internal/schema"
 )
 
-func Home(metadata, navbar, feed template.HTML, about schema.AboutData) {
+func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir string) {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/home/home.tmpl",
@@ -20,7 +22,7 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData) {
 		"web/templates/home/fragments/links.tmpl",
 	))
 
-	outputPath := "web/static/index.html"
+	outputPath := filepath.Join(buildDir + "index.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
 		log.Fatal(err)
@@ -48,13 +50,13 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData) {
 	fmt.Println("Generated:", outputPath)
 }
 
-func Blog(metadata, navbar, feed template.HTML) {
+func Blog(metadata, navbar, feed template.HTML, buildDir string) {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/blog/blog.tmpl",
 	))
 
-	outputPath := "web/static/blog.html"
+	outputPath := filepath.Join(buildDir + "blog.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
 		log.Fatal(err)
@@ -76,13 +78,13 @@ func Blog(metadata, navbar, feed template.HTML) {
 	fmt.Println("Generated:", outputPath)
 }
 
-func Error(metadata, navbar template.HTML) {
+func Error(metadata, navbar template.HTML, buildDir string) {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/error/error.tmpl",
 	))
 
-	outputPath := "web/static/error.html"
+	outputPath := filepath.Join(buildDir + "error.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
 		log.Fatal(err)
@@ -103,18 +105,18 @@ func Error(metadata, navbar template.HTML) {
 	fmt.Println("Generated:", outputPath)
 }
 
-func RSSFeed(posts []schema.BlogPost, feedData schema.RSSFeed) {
+func RSSFeed(posts []schema.BlogPost, feedData schema.RSSFeed, buildDir string) {
 	tmpl := templateRSS.Must(templateRSS.ParseFiles("web/templates/feed/feed.xml.tmpl"))
 
 	for _, post := range posts {
 		feedData.Items = append(feedData.Items, schema.RSSItem{
 			Title:   post.Title,
 			Link:    feedData.Link + "/" + post.Link,
-			PubDate: post.ParsedDate.Format("Mon, 02 Jan 2006 15:04:05 -0700"),
+			PubDate: post.ParsedDate.Format(time.RFC1123Z),
 		})
 	}
 
-	outputPath := "web/static/index.xml"
+	outputPath := filepath.Join(buildDir + "feed.xml")
 	outputFile, err := os.Create(outputPath)
 	if err != nil {
 		panic(err)
