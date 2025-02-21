@@ -1,6 +1,6 @@
 # Expectation vs Reality
 
-### 2024-11-23
+## 2024-11-23
 
 ```
 Focus on the process not the outcome.
@@ -28,7 +28,7 @@ The rest of this post is going to explore how to identify when something your
 working on is not aligning with your interests and how to pivot to something
 that does.
 
-## Knowing when to stop
+### Knowing when to stop
 
 First of all, I feel it is important to identify when you start to lose interest
 in something.
@@ -51,7 +51,7 @@ another certification that I would have enjoyed more.
 The first take away is to move on early if you aren't enjoying it, as no one
 is forcing you to do it.
 
-## Focus on what you enjoy
+### Focus on what you enjoy
 
 Now that I have decided to no longer pursue any AWS certifications, I can focus
 on what I enjoy doing.

@@ -39,7 +39,7 @@ func GetBlogPosts() []schema.BlogPost {
 				title = strings.TrimPrefix(scanner.Text(), "# ")
 			}
 			if i == 3 {
-				date = strings.TrimPrefix(scanner.Text(), "### ")
+				date = strings.TrimPrefix(scanner.Text(), "## ")
 			}
 		}
 

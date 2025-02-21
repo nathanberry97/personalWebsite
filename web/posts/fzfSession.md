@@ -1,6 +1,6 @@
 # Fuzzy Session
 
-### 2024-02-18
+## 2024-02-18
 
 ```
 Forget about automating your job, automate your terminal.
@@ -35,9 +35,9 @@ Here is a [blog post](https://www.redhat.com/sysadmin/fzf-linux-fuzzy-finder)
 by RedHat which has a brief overview of fzf and some examples of how it can be
 used.
 
-## What is fzf-sessioniser?
+### What is fzf-sessioniser?
 
-![](/images/blog/fuzzySession/fzf-sessioniser.png)
+![](/images/blog/fuzzySession/fzf-sessioniser.webp)
 
 What is fzf-sessioniser you might be thinking? It is a way to
 quickly create or switch to a tmux session using fzf.
@@ -55,7 +55,7 @@ If you are only interested in the full script then you can find it in my
 dotfiles repository [here](https://github.com/nathanberry97/dotfiles) within
 the tmux directory.
 
-## Overview of fzf-sessioniser
+### Overview of fzf-sessioniser
 
 ```
 selected=$(
@@ -129,7 +129,7 @@ If you look at the code-snippet above, you will see that it opens neovim, and
 it then creates a new window for the terminal.
 Forget about automating your job, automate your terminal.
 
-## How to use fzf-sessioniser
+### How to use fzf-sessioniser
 
 ```
 # fzf-sessioniser keybinding neovim
@@ -153,7 +153,7 @@ you can call it from your shell. I like to save it in ~/.local/bin but you can
 save it wherever you like. If you don't save it in your PATH then you will need
 to provide the absolute path to the script within your keybinding.
 
-## Bonus tip: Implementing fzf in neovim
+### Bonus tip: Implementing fzf in neovim
 
 ```
 -- The following plugins are for fuzz finding
@@ -193,7 +193,7 @@ vim.keymap.set('n', 'ff', ':Files<CR>')
 vim.keymap.set('n', 'gs', ':GFiles?<CR>')
 ```
 
-## Closing thoughts
+### Closing thoughts
 
 I hope you have found this blog post useful, and that it has helped you to
 improve your developer workflow.

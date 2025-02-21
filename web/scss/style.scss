@@ -43,9 +43,16 @@ body {
 
 h1,
 h2,
-h3,
-h4 {
+h3 {
   color: $colour-text-header;
+}
+
+h2 {
+  font-size: 25px;
+}
+
+h3 {
+  font-size: 32px;
 }
 
 p {
@@ -158,23 +165,6 @@ header.navbar {
       color: $colour-accent;
     }
   }
-
-  // top: 10px;
-  // width: max-content;
-
-  // a {
-  //   color: $colour-text-secondary;
-  //   display: block;
-  //   float: left;
-  //   padding: 14px 10px;
-  //   text-align: center;
-  //   text-decoration: none;
-
-  //   &:hover {
-  //     text-decoration: none;
-  //     color: $colour-accent;
-  //   }
-  // }
 }
 
 // 02. ABOUT ME
@@ -187,10 +177,18 @@ main.aboutme {
       font-size: 60px;
     }
 
-    h4 {
-      font-size: 25px;
+    h2 {
       margin-top: 5px;
       margin-bottom: 5px;
+
+      a {
+        text-decoration: underline;
+        text-decoration-color: $colour-bg-secondary;
+
+        &:hover {
+          text-decoration-color: $colour-text-primary;
+        }
+      }
     }
 
     .name {
@@ -213,6 +211,15 @@ main.aboutme {
     height: 2px;
     background: $colour-divider;
     border: none;
+  }
+
+  .blog,
+  .social {
+    h3 {
+      margin-top: 20px;
+      text-decoration: underline;
+      text-decoration-color: $colour-accent;
+    }
   }
 
   .allPosts {
@@ -266,20 +273,20 @@ main.blogFeed {
   }
 
   h2 {
-    margin-bottom: 20px;
-    text-align: left;
-  }
-
-  h3 {
     color: $colour-text-primary;
     padding-left: 0px;
     margin-top: -25px;
     text-align: right;
   }
 
+  h3 {
+    margin-bottom: 20px;
+    text-align: left;
+  }
+
   p {
     text-align: justify;
-    padding-bottom: 15px;
+    padding-bottom: 10px;
   }
 
   img {
@@ -377,6 +384,14 @@ main.error {
     font-size: 16px;
   }
 
+  h2 {
+    font-size: 23px;
+  }
+
+  h3 {
+    font-size: 30px;
+  }
+
   header.navbar {
     left: 25%;
   }
@@ -391,7 +406,7 @@ main.error {
         font-size: 56px;
       }
 
-      h4 {
+      h2 {
         font-size: 21px;
       }
     }
@@ -474,10 +489,14 @@ main.error {
         font-size: 40px;
       }
 
-      h4 {
+      h2 {
         font-size: 19px;
       }
     }
+  }
+
+  main.blogFeed {
+    padding-top: 70px;
   }
 
   .blogPosts {

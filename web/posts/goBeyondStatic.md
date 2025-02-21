@@ -1,6 +1,6 @@
 # Go Beyond Static
 
-### 2025-01-27
+## 2025-01-27
 
 ```
 Go Beyond Static: Effortless Blog Automation
@@ -17,7 +17,7 @@ That is where I'll start.
 By the end of this post I will cover all of the things I used to achieve this
 now seamless process.
 
-## The wicked HTML process
+### The wicked HTML process
 
 The issue when writing a blog post was that I would need to manually update the
 following files: blog.html, index.html, index.xml.
@@ -52,7 +52,7 @@ This process was more or less the same for the RSS feed.
 The most annoying part? Always getting the date format correct.
 As you can probably tell I wasn't the biggest fan of the process.
 
-## It's going to get easier
+### It's going to get easier
 
 This is where I decided to make the process better, I wanted it to be like how
 my blog posts are generated to HTML from markdown (If you are curious I use
@@ -115,7 +115,7 @@ field; plus it was an array of all my blog posts.
 Once I had all that working all I needed to do was run the execute function
 provided by the template package and I was golden!
 
-## The bliss of automation
+### The bliss of automation
 
 After I completed the script all I needed to do was update my pipeline to
 ensure it compiled the HTML and RSS feed, which is pretty straightforward.

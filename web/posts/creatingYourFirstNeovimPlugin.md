@@ -1,6 +1,6 @@
 # Creating your first Neovim plugin
 
-### 2023-12-28
+## 2023-12-28
 
 ```
 Making plugin creation easy even dummies can do it.
@@ -22,7 +22,7 @@ As it turns out it's not that hard resulting in the creation of
 Which inspired me to write this post, as a way to help others create their own
 plugins for neovim.
 
-## File structure
+### File structure
 
 ```
 .
@@ -51,7 +51,7 @@ the plugin we will use the name of the directory within the **lua** directory.
 For example if we wanted to require the **example** plugin we would use
 _require('example')_.
 
-## Lua
+### Lua
 
 ```
 local M = {}
@@ -90,7 +90,7 @@ As you can see creating a plugin for neovim can be pretty straight forward.
 Before I looked into this I thought it involved sorcery and black magic but it
 is actually very simple.
 
-## Documentation
+### Documentation
 
 ```
 INTRODUCTION          *example-introduction*
@@ -115,7 +115,7 @@ Such as using tags to create sections within the documentation. As the example
 above shows with example-introduction. This is used to create a section within
 the documentation, the section name is the text between the asterisks.
 
-## Closing thoughts
+### Closing thoughts
 
 Creating a plugin for neovim is very simple and quite rewarding. It is a great
 way to learn lua and to contribute to the neovim community.

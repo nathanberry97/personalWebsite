@@ -1,6 +1,6 @@
 # My Neovim Config
 
-### 2025-02-08
+## 2025-02-08
 
 ```
 My Neovim Config: Plugins, Keybindings, and Tweaks
@@ -16,9 +16,9 @@ of plugins, keybindings, and tweaks I've implemented.
 Hopefully, you'll find something useful to implement into your own
 configuration.
 
-## Preview
+### Preview
 
-![](/images/blog/myNeovimConfig/neovim.png)
+![](/images/blog/myNeovimConfig/neovim.webp)
 
 As you can see I think we can agree that I like to keep my configuration
 minimal.
@@ -37,7 +37,7 @@ I'm only going to cover things I think are important else we'll be here all
 day.
 The topics being covered are: plugins, keybindings, and tweaks.
 
-## Plugins
+### Plugins
 
 Before I talk about the plugins I think add the most value
 here is a list of all the plugins I use:
@@ -136,7 +136,7 @@ Then only adding other plugins when I hit pain points in my work flow,
 I know it is tempting to install loads of other plugins; but I feel
 that its only going to slow you down in the long run.
 
-## Keybindings
+### Keybindings
 
 Now moving on to some of my favourite keybindings I use, just to note I set
 space as my leader key because I find this most comfortable.
@@ -170,7 +170,7 @@ runs a script called tmux-sessioniser, if you're interested in how
 this works I wrote a [post](./fzfSession.html) outlining what it is and how
 it works.
 
-## Tweaks
+### Tweaks
 
 Lastly I'm going to cover some tweaks which helps to make my neovim
 experience a lot better.
@@ -212,7 +212,7 @@ It makes it very easy to copy something from my editor and paste it in other
 applications.
 I feel like this should just be enabled by default, as it is very useful.
 
-## Closing thoughts
+### Closing thoughts
 
 Now I've gone over some of my favourite features, I hope this has inspired you
 to create or improve your own config.

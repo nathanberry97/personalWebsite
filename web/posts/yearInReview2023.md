@@ -1,6 +1,6 @@
 # Year in review 2023
 
-### 2024-01-01
+## 2024-01-01
 
 ```
 Some of the bits and bobs I've muddled through during the past year and goals I want to achieve during 2024
@@ -12,7 +12,7 @@ I hope that others will find this blog post interesting and that it will
 inspire them to do the same. I'm not sure if I'll be able to keep up with
 writing a yearly review every year, but I'll try my best.
 
-## Achievements - 2023
+### Achievements - 2023
 
 At the start of the year I worked on converting my website from being
 published on GitHub Pages to being hosted through AWS. I also
@@ -43,7 +43,7 @@ which is a project using docker and AWS. This container
 downloads the NASA image of the day and sends a texts to my phone using Twilio.
 This then evolved into the [APOD](../apod.html) page on my website.
 
-## Goals - 2024
+### Goals - 2024
 
 I want to create a TUI application using Go, which will be a
 RSS reader. I've been using [nom](https://github.com/guyfedwards/nom)
