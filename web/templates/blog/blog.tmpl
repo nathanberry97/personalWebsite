@@ -1,0 +1,10 @@
+{{ define "Content" }}
+<main class="blogFeed">
+    <div class="blog">
+        <h1>Blog posts</h1>
+        <p class="intro">My thoughts about all things development, technology and life.</p>
+        {{ .Feed }}
+        <p>Subscribe to my <a href="/feed.xml">RSS feed</a></p>
+    </div>
+</main>
+{{ end }}

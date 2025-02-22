@@ -5,51 +5,50 @@ explain:
 	@echo personalWebsite
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: \033[36m\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
-.PHONY: setup
-setup: ## Install pre-commit hooks and npm packages
+.PHONY: pre-commit
+pre-commit: ## Install pre-commit hooks and npm packages
 	@pre-commit install
-	@cd ./infra && npm ci
+
+.PHONY: setup
+setup: clean ## Setup build dir and copy over assets
+	@mkdir -p build/css build/blog
+	@cp -r web/assets/js build/
+	@cp -r web/assets/images build/
 
 .PHONY: compile
-compile: ## Compile blog posts into html
-	@mkdir -p static/css static/blog
-	@sass --no-source-map scss/index.scss static/css/style.css
-	@chmod +x scripts/parseBlogPosts.sh
-	@scripts/parseBlogPosts.sh
-	@go run scripts/parseBlogFeed.go
+compile: setup ## Compile blog posts into html
+	@go run cmd/app/main.go
 
 .PHONY: local
 local: compile ## Run a local webserver to host website locally
-	@docker build -t webserver_personal_website .
+	@docker build -t webserver_personal_website -f infra/docker/Dockerfile .
 	@docker run --name personal_website -dit \
   	 -p 8080:80 \
-  	 -v ${PWD}/static:/usr/local/apache2/htdocs/:Z \
+  	 -v ${PWD}/build:/usr/local/apache2/htdocs/:Z \
   	 webserver_personal_website
-
-.PHONY: build
-build: ## Build infra for AWS
-	@cd infra && npm run build
-
-.PHONY: test
-test: ## Test infra for AWS
-	@cd infra && npm test
 
 .PHONY: clean
 clean: ## Clean up build artifacts
-	@rm static/index.html
-	@rm static/index.xml
-	@rm static/blog.html
-	@rm static/blog/*
-	@cd infra && npm run clean
-	@rm static/css/style.css
+	@rm -rf build/* || true
 
-.PHONY: cleanContainer
-cleanContainer: ## Clean up container build artifacts
-	@docker stop personal_website
-	@docker rm personal_website
+.PHONY: installCDK
+installCDK: ## Build infra for AWS
+	@cd ./infra/cdk && npm ci
 
-.PHONY: checkov
-checkov: ## Run checkov to check for security issues
-	@cd infra && npx cdk synth > cloudformation.yaml
-	@checkov -f infra/cloudformation.yaml
-	@rm -rf infra/cloudformation.yaml
+.PHONY: buildCDK
+buildCDK: installCDK ## Build infra for AWS
+	@cd infra/cdk && npm run build
+
+.PHONY: testCDK
+testCDK: ## Test infra for AWS
+	@cd infra/cdk && npm test
+
+.PHONY: cleanCDK
+cleanCDK: ## Test infra for AWS
+	@cd infra/cdk && npm run clean
+
+.PHONY: checkovCDK
+checkovCDK: ## Run checkov for security issues against IaC
+	@cd infra/cdk && npx cdk synth > cloudformation.yaml
+	@checkov -f infra/cdk/cloudformation.yaml
+	@rm -rf infra/cdk/cloudformation.yaml
