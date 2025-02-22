@@ -15,12 +15,12 @@ jobs:
             - name: Install node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
 
             - name: Install go
               uses: actions/setup-go@v5
               with:
-                  go-version: 1.23.4
+                  go-version: 1.24.0
 
             - name: Install Sass
               run: npm install -g sass
@@ -30,23 +30,17 @@ jobs:
                   sudo apt-get update
                   sudo apt-get install pandoc
                   sudo apt-get install podman
-                  cd ./infra
-                  npm ci
-                  npm run build
+                  make buildCDK
 
             - name: Compile website
               run: |
-                  mkdir -p static/blog static/css
-                  chmod +x scripts/parseBlogPosts.sh
-                  ./scripts/parseBlogPosts.sh
-                  go run scripts/parseBlogFeed.go
-                  sass --no-source-map scss/index.scss static/css/style.css
+                  make compile
 
             - name: cdk deploy
               uses: youyo/aws-cdk-github-actions@v2
               with:
                   cdk_subcommand: "deploy"
-                  working_dir: "./infra"
+                  working_dir: "./infra/cdk"
                   cdk_args: "--require-approval never"
                   actions_comment: false
               env:

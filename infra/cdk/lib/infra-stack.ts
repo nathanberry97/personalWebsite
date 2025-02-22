@@ -18,7 +18,8 @@ export class InfraStack extends cdk.Stack {
          */
         const domain: string = "nathanberry.co.uk";
         const index: string = "index.html";
-        const cert: string = `arn:aws:acm:us-east-1:${accountId}:certificate/8a47403a-cab2-4ff3-b8fa-f1527735ad1f`;
+        const certId: string = "8a47403a-cab2-4ff3-b8fa-f1527735ad1f"
+        const cert: string = `arn:aws:acm:us-east-1:${accountId}:certificate/${certId}`;
 
         /**
          * Create and configure S3 buckets

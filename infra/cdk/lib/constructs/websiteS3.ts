@@ -18,7 +18,7 @@ export class websiteS3 extends Construct {
 
         const websiteBucket = new Bucket(this, "websiteBucket", {
             bucketName: props.domainName,
-            accessControl: BucketAccessControl.PRIVATE,
+            accessControl: BucketAccessControl.PUBLIC_READ,
             blockPublicAccess: {
                 blockPublicAcls: false,
                 blockPublicPolicy: false,
@@ -44,7 +44,7 @@ export class websiteS3 extends Construct {
                 effect: Effect.ALLOW,
                 principals: [new AnyPrincipal()],
                 actions: ["s3:GetObject"],
-                resources: [websiteBucket.arnForObjects("*"), websiteBucket.bucketArn],
+                resources: [websiteBucket.arnForObjects("*")],
             }),
         );
 

@@ -20,18 +20,16 @@ jobs:
             - name: Install go
               uses: actions/setup-go@v5
               with:
-                  go-version: 1.23.4
+                  go-version: 1.24.0
 
             - name: Install pre-commit Dependencies
               run: |
                   pip install pre-commit checkov
-                  make setup
+                  make pre-commit
 
             - name: Install Infra Dependencies
               run: |
-                  cd ./infra
-                  npm ci
-                  npm run build
+                  make buildCDK
 
             - name: Validate pre-commit
               run: |
@@ -39,11 +37,11 @@ jobs:
 
             - name: Run Infra Tests
               run: |
-                  make test
+                  make testCDK
 
             - name: Run checkov scan
               run: |
-                  make checkov
+                  make checkovCDK
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

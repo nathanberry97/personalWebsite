@@ -46,3 +46,9 @@ testCDK: ## Test infra for AWS
 .PHONY: cleanCDK
 cleanCDK: ## Test infra for AWS
 	@cd infra/cdk && npm run clean
+
+.PHONY: checkovCDK
+checkovCDK: ## Run checkov for security issues against IaC
+	@cd infra/cdk && npx cdk synth > cloudformation.yaml
+	@checkov -f infra/cdk/cloudformation.yaml
+	@rm -rf infra/cdk/cloudformation.yaml

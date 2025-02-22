@@ -1,7 +1,7 @@
 import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy, CachePolicy } from "aws-cdk-lib/aws-cloudfront";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
-import { S3Origin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 import { Construct } from "constructs";
 
 export interface websiteValues {
@@ -35,9 +35,7 @@ export class websiteCloudFront extends Construct {
             domainNames: [props.domainName],
             certificate: cert,
             defaultBehavior: {
-                origin: new S3Origin(props.websiteBucket, {
-                    originAccessIdentity: cloudfrontPolicy,
-                }),
+                origin: new S3StaticWebsiteOrigin(props.websiteBucket),
                 cachePolicy: CachePolicy.CACHING_DISABLED,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
             },
@@ -48,7 +46,7 @@ export class websiteCloudFront extends Construct {
             domainNames: [`www.${props.domainName}`],
             certificate: cert,
             defaultBehavior: {
-                origin: new S3Origin(props.redirectWebsiteBucket),
+                origin: new S3StaticWebsiteOrigin(props.redirectWebsiteBucket),
                 cachePolicy: CachePolicy.CACHING_DISABLED,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
             },
