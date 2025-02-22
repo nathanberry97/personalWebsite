@@ -26,6 +26,7 @@ jobs:
               run: |
                   pip install pre-commit checkov
                   make pre-commit
+                  make setup
 
             - name: Install Infra Dependencies
               run: |
