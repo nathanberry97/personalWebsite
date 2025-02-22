@@ -42,8 +42,7 @@ Usage:
 ## Website
 
 The website is a simple blog created with `go`. The blog posts are written
-in markdown and are converted to HTML using [pandoc](https://pandoc.org/)
-during the build process.
+in markdown and are converted to HTML using `pandoc` during the build process.
 
 The website is created with the following:
 
@@ -51,6 +50,19 @@ The website is created with the following:
 - `SCSS`
 - `pandoc`
 - `JavaScript`
+
+Here are the commands you can run locally to compile and host the website
+through `docker` and so on:
+
+```
+make  setup
+make  compile
+make  local
+make  clean
+```
+
+> You can just run `make local` and it will run the required steps before hand
+> just insure you have the prerequisites installed
 
 ## AWS CDK
 
@@ -66,8 +78,11 @@ can install the dependencies and build the infrastructure using the following
 commands:
 
 ```bash
-make setup
-make build
+make installCDK
+make buildCDK
+make testCDK
+make cleanCDK
+make checkovCDK
 ```
 
 > **Note** you need to set the following environment variables:
