@@ -41,7 +41,7 @@ Usage:
 
 ## Website
 
-The website is a simple blog page created with `go`. The blog posts are written
+The website is a simple blog created with `go`. The blog posts are written
 in markdown and are converted to HTML using [pandoc](https://pandoc.org/)
 during the build process.
 
