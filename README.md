@@ -3,12 +3,21 @@
 ![linting](https://github.com/nathanberry97/personalWebsite/actions/workflows/lintingPipeline.yml/badge.svg)
 ![deployment](https://github.com/nathanberry97/personalWebsite/actions/workflows/deploymentPipeline.yml/badge.svg)
 
-> A blog website hosted through CloudFront and S3 in AWS and deployed through
-> GitHub Actions using IaC (AWS CDK)
+> A blog website built with Go, hosted on AWS using S3 and CloudFront, and
+> deployed via GitHub Actions with IaC (AWS CDK).
 
 This website is currently live which you can view here:
 
--   [Personal Website](https://nathanberry.co.uk/)
+- [Personal Website](https://nathanberry.co.uk/)
+
+## Prerequisites
+
+> Ensure you have the following installed before running the project locally:
+
+- [Go](https://go.dev/)
+- [Docker](https://www.docker.com/)
+- [Pandoc](https://pandoc.org/)
+- [SCSS](https://sass-lang.com/)
 
 ## Commands when running locally
 
@@ -18,42 +27,42 @@ List of commands while using `make`:
 personalWebsite
 
 Usage:
-  setup                 Install pre-commit hooks and npm packages
-  compile               Compile blog posts into html
-  local                 Run a local webserver to host website locally
-  build                 Build infra for AWS
-  test                  Test infra for AWS
+  pre-commit            Install pre-commit hooks
+  setup                 Setup build dir and copy over assets
+  compile               Compile blog posts into HTML
+  local                 Run a local web server to host website locally
   clean                 Clean up build artifacts
-  cleanContainer        Clean up container build artifacts
-  checkov               Run checkov to check for security issues
+  installCDK            Install AWS CDK dependencies
+  buildCDK              Build AWS infrastructure
+  testCDK               Test AWS infrastructure
+  cleanCDK              Clean AWS infrastructure
+  checkovCDK            Run Checkov for security analysis of IaC
 ```
-
-> When using `make local` you will need to have `podman` installed
-
-## GitHub actions
-
-The repo has been configured to automatically deploy any changes to the source
-code or infrastructure on any changes to the main branch. Also the repo has
-a linting pipeline which will run on any pull requests to the main branch.
-
-> The pipelines can be found in the `.github/workflows` directory.
 
 ## Website
 
-The website is a simple blog page with a few posts and a contact page. The
-blog posts are written in markdown and are converted to HTML using a using
-[pandoc](https://pandoc.org/) during the build process.
+The website is a simple blog created with `go`. The blog posts are written
+in markdown and are converted to HTML using `pandoc` during the build process.
 
-The webpage is created with the following:
+The website is created with the following:
 
--   HTML
--   CSS
--   JS
+- `go` (`html/template`)
+- `SCSS`
+- `pandoc`
+- `JavaScript`
 
-> Some of the HTML is complied during the build using `golang` and `templates`
-> to help automate the process of creating new blog content.
-> If you are interested in how this is done along side the blog posts conversion
-> you can find the code in `/scripts`.
+Here are the commands you can run locally to compile and host the website
+through `docker` and so on:
+
+```
+make  setup
+make  compile
+make  local
+make  clean
+```
+
+> You can just run `make local` and it will run the required steps before hand
+> just insure you have the prerequisites installed
 
 ## AWS CDK
 
@@ -69,11 +78,22 @@ can install the dependencies and build the infrastructure using the following
 commands:
 
 ```bash
-make setup
-make build
+make installCDK
+make buildCDK
+make testCDK
+make cleanCDK
+make checkovCDK
 ```
 
 > **Note** you need to set the following environment variables:
 >
-> -   `export ACCOUNT_NUM=xxxxxxxxxxxx`
-> -   `export REGION=eu-west-2`
+> - `export ACCOUNT_NUM=xxxxxxxxxxxx`
+> - `export REGION=eu-west-2`
+
+## GitHub actions
+
+The repo has been configured to automatically deploy any changes to the source
+code or infrastructure on any changes to the main branch. Also the repo has
+a linting pipeline which will run on any pull requests to the main branch.
+
+> The pipelines can be found in the `.github/workflows` directory.
