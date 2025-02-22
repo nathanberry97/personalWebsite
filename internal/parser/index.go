@@ -3,7 +3,6 @@ package parser
 import (
 	"bufio"
 	"fmt"
-	"log"
 	"os"
 	"path/filepath"
 	"sort"
@@ -13,13 +12,13 @@ import (
 	"github.com/nathanberry97/personalWebsite/internal/schema"
 )
 
-func GetBlogPosts() []schema.BlogPost {
+func GetBlogPosts() ([]schema.BlogPost, error) {
 	postsDir := "web/posts"
 	var blogPosts []schema.BlogPost
 
 	files, err := os.ReadDir(postsDir)
 	if err != nil {
-		log.Fatal(fmt.Sprintf("Failed to read directory %s: %v", postsDir, err))
+		return nil, fmt.Errorf("Failed to read directory %s: %v", postsDir, err)
 	}
 
 	for _, file := range files {
@@ -27,14 +26,9 @@ func GetBlogPosts() []schema.BlogPost {
 
 		file, err := os.Open(filePath)
 		if err != nil {
-			log.Fatal(fmt.Sprintf("Failed to open file %s: %v", filePath, err))
+			return nil, fmt.Errorf("Failed to open file %s: %v", filePath, err)
 		}
-
-		defer func() {
-			if err := file.Close(); err != nil {
-				log.Fatal(fmt.Sprintf("Failed to close file %s: %v", filePath, err))
-			}
-		}()
+		defer file.Close()
 
 		scanner := bufio.NewScanner(file)
 		var title, date string
@@ -52,7 +46,7 @@ func GetBlogPosts() []schema.BlogPost {
 
 		parsedDate, err := time.Parse(time.DateOnly, date)
 		if err != nil {
-			log.Fatal(fmt.Sprintf("Missing title or date in file %s", filePath))
+			return nil, fmt.Errorf("Missing title or date in file %s", filePath)
 		}
 
 		htmlLink := strings.TrimSuffix(file.Name(), ".md") + ".html"
@@ -70,5 +64,5 @@ func GetBlogPosts() []schema.BlogPost {
 		return blogPosts[i].ParsedDate.After(blogPosts[j].ParsedDate)
 	})
 
-	return blogPosts
+	return blogPosts, nil
 }

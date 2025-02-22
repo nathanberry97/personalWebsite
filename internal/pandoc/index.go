@@ -2,16 +2,15 @@ package pandoc
 
 import (
 	"fmt"
-	"log"
 	"os"
 	"os/exec"
 	"path/filepath"
 )
 
-func ConvertMarkdown(inputDir, outputDir, templatePath string) {
+func ConvertMarkdown(inputDir, outputDir, templatePath string) error {
 	files, err := os.ReadDir(inputDir)
 	if err != nil {
-		log.Fatal(fmt.Sprintf("Failed to read directory %s: %v", inputDir, err))
+		return fmt.Errorf("Failed to read directory %s: %v", inputDir, err)
 	}
 
 	for _, file := range files {
@@ -26,8 +25,10 @@ func ConvertMarkdown(inputDir, outputDir, templatePath string) {
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		if err := cmd.Run(); err != nil {
-			log.Fatal(fmt.Sprintf("Failed to convert Markdown file %s to HTML: %v", inputPath, err))
+			return fmt.Errorf("Failed to convert Markdown file %s to HTML: %v", inputPath, err)
 		}
 		fmt.Println("Converted:", inputPath, "->", outputPath)
 	}
+
+	return nil
 }

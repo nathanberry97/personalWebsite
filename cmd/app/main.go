@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 	"path/filepath"
@@ -27,28 +26,44 @@ func main() {
 	const dns = "https://nathanberry.co.uk"
 
 	// Generate reusable components and Compile SCSS
-	hashedCSS := scss.CompileSCSS("web/assets/scss/style.scss", filepath.Join(buildDir, "css"))
+	hashedCSS, err := scss.CompileSCSS("web/assets/scss/style.scss", filepath.Join(buildDir, "css"))
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	navbar := components.Navbar([]schema.NavbarData{
+	navbar, err := components.Navbar([]schema.NavbarData{
 		{Href: "/", Text: "[h] home"},
 		{Href: "/blog.html", Text: "[b] blog"},
 		{Href: githubURL, Text: "[g] github"},
 	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	generalMetadata := components.Metadata(schema.GetMetadataData(
+	generalMetadata, err := components.Metadata(schema.GetMetadataData(
 		hashedCSS,
 		fullName,
 		[]string{"scrambleHeader.js"},
 	))
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	blogPostsMetadata := components.Metadata(schema.GetMetadataData(
+	blogPostsMetadata, err := components.Metadata(schema.GetMetadataData(
 		hashedCSS,
 		fullName,
 		[]string{"scrambleHeader.js", "toTop.js"},
 	))
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// Get blog posts
-	blogPosts := parser.GetBlogPosts()
+	blogPosts, err := parser.GetBlogPosts()
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	latestPosts, rssPosts := blogPosts, blogPosts
 
 	if len(blogPosts) > 4 {
@@ -58,11 +73,21 @@ func main() {
 		rssPosts = rssPosts[:15]
 	}
 
+	blogFeed, err := components.Feed(blogPosts)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	lastestFeed, err := components.Feed(latestPosts)
+	if err != nil {
+		log.Fatal(err)
+	}
+
 	// Create static content
-	components.Home(
+	err = components.Home(
 		generalMetadata,
 		navbar,
-		components.Feed(latestPosts),
+		lastestFeed,
 		schema.AboutData{
 			Name:        name,
 			CompanyName: companyName,
@@ -73,10 +98,21 @@ func main() {
 		},
 		buildDir,
 	)
-	components.Blog(generalMetadata, navbar, components.Feed(blogPosts), buildDir)
-	components.Error(generalMetadata, navbar, buildDir)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	components.RSSFeed(
+	err = components.Blog(generalMetadata, navbar, blogFeed, buildDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = components.Error(generalMetadata, navbar, buildDir)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	err = components.RSSFeed(
 		rssPosts,
 		schema.RSSFeed{
 			Title:       fullName,
@@ -86,12 +122,17 @@ func main() {
 		},
 		buildDir,
 	)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	// Create blog posts
 	templatePath, err := components.BlogPostTemplate(blogPostsMetadata, navbar, name)
 	if err != nil {
-		log.Fatal(fmt.Sprintf("Failed to generate blog post template for %s: %v", name, err))
+		log.Fatal(err)
 	}
 	defer os.Remove(templatePath)
 	pandoc.ConvertMarkdown("./web/posts", filepath.Join(buildDir, "blog"), templatePath)
+
+	log.Println("\nBuild completed successfully!")
 }

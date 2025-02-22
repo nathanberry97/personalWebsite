@@ -3,7 +3,6 @@ package components
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"os"
 	"path/filepath"
 	"strings"
@@ -13,7 +12,7 @@ import (
 	"github.com/nathanberry97/personalWebsite/internal/schema"
 )
 
-func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir string) {
+func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir string) error {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/home/home.tmpl",
@@ -25,7 +24,7 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir
 	outputPath := filepath.Join(buildDir, "index.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatalf("Failed to create file %s: %v", outputPath, err)
+		return fmt.Errorf("Failed to create file %s: %v", outputPath, err)
 	}
 
 	err = tmpl.ExecuteTemplate(
@@ -44,13 +43,15 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir
 		},
 	)
 	if err != nil {
-		log.Fatalf("Failed to execute template %s: %v", "base.tmpl", err)
+		return fmt.Errorf("Failed to execute template %s: %v", "base.tmpl", err)
 	}
 
 	fmt.Println("Generated:", outputPath)
+
+	return nil
 }
 
-func Blog(metadata, navbar, feed template.HTML, buildDir string) {
+func Blog(metadata, navbar, feed template.HTML, buildDir string) error {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/blog/blog.tmpl",
@@ -59,7 +60,7 @@ func Blog(metadata, navbar, feed template.HTML, buildDir string) {
 	outputPath := filepath.Join(buildDir, "blog.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatalf("Failed to create file %s: %v", outputPath, err)
+		return fmt.Errorf("Failed to create file %s: %v", outputPath, err)
 	}
 
 	err = tmpl.ExecuteTemplate(
@@ -72,13 +73,15 @@ func Blog(metadata, navbar, feed template.HTML, buildDir string) {
 		},
 	)
 	if err != nil {
-		log.Fatalf("Failed to execute template %s: %v", "base.tmpl", err)
+		return fmt.Errorf("Failed to execute template %s: %v", "base.tmpl", err)
 	}
 
 	fmt.Println("Generated:", outputPath)
+
+	return nil
 }
 
-func Error(metadata, navbar template.HTML, buildDir string) {
+func Error(metadata, navbar template.HTML, buildDir string) error {
 	tmpl := template.Must(template.ParseFiles(
 		"web/templates/base.tmpl",
 		"web/templates/error/error.tmpl",
@@ -87,7 +90,7 @@ func Error(metadata, navbar template.HTML, buildDir string) {
 	outputPath := filepath.Join(buildDir, "error.html")
 	file, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatalf("Failed to create file %s: %v", outputPath, err)
+		return fmt.Errorf("Failed to create file %s: %v", outputPath, err)
 	}
 
 	err = tmpl.ExecuteTemplate(
@@ -99,13 +102,15 @@ func Error(metadata, navbar template.HTML, buildDir string) {
 		},
 	)
 	if err != nil {
-		log.Fatalf("Failed to execute template %s: %v", "base.tmpl", err)
+		return fmt.Errorf("Failed to execute template %s: %v", "base.tmpl", err)
 	}
 
 	fmt.Println("Generated:", outputPath)
+
+	return nil
 }
 
-func RSSFeed(posts []schema.BlogPost, feedData schema.RSSFeed, buildDir string) {
+func RSSFeed(posts []schema.BlogPost, feedData schema.RSSFeed, buildDir string) error {
 	tmpl := templateRSS.Must(templateRSS.ParseFiles("web/templates/feed/feed.xml.tmpl"))
 
 	for _, post := range posts {
@@ -119,52 +124,54 @@ func RSSFeed(posts []schema.BlogPost, feedData schema.RSSFeed, buildDir string) 
 	outputPath := filepath.Join(buildDir, "feed.xml")
 	outputFile, err := os.Create(outputPath)
 	if err != nil {
-		log.Fatalf("Failed to create RSS feed file %s: %v", outputPath, err)
+		return fmt.Errorf("Failed to create RSS feed file %s: %v", outputPath, err)
 	}
 	defer outputFile.Close()
 
 	err = tmpl.Execute(outputFile, feedData)
 	if err != nil {
-		log.Fatalf("Failed to execute RSS feed template for %s: %v", outputPath, err)
+		return fmt.Errorf("Failed to execute RSS feed template for %s: %v", outputPath, err)
 	}
 
 	fmt.Println("Generated:", outputPath)
+
+	return nil
 }
 
-func Metadata(data schema.MetadataData) template.HTML {
+func Metadata(data schema.MetadataData) (template.HTML, error) {
 	tmpl := template.Must(template.ParseFiles("web/templates/general/metadata.tmpl"))
 
 	var sb strings.Builder
 	err := tmpl.Execute(&sb, data)
 	if err != nil {
-		log.Fatalf("Failed to execute metadata template: %v", err)
+		return "", fmt.Errorf("Failed to execute metadata template: %v", err)
 	}
 
-	return template.HTML(sb.String())
+	return template.HTML(sb.String()), nil
 }
 
-func Navbar(links []schema.NavbarData) template.HTML {
+func Navbar(links []schema.NavbarData) (template.HTML, error) {
 	tmpl := template.Must(template.ParseFiles("web/templates/general/navbar.tmpl"))
 
 	var sb strings.Builder
 	err := tmpl.Execute(&sb, links)
 	if err != nil {
-		log.Fatalf("Failed to execute navbar template: %v", err)
+		return "", fmt.Errorf("Failed to execute navbar template: %v", err)
 	}
 
-	return template.HTML(sb.String())
+	return template.HTML(sb.String()), nil
 }
 
-func Feed(posts []schema.BlogPost) template.HTML {
+func Feed(posts []schema.BlogPost) (template.HTML, error) {
 	tmpl := template.Must(template.ParseFiles("web/templates/feed/feed.tmpl"))
 
 	var sb strings.Builder
 	err := tmpl.Execute(&sb, posts)
 	if err != nil {
-		log.Fatalf("Failed to execute feed template: %v", err)
+		return "", fmt.Errorf("Failed to execute feed template: %v", err)
 	}
 
-	return template.HTML(sb.String())
+	return template.HTML(sb.String()), nil
 }
 
 func BlogPostTemplate(metadata, navbar template.HTML, name string) (string, error) {

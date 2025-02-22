@@ -15,7 +15,7 @@ jobs:
             - name: Install node
               uses: actions/setup-node@v4
               with:
-                  node-version: 22
+                  node-version: 20
 
             - name: Install go
               uses: actions/setup-go@v5
@@ -25,16 +25,16 @@ jobs:
             - name: Install Sass
               run: npm install -g sass
 
-            - name: Install Dependencies and build infra
+            - name: Install Dependencies
               run: |
                   sudo apt-get update
                   sudo apt-get install pandoc
                   sudo apt-get install podman
-                  make buildCDK
 
-            - name: Compile website
+            - name: Compile website and build infra
               run: |
                   make compile
+                  make buildCDK
 
             - name: cdk deploy
               uses: youyo/aws-cdk-github-actions@v2

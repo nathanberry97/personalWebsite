@@ -1,4 +1,4 @@
-import { Bucket, BucketAccessControl, BlockPublicAccess } from "aws-cdk-lib/aws-s3";
+import { Bucket, BucketAccessControl, BlockPublicAccess, ObjectOwnership } from "aws-cdk-lib/aws-s3";
 import { PolicyStatement, Effect, AnyPrincipal } from "aws-cdk-lib/aws-iam";
 import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { RemovalPolicy } from "aws-cdk-lib";
@@ -27,6 +27,7 @@ export class websiteS3 extends Construct {
             },
             websiteIndexDocument: props.websiteIndex,
             removalPolicy: RemovalPolicy.DESTROY,
+            objectOwnership: ObjectOwnership.OBJECT_WRITER
         });
         this.__websiteBucket = websiteBucket;
 
@@ -36,6 +37,7 @@ export class websiteS3 extends Construct {
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             websiteRedirect: { hostName: `${props.domainName}` },
             removalPolicy: RemovalPolicy.DESTROY,
+            objectOwnership: ObjectOwnership.OBJECT_WRITER
         });
         this.__redirectWebsiteBucket = redirectWebsiteBucket;
 
@@ -44,7 +46,7 @@ export class websiteS3 extends Construct {
                 effect: Effect.ALLOW,
                 principals: [new AnyPrincipal()],
                 actions: ["s3:GetObject"],
-                resources: [websiteBucket.arnForObjects("*")],
+                resources: [websiteBucket.arnForObjects("*"), websiteBucket.bucketArn],
             }),
         );
 
