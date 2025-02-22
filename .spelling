@@ -1,5 +1,4 @@
 APOD
-Golang
 CDK
 CLI
 CloudFront
@@ -10,6 +9,7 @@ ECS
 EventBridge
 Fzf
 GameBoy-like
+Golang
 IaC
 JS
 LSP
@@ -28,6 +28,7 @@ RedHat
 Rg
 Route53
 S3
+SCSS
 TUI
 Twilio
 apod

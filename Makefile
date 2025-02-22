@@ -6,7 +6,7 @@ explain:
 	@awk 'BEGIN {FS = ":.*##"; printf "\nUsage: \033[36m\033[0m\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  \033[36m%-20s\033[0m %s\n", $$1, $$2 } /^##@/ { printf "\n\033[1m%s\033[0m\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
 
 .PHONY: pre-commit
-pre-commit: ## Install pre-commit hooks and npm packages
+pre-commit: ## Install pre-commit hooks
 	@pre-commit install
 
 .PHONY: setup
@@ -16,11 +16,11 @@ setup: clean ## Setup build dir and copy over assets
 	@cp -r web/assets/images build/
 
 .PHONY: compile
-compile: setup ## Compile blog posts into html
+compile: setup ## Compile blog posts into HTML
 	@go run cmd/app/main.go
 
 .PHONY: local
-local: compile ## Run a local webserver to host website locally
+local: compile ## Run a local web server to host website locally
 	@docker build -t webserver_personal_website -f infra/docker/Dockerfile .
 	@docker run --name personal_website -dit \
   	 -p 8080:80 \
@@ -32,23 +32,23 @@ clean: ## Clean up build artifacts
 	@rm -rf build/* || true
 
 .PHONY: installCDK
-installCDK: ## Build infra for AWS
+installCDK: ## Install AWS CDK dependencies
 	@cd ./infra/cdk && npm ci
 
 .PHONY: buildCDK
-buildCDK: installCDK ## Build infra for AWS
+buildCDK: installCDK ## Build AWS infrastructure
 	@cd infra/cdk && npm run build
 
 .PHONY: testCDK
-testCDK: ## Test infra for AWS
+testCDK: ## Test AWS infrastructure
 	@cd infra/cdk && npm test
 
 .PHONY: cleanCDK
-cleanCDK: ## Test infra for AWS
+cleanCDK: ## Clean AWS infrastructure
 	@cd infra/cdk && npm run clean
 
 .PHONY: checkovCDK
-checkovCDK: ## Run checkov for security issues against IaC
+checkovCDK: ## Run Checkov for security analysis of IaC
 	@cd infra/cdk && npx cdk synth > cloudformation.yaml
 	@checkov -f infra/cdk/cloudformation.yaml
 	@rm -rf infra/cdk/cloudformation.yaml
