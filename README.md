@@ -36,7 +36,7 @@ Usage:
   buildCDK              Build AWS infrastructure
   testCDK               Test AWS infrastructure
   cleanCDK              Clean AWS infrastructure
-  checkovCDK            Run Checkov for security analysis of IaC  <!-- CHANGED: More descriptive -->
+  checkovCDK            Run Checkov for security analysis of IaC
 ```
 
 ## Website
