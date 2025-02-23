@@ -1,12 +1,12 @@
-import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import { ARecord, HostedZone, RecordTarget } from "aws-cdk-lib/aws-route53";
-import { Distribution } from "aws-cdk-lib/aws-cloudfront";
+import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import { Construct } from "constructs";
+import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 
 export interface websiteValues {
     domainName: string;
-    websiteDistribution: Distribution;
     redirectWebsiteDistribution: Distribution;
+    websiteDistribution: Distribution;
 }
 
 export class websiteRoute53 extends Construct {
@@ -18,14 +18,14 @@ export class websiteRoute53 extends Construct {
         });
 
         new ARecord(this, "websiteDns", {
-            zone: hostedZone,
             target: RecordTarget.fromAlias(new CloudFrontTarget(props.websiteDistribution)),
+            zone: hostedZone,
         });
 
         new ARecord(this, "redirectWebsiteDns", {
-            zone: hostedZone,
             recordName: "www",
             target: RecordTarget.fromAlias(new CloudFrontTarget(props.redirectWebsiteDistribution)),
+            zone: hostedZone,
         });
     }
 }

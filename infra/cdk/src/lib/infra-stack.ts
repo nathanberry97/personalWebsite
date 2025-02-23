@@ -1,40 +1,38 @@
 import * as cdk from "aws-cdk-lib";
+import { BucketDeployment, Source } from "aws-cdk-lib/aws-s3-deployment";
 import { Construct } from "constructs";
 import { websiteS3 } from "./constructs/websiteS3";
 import { websiteCloudFront } from "./constructs/websiteCloudFront";
 import { websiteRoute53 } from "./constructs/websiteRoute53";
 
+export interface infraProps extends cdk.StackProps {
+    certArn: string,
+    domainName: string,
+}
+
 export class InfraStack extends cdk.Stack {
-    constructor(scope: Construct, id: string, props?: cdk.StackProps) {
+    constructor(scope: Construct, id: string, props: infraProps) {
         super(scope, id, props);
-
-        /**
-         * Define environment variables
-         */
-        const accountId: string = process.env.ACCOUNT_NUM!;
-
-        /**
-         * Define variables
-         */
-        const domain: string = "nathanberry.co.uk";
-        const index: string = "index.html";
-        const certId: string = "8a47403a-cab2-4ff3-b8fa-f1527735ad1f"
-        const cert: string = `arn:aws:acm:us-east-1:${accountId}:certificate/${certId}`;
+        const websiteError: string = "error.html";
+        const websiteIndex: string = "index.html";
 
         /**
          * Create and configure S3 buckets
          */
         const buckets = new websiteS3(this, "bucket", {
-            domainName: domain,
-            websiteIndex: index,
+            domainName: props.domainName,
+            websiteError,
+            websiteIndex,
         });
 
         /**
          * Create and configure CloudFront
          */
         const cloudFront = new websiteCloudFront(this, "cloudFront", {
-            domainName: domain,
-            certArn: cert,
+            websiteError,
+            websiteIndex,
+            domainName: props.domainName,
+            certArn: props.certArn,
             websiteBucket: buckets.websiteBucket,
             redirectWebsiteBucket: buckets.redirectWebsiteBucket,
         });
@@ -43,9 +41,19 @@ export class InfraStack extends cdk.Stack {
          * Create and configure Route53
          */
         new websiteRoute53(this, "route53", {
-            domainName: domain,
+            domainName: props.domainName,
             websiteDistribution: cloudFront.websiteDistribution,
             redirectWebsiteDistribution: cloudFront.redirectWebsiteDistribution,
+        });
+
+        /**
+         * Upload website assets and clear CloudFront cache
+         */
+        new BucketDeployment(this, "uploadWebsite", {
+            destinationBucket: buckets.websiteBucket,
+            distribution: cloudFront.websiteDistribution,
+            distributionPaths: ["/*"],
+            sources: [Source.asset("../../build")],
         });
     }
 }

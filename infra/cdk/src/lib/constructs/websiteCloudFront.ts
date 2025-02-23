@@ -1,14 +1,17 @@
-import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy, CachePolicy } from "aws-cdk-lib/aws-cloudfront";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
-import { S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 import { Construct } from "constructs";
+import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy, CachePolicy } from "aws-cdk-lib/aws-cloudfront";
+import { PolicyStatement, Effect, AnyPrincipal } from "aws-cdk-lib/aws-iam";
+import { S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 
 export interface websiteValues {
-    domainName: string;
+    websiteError: string;
+    websiteIndex: string;
     certArn: string;
-    websiteBucket: Bucket;
+    domainName: string;
     redirectWebsiteBucket: Bucket;
+    websiteBucket: Bucket;
 }
 
 export class websiteCloudFront extends Construct {
@@ -18,18 +21,27 @@ export class websiteCloudFront extends Construct {
     constructor(scope: Construct, id: string, props: websiteValues) {
         super(scope, id);
 
-        const cloudfrontPolicy = new OriginAccessIdentity(this, "accessIdentity");
-        props.websiteBucket.grantRead(cloudfrontPolicy);
-
         const cert = Certificate.fromCertificateArn(this, "cert", props.certArn);
+        const cloudfrontPolicy = new OriginAccessIdentity(this, "accessIdentity");
+
+        // Configure bucket to allow access to content
+        props.websiteBucket.grantRead(cloudfrontPolicy);
+        props.websiteBucket.addToResourcePolicy(
+            new PolicyStatement({
+                effect: Effect.ALLOW,
+                principals: [new AnyPrincipal()],
+                actions: ["s3:GetObject"],
+                resources: [props.websiteBucket.arnForObjects("*")],
+            }),
+        );
 
         const websiteDistribution = new Distribution(this, "cloudfrontDistribution", {
-            defaultRootObject: "index.html",
+            defaultRootObject: props.websiteIndex,
             errorResponses: [
                 {
                     httpStatus: 404,
                     responseHttpStatus: 200,
-                    responsePagePath: "/error.html",
+                    responsePagePath: `/${props.websiteError}`,
                 },
             ],
             domainNames: [props.domainName],
@@ -52,6 +64,7 @@ export class websiteCloudFront extends Construct {
             },
         });
         this.__redirectWebsiteDistribution = redirectWebsiteDistribution;
+
     }
 
     public get websiteDistribution(): Distribution {

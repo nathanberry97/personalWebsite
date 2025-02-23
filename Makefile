@@ -43,12 +43,16 @@ buildCDK: installCDK ## Build AWS infrastructure
 testCDK: ## Test AWS infrastructure
 	@cd infra/cdk && npm test
 
+.PHONY: diffCDK
+diffCDK: ## Diff AWS infrastructure
+	@cd infra/cdk && npm run cdk diff
+
 .PHONY: cleanCDK
 cleanCDK: ## Clean AWS infrastructure
 	@cd infra/cdk && npm run clean
 
 .PHONY: checkovCDK
 checkovCDK: ## Run Checkov for security analysis of IaC
-	@cd infra/cdk && npx cdk synth > cloudformation.yaml
+	@cd infra/cdk && npm run cdk synth > cloudformation.yaml
 	@checkov -f infra/cdk/cloudformation.yaml
 	@rm -rf infra/cdk/cloudformation.yaml
