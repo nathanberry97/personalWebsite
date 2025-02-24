@@ -3,14 +3,14 @@ import { CloudFrontTarget } from "aws-cdk-lib/aws-route53-targets";
 import { Construct } from "constructs";
 import { Distribution } from "aws-cdk-lib/aws-cloudfront";
 
-export interface websiteValues {
+export interface websiteRoute53Props {
     domainName: string;
     redirectWebsiteDistribution: Distribution;
     websiteDistribution: Distribution;
 }
 
 export class websiteRoute53 extends Construct {
-    constructor(scope: Construct, id: string, props: websiteValues) {
+    constructor(scope: Construct, id: string, props: websiteRoute53Props) {
         super(scope, id);
 
         const hostedZone = HostedZone.fromLookup(this, "hostedZone", {

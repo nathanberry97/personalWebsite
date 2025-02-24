@@ -36,7 +36,7 @@ installCDK: ## Install AWS CDK dependencies
 	@cd ./infra/cdk && npm ci
 
 .PHONY: buildCDK
-buildCDK: installCDK ## Build AWS infrastructure
+buildCDK: ## Build AWS infrastructure
 	@cd infra/cdk && npm run build
 
 .PHONY: testCDK

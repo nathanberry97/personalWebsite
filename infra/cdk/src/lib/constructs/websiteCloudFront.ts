@@ -1,16 +1,16 @@
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 import { Construct } from "constructs";
-import { Distribution, OriginAccessIdentity, ViewerProtocolPolicy, CachePolicy } from "aws-cdk-lib/aws-cloudfront";
-import { PolicyStatement, Effect, AnyPrincipal } from "aws-cdk-lib/aws-iam";
+import { Distribution, ViewerProtocolPolicy, CachePolicy } from "aws-cdk-lib/aws-cloudfront";
 import { S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 
-export interface websiteValues {
+interface websiteCloudFrontProps {
     websiteError: string;
     websiteIndex: string;
     certArn: string;
     domainName: string;
     redirectWebsiteBucket: Bucket;
+    refererHeaderValue: string;
     websiteBucket: Bucket;
 }
 
@@ -18,22 +18,10 @@ export class websiteCloudFront extends Construct {
     private __websiteDistribution: Distribution;
     private __redirectWebsiteDistribution: Distribution;
 
-    constructor(scope: Construct, id: string, props: websiteValues) {
+    constructor(scope: Construct, id: string, props: websiteCloudFrontProps) {
         super(scope, id);
 
         const cert = Certificate.fromCertificateArn(this, "cert", props.certArn);
-        const cloudfrontPolicy = new OriginAccessIdentity(this, "accessIdentity");
-
-        // Configure bucket to allow access to content
-        props.websiteBucket.grantRead(cloudfrontPolicy);
-        props.websiteBucket.addToResourcePolicy(
-            new PolicyStatement({
-                effect: Effect.ALLOW,
-                principals: [new AnyPrincipal()],
-                actions: ["s3:GetObject"],
-                resources: [props.websiteBucket.arnForObjects("*")],
-            }),
-        );
 
         const websiteDistribution = new Distribution(this, "cloudfrontDistribution", {
             defaultRootObject: props.websiteIndex,
@@ -47,7 +35,9 @@ export class websiteCloudFront extends Construct {
             domainNames: [props.domainName],
             certificate: cert,
             defaultBehavior: {
-                origin: new S3StaticWebsiteOrigin(props.websiteBucket),
+                origin: new S3StaticWebsiteOrigin(props.websiteBucket, {
+                    customHeaders: { Referer: props.refererHeaderValue }
+                }),
                 cachePolicy: CachePolicy.CACHING_DISABLED,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
             },

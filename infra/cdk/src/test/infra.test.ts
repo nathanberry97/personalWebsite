@@ -10,6 +10,7 @@ describe("Test constructs", () => {
 
         new websiteS3(stack, "bucketStack", {
             domainName: "test",
+            refererHeaderValue: "test",
             websiteError: "error.html",
             websiteIndex: "index.html",
         });
@@ -17,6 +18,7 @@ describe("Test constructs", () => {
         const template = Template.fromStack(stack);
 
         template.resourceCountIs("AWS::S3::Bucket", 2);
+        template.resourceCountIs("AWS::S3::BucketPolicy", 1);
     });
 
     test("Test CloudFront creation", () => {
@@ -26,6 +28,7 @@ describe("Test constructs", () => {
             certArn: "arn:aws:acm:us-east-1:1234:certificatete:test",
             domainName: "test",
             redirectWebsiteBucket: new Bucket(stack, "testTwo"),
+            refererHeaderValue: "test",
             websiteBucket: new Bucket(stack, "test"),
             websiteError: "error.html",
             websiteIndex: "index.html",
@@ -34,7 +37,5 @@ describe("Test constructs", () => {
         const template = Template.fromStack(stack);
 
         template.resourceCountIs("AWS::CloudFront::Distribution", 2);
-        template.resourceCountIs("AWS::CloudFront::CloudFrontOriginAccessIdentity", 1);
-        template.resourceCountIs("AWS::S3::BucketPolicy", 1);
     });
 });

@@ -6,8 +6,9 @@ import { websiteCloudFront } from "./constructs/websiteCloudFront";
 import { websiteRoute53 } from "./constructs/websiteRoute53";
 
 export interface infraProps extends cdk.StackProps {
-    certArn: string,
-    domainName: string,
+    certArn: string;
+    domainName: string;
+    refererHeaderValue: string;
 }
 
 export class InfraStack extends cdk.Stack {
@@ -23,6 +24,7 @@ export class InfraStack extends cdk.Stack {
             domainName: props.domainName,
             websiteError,
             websiteIndex,
+            refererHeaderValue: props.refererHeaderValue,
         });
 
         /**
@@ -35,6 +37,7 @@ export class InfraStack extends cdk.Stack {
             certArn: props.certArn,
             websiteBucket: buckets.websiteBucket,
             redirectWebsiteBucket: buckets.redirectWebsiteBucket,
+            refererHeaderValue: props.refererHeaderValue,
         });
 
         /**
