@@ -1,7 +1,7 @@
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 import { Construct } from "constructs";
-import { Distribution, ViewerProtocolPolicy, CachePolicy } from "aws-cdk-lib/aws-cloudfront";
+import { Distribution, ViewerProtocolPolicy, CachePolicy, DistributionProps } from "aws-cdk-lib/aws-cloudfront";
 import { S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 
 interface websiteCloudFrontProps {
@@ -23,12 +23,12 @@ export class websiteCloudFront extends Construct {
 
         const cert = Certificate.fromCertificateArn(this, "cert", props.certArn);
 
-        const websiteDistribution = new Distribution(this, "cloudfrontDistribution", {
+        this.__websiteDistribution = this.createDistribution("cloudfrontDistribution", {
             defaultRootObject: props.websiteIndex,
             errorResponses: [
                 {
                     httpStatus: 404,
-                    responseHttpStatus: 200,
+                    responseHttpStatus: 404,
                     responsePagePath: `/${props.websiteError}`,
                 },
             ],
@@ -38,23 +38,24 @@ export class websiteCloudFront extends Construct {
                 origin: new S3StaticWebsiteOrigin(props.websiteBucket, {
                     customHeaders: { Referer: props.refererHeaderValue }
                 }),
-                cachePolicy: CachePolicy.CACHING_DISABLED,
+                cachePolicy: CachePolicy.CACHING_OPTIMIZED,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
             },
         });
-        this.__websiteDistribution = websiteDistribution;
 
-        const redirectWebsiteDistribution = new Distribution(this, "redirectCloudfrontDistribution", {
+        this.__redirectWebsiteDistribution = this.createDistribution("redirectWebsiteDistribution", {
             domainNames: [`www.${props.domainName}`],
             certificate: cert,
             defaultBehavior: {
                 origin: new S3StaticWebsiteOrigin(props.redirectWebsiteBucket),
-                cachePolicy: CachePolicy.CACHING_DISABLED,
+                cachePolicy: CachePolicy.CACHING_OPTIMIZED,
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
             },
         });
-        this.__redirectWebsiteDistribution = redirectWebsiteDistribution;
+    }
 
+    private createDistribution(resourceName: string, distributionProps: DistributionProps): Distribution {
+        return new Distribution(this, resourceName, distributionProps);
     }
 
     public get websiteDistribution(): Distribution {

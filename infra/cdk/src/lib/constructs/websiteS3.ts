@@ -1,4 +1,4 @@
-import { Bucket, BucketAccessControl, BlockPublicAccess, ObjectOwnership } from "aws-cdk-lib/aws-s3";
+import { Bucket, BucketAccessControl, BlockPublicAccess, ObjectOwnership, BucketProps } from "aws-cdk-lib/aws-s3";
 import { Construct } from "constructs";
 import { RemovalPolicy } from "aws-cdk-lib";
 import { PolicyStatement, Effect, AnyPrincipal } from "aws-cdk-lib/aws-iam";
@@ -17,7 +17,7 @@ export class websiteS3 extends Construct {
     constructor(scope: Construct, id: string, props: websiteS3Props) {
         super(scope, id);
 
-        const websiteBucket = new Bucket(this, "websiteBucket", {
+        this.__websiteBucket = this.createBucket("websiteBucket", {
             accessControl: BucketAccessControl.PUBLIC_READ,
             blockPublicAccess: {
                 blockPublicAcls: false,
@@ -30,20 +30,15 @@ export class websiteS3 extends Construct {
             removalPolicy: RemovalPolicy.DESTROY,
             websiteErrorDocument: props.websiteError,
             websiteIndexDocument: props.websiteIndex,
-        });
-        this.__websiteBucket = websiteBucket;
+        }, new PolicyStatement({
+            effect: Effect.ALLOW,
+            principals: [new AnyPrincipal()],
+            actions: ["s3:GetObject"],
+            resources: [`arn:aws:s3:::${props.domainName}/*`],
+            conditions: { StringEquals: { "aws:Referer": props.refererHeaderValue } }
+        }));
 
-        websiteBucket.addToResourcePolicy(
-            new PolicyStatement({
-                effect: Effect.ALLOW,
-                principals: [new AnyPrincipal()],
-                actions: ["s3:GetObject"],
-                resources: [websiteBucket.arnForObjects("*")],
-                conditions: { StringEquals: { "aws:Referer": props.refererHeaderValue } }
-            }),
-        );
-
-        const redirectWebsiteBucket = new Bucket(this, "websiteRedirectBucket", {
+        this.__redirectWebsiteBucket = this.createBucket("websiteRedirectBucket", {
             accessControl: BucketAccessControl.PRIVATE,
             blockPublicAccess: BlockPublicAccess.BLOCK_ALL,
             bucketName: `www.${props.domainName}`,
@@ -51,7 +46,16 @@ export class websiteS3 extends Construct {
             removalPolicy: RemovalPolicy.DESTROY,
             websiteRedirect: { hostName: `${props.domainName}` },
         });
-        this.__redirectWebsiteBucket = redirectWebsiteBucket;
+    }
+
+    private createBucket(resourceName: string, bucketProps: BucketProps, policy?: PolicyStatement): Bucket {
+        const bucket = new Bucket(this, resourceName, bucketProps)
+
+        if (policy) {
+            bucket.addToResourcePolicy(policy);
+        }
+
+        return bucket;
     }
 
     public get websiteBucket(): Bucket {

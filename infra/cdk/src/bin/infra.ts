@@ -7,7 +7,7 @@ import { InfraStack } from "../lib/infra-stack";
 
 dotenv.config();
 
-const requiredEnvVars = ['ACCOUNT_NUM', 'CERT_ID', 'DOMAIN_NAME'];
+const requiredEnvVars = ["ACCOUNT_NUM", "CERT_ID", "DOMAIN_NAME", "REGION"];
 requiredEnvVars.forEach((envVar) => {
     if (!process.env[envVar]) {
         throw new Error(`Missing required environment variable: ${envVar}`);
