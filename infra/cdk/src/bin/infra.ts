@@ -16,7 +16,6 @@ requiredEnvVars.forEach((envVar) => {
 
 const app = new cdk.App();
 const domainName: string = process.env.DOMAIN_NAME!;
-const refererHeaderValue: string = uuid();
 
 const certStack = new CertStack(app, "CertStack", {
     crossRegionReferences: true,
@@ -28,6 +27,5 @@ new InfraStack(app, "personalWebsiteInfraStack", {
     crossRegionReferences: true,
     certArn: certStack.certArn,
     domainName,
-    refererHeaderValue,
     env: { account: process.env.ACCOUNT_NUM, region: process.env.REGION },
 });
