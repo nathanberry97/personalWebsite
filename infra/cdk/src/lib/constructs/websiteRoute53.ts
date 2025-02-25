@@ -13,16 +13,16 @@ export class websiteRoute53 extends Construct {
     constructor(scope: Construct, id: string, props: websiteRoute53Props) {
         super(scope, id);
 
-        const hostedZone = HostedZone.fromLookup(this, "hostedZone", {
+        const hostedZone = HostedZone.fromLookup(this, "HostedZone", {
             domainName: props.domainName,
         });
 
-        new ARecord(this, "websiteDns", {
+        new ARecord(this, "WebsiteDns", {
             target: RecordTarget.fromAlias(new CloudFrontTarget(props.websiteDistribution)),
             zone: hostedZone,
         });
 
-        new ARecord(this, "redirectWebsiteDns", {
+        new ARecord(this, "RedirectWebsiteDns", {
             recordName: "www",
             target: RecordTarget.fromAlias(new CloudFrontTarget(props.redirectWebsiteDistribution)),
             zone: hostedZone,

@@ -8,7 +8,6 @@ import { websiteRoute53 } from "./constructs/websiteRoute53";
 export interface infraProps extends cdk.StackProps {
     certArn: string;
     domainName: string;
-    refererHeaderValue: string;
 }
 
 export class InfraStack extends cdk.Stack {
@@ -20,39 +19,34 @@ export class InfraStack extends cdk.Stack {
         /**
          * Create and configure S3 buckets
          */
-        const buckets = new websiteS3(this, "bucket", {
+        const buckets = new websiteS3(this, "Bucket", {
             domainName: props.domainName,
-            websiteError,
-            websiteIndex,
-            refererHeaderValue: props.refererHeaderValue,
         });
 
         /**
          * Create and configure CloudFront
          */
-        const cloudFront = new websiteCloudFront(this, "cloudFront", {
+        const cloudFront = new websiteCloudFront(this, "CloudFront", {
             websiteError,
             websiteIndex,
             domainName: props.domainName,
             certArn: props.certArn,
             websiteBucket: buckets.websiteBucket,
-            redirectWebsiteBucket: buckets.redirectWebsiteBucket,
-            refererHeaderValue: props.refererHeaderValue,
         });
 
         /**
          * Create and configure Route53
          */
-        new websiteRoute53(this, "route53", {
+        new websiteRoute53(this, "Route53", {
             domainName: props.domainName,
-            websiteDistribution: cloudFront.websiteDistribution,
             redirectWebsiteDistribution: cloudFront.redirectWebsiteDistribution,
+            websiteDistribution: cloudFront.websiteDistribution,
         });
 
         /**
          * Upload website assets and clear CloudFront cache
          */
-        new BucketDeployment(this, "uploadWebsite", {
+        new BucketDeployment(this, "UploadWebsite", {
             destinationBucket: buckets.websiteBucket,
             distribution: cloudFront.websiteDistribution,
             distributionPaths: ["/*"],
