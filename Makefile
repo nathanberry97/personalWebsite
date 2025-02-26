@@ -59,5 +59,5 @@ cleanCDK: ## Clean AWS infrastructure
 .PHONY: checkovCDK
 checkovCDK: ## Run Checkov for security analysis of IaC
 	@cd infra/cdk && npm run cdk synth
-	@checkov -f infra/cdk/cdk.out/CertStack.template.json
-	@checkov -f infra/cdk/cdk.out/InfraStack.template.json
+	@checkov -f infra/cdk/cdk.out/PersonalWebsiteCertStack.assets.json
+	@checkov -f infra/cdk/cdk.out/PersonalWebsiteInfraStack.template.json
