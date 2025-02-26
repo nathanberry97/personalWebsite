@@ -15,15 +15,19 @@ import (
 func main() {
 	// Decare vars
 	const buildDir = "build/"
+
 	const name = "Nathan"
 	const fullName = name + " Berry"
-	const rssDescription = "Recent content for Nathan Berrys's personal blog"
-	const companyName = "Zest"
-	const companyURL = "https://www.zest.uk.com/"
-	const linkedinURL = "https://www.linkedin.com/in/nathan-berry-7b8191115/"
-	const githubURL = "https://github.com/nathanberry97"
+
 	const email = "nathanberry97@gmail.com"
 	const dns = "https://nathanberry.co.uk"
+	const rssDescription = "Recent content for Nathan Berry's personal blog"
+
+	const companyName = "Zest"
+	const companyURL = "https://www.zest.uk.com/"
+
+	const linkedinURL = "https://www.linkedin.com/in/nathan-berry-7b8191115/"
+	const githubURL = "https://github.com/nathanberry97"
 
 	// Generate reusable components and Compile SCSS
 	hashedCSS, err := scss.CompileSCSS("web/assets/scss/style.scss", filepath.Join(buildDir, "css"))

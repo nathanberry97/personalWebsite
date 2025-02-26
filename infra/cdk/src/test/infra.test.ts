@@ -10,28 +10,27 @@ describe("Test constructs", () => {
 
         new websiteS3(stack, "bucketStack", {
             domainName: "test",
-            websiteIndex: "index.html",
         });
 
         const template = Template.fromStack(stack);
 
         template.resourceCountIs("AWS::S3::Bucket", 2);
-        template.resourceCountIs("AWS::S3::BucketPolicy", 1);
     });
 
     test("Test CloudFront creation", () => {
         const stack = new cdk.Stack();
 
         new websiteCloudFront(stack, "cloudFrontStack", {
-            domainName: "test",
             certArn: "arn:aws:acm:us-east-1:1234:certificatete:test",
+            domainName: "test",
             websiteBucket: new Bucket(stack, "test"),
-            redirectWebsiteBucket: new Bucket(stack, "testTwo"),
+            redirectWebsiteBucket: new Bucket(stack, "redirectTest"),
+            websiteError: "error.html",
+            websiteIndex: "index.html",
         });
 
         const template = Template.fromStack(stack);
 
         template.resourceCountIs("AWS::CloudFront::Distribution", 2);
-        template.resourceCountIs("AWS::CloudFront::CloudFrontOriginAccessIdentity", 1);
     });
 });

@@ -15,7 +15,7 @@ jobs:
             - name: Install node
               uses: actions/setup-node@v4
               with:
-                  node-version: 20
+                  node-version: 22
 
             - name: Install go
               uses: actions/setup-go@v5
@@ -28,8 +28,9 @@ jobs:
                   make pre-commit
                   make setup
 
-            - name: Install Infra Dependencies
+            - name: Install Infra Dependencies and build
               run: |
+                  make installCDK
                   make buildCDK
 
             - name: Validate pre-commit
@@ -43,6 +44,15 @@ jobs:
             - name: Run checkov scan
               run: |
                   make checkovCDK
+              env:
+                  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+                  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+                  ACCOUNT_NUM: ${{secrets.ACCOUNT_NUM}}
+                  REGION: "eu-west-2"
+
+            - name: Run diff on infra
+              run: |
+                  make diffCDK
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

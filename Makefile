@@ -36,19 +36,28 @@ installCDK: ## Install AWS CDK dependencies
 	@cd ./infra/cdk && npm ci
 
 .PHONY: buildCDK
-buildCDK: installCDK ## Build AWS infrastructure
+buildCDK: ## Build AWS infrastructure
 	@cd infra/cdk && npm run build
 
 .PHONY: testCDK
 testCDK: ## Test AWS infrastructure
 	@cd infra/cdk && npm test
 
+.PHONY: diffCDK
+diffCDK: ## Differences of deployed and the local infrastructure
+	@cd infra/cdk && npm run cdk diff
+
+.PHONY: deployCDK
+deployCDK: ## Deploy AWS infrastructure
+	@cd ./infra/cdk && npx cdk deploy --all --require-approval never
+
 .PHONY: cleanCDK
 cleanCDK: ## Clean AWS infrastructure
 	@cd infra/cdk && npm run clean
+	@cd infra/cdk && rm -rf cdk.out/
 
 .PHONY: checkovCDK
 checkovCDK: ## Run Checkov for security analysis of IaC
-	@cd infra/cdk && npx cdk synth > cloudformation.yaml
-	@checkov -f infra/cdk/cloudformation.yaml
-	@rm -rf infra/cdk/cloudformation.yaml
+	@cd infra/cdk && npm run cdk synth
+	@checkov -f infra/cdk/cdk.out/PersonalWebsiteCertStack.assets.json
+	@checkov -f infra/cdk/cdk.out/PersonalWebsiteInfraStack.template.json
