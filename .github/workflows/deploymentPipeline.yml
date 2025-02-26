@@ -27,6 +27,7 @@ jobs:
 
             - name: Install Dependencies
               run: |
+                  make installCDK
                   sudo apt-get update
                   sudo apt-get install pandoc
                   sudo apt-get install podman
@@ -37,8 +38,7 @@ jobs:
                   make buildCDK
 
             - name: cdk deploy
-              run: |
-                make deployCDK
+              run: make deployCDK
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

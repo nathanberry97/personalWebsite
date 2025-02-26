@@ -28,8 +28,9 @@ jobs:
                   make pre-commit
                   make setup
 
-            - name: Install Infra Dependencies
+            - name: Install Infra Dependencies and build
               run: |
+                  make installCDK
                   make buildCDK
 
             - name: Validate pre-commit
