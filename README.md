@@ -35,6 +35,7 @@ Usage:
   installCDK            Install AWS CDK dependencies
   buildCDK              Build AWS infrastructure
   testCDK               Test AWS infrastructure
+  diffCDK               Differences between the deployed AWS infra and the local CDK
   cleanCDK              Clean AWS infrastructure
   checkovCDK            Run Checkov for security analysis of IaC
 ```
@@ -81,6 +82,7 @@ commands:
 make installCDK
 make buildCDK
 make testCDK
+make diffCDK
 make cleanCDK
 make checkovCDK
 ```
