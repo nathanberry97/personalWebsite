@@ -44,8 +44,12 @@ testCDK: ## Test AWS infrastructure
 	@cd infra/cdk && npm test
 
 .PHONY: diffCDK
-diffCDK: ## Differences between the deployed AWS infra and the local CDK
+diffCDK: ## Differences of deployed and the local infrastructure
 	@cd infra/cdk && npm run cdk diff
+
+.PHONY: deployCDK
+deployCDK: ## Deploy AWS infrastructure
+	@cd ./infra/cdk && npx cdk deploy --all --require-approval never
 
 .PHONY: cleanCDK
 cleanCDK: ## Clean AWS infrastructure

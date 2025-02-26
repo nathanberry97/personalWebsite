@@ -37,12 +37,8 @@ jobs:
                   make buildCDK
 
             - name: cdk deploy
-              uses: youyo/aws-cdk-github-actions@v2
-              with:
-                  cdk_subcommand: "deploy"
-                  working_dir: "./infra/cdk"
-                  cdk_args: "--all --require-approval never"
-                  actions_comment: false
+              run: |
+                make deployCDK
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
                   AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}

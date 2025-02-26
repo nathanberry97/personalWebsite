@@ -32,12 +32,13 @@ Usage:
   compile               Compile blog posts into HTML
   local                 Run a local web server to host website locally
   clean                 Clean up build artifacts
-  installCDK            Install AWS CDK dependencies
-  buildCDK              Build AWS infrastructure
-  testCDK               Test AWS infrastructure
-  diffCDK               Differences between the deployed AWS infra and the local CDK
-  cleanCDK              Clean AWS infrastructure
-  checkovCDK            Run Checkov for security analysis of IaC
+  installCDK            Install AWS CDK dependencies
+  buildCDK              Build AWS infrastructure
+  testCDK               Test AWS infrastructure
+  diffCDK               Differences of deployed and the local infrastructure
+  deployCDK             Deploy AWS infrastructure
+  cleanCDK              Clean AWS infrastructure
+  checkovCDK            Run Checkov for security analysis of IaC
 ```
 
 ## Website
@@ -83,12 +84,14 @@ make installCDK
 make buildCDK
 make testCDK
 make diffCDK
+make deployCDK
 make cleanCDK
 make checkovCDK
 ```
 
 > **Note** you need to set the following environment variables:
 >
+> - `export DOMAIN_NAME=xxxxxxxxxxxx`
 > - `export ACCOUNT_NUM=xxxxxxxxxxxx`
 > - `export REGION=eu-west-2`
 
