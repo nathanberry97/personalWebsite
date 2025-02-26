@@ -19,6 +19,7 @@ export class CertStack extends cdk.Stack {
 
         this.__certArn = new Certificate(this, "WebsiteCert", {
             domainName: props.domainName,
+            subjectAlternativeNames: [`www.${props.domainName}`],
             validation: CertificateValidation.fromDns(hostedZone),
         }).certificateArn;
     }

@@ -50,6 +50,7 @@ diffCDK: ## Diff AWS infrastructure
 .PHONY: cleanCDK
 cleanCDK: ## Clean AWS infrastructure
 	@cd infra/cdk && npm run clean
+	@cd infra/cdk && rm -rf cdk.out/
 
 .PHONY: checkovCDK
 checkovCDK: ## Run Checkov for security analysis of IaC

@@ -17,13 +17,13 @@ requiredEnvVars.forEach((envVar) => {
 const app = new cdk.App();
 const domainName: string = process.env.DOMAIN_NAME!;
 
-const certStack = new CertStack(app, "CertStack", {
+const certStack = new CertStack(app, "PersonalWebsiteCertStack", {
     crossRegionReferences: true,
     domainName,
     env: { account: process.env.ACCOUNT_NUM, region: "us-east-1" },
 });
 
-new InfraStack(app, "personalWebsiteInfraStack", {
+new InfraStack(app, "PersonalWebsiteInfraStack", {
     crossRegionReferences: true,
     certArn: certStack.certArn,
     domainName,

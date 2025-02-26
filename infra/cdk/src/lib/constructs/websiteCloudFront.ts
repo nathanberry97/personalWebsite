@@ -2,22 +2,20 @@ import {
     AccessLevel,
     CachePolicy,
     Distribution,
-    DistributionProps,
-    FunctionEventType,
     ViewerProtocolPolicy
 } from "aws-cdk-lib/aws-cloudfront";
 import { Bucket } from "aws-cdk-lib/aws-s3";
 import { Certificate } from "aws-cdk-lib/aws-certificatemanager";
 import { Construct } from "constructs";
-import { Function, FunctionCode } from "aws-cdk-lib/aws-cloudfront";
-import { S3BucketOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
+import { S3BucketOrigin, S3StaticWebsiteOrigin } from "aws-cdk-lib/aws-cloudfront-origins";
 
 interface websiteCloudFrontProps {
-    websiteError: string;
-    websiteIndex: string;
     certArn: string;
     domainName: string;
+    redirectWebsiteBucket: Bucket;
     websiteBucket: Bucket;
+    websiteError: string;
+    websiteIndex: string;
 }
 
 export class websiteCloudFront extends Construct {
@@ -29,11 +27,16 @@ export class websiteCloudFront extends Construct {
 
         const cert = Certificate.fromCertificateArn(this, "Cert", props.certArn);
 
-        this.__websiteDistribution = this.__createDistribution("CloudfrontDistribution", {
+        this.__websiteDistribution = new Distribution(this, "CloudfrontDistribution", {
             defaultRootObject: props.websiteIndex,
             errorResponses: [
                 {
                     httpStatus: 404,
+                    responseHttpStatus: 404,
+                    responsePagePath: `/${props.websiteError}`,
+                },
+                {
+                    httpStatus: 403,
                     responseHttpStatus: 404,
                     responsePagePath: `/${props.websiteError}`,
                 },
@@ -49,39 +52,14 @@ export class websiteCloudFront extends Construct {
             },
         });
 
-        this.__redirectWebsiteDistribution = this.__createDistribution("RedirectWebsiteDistribution", {
+        this.__redirectWebsiteDistribution = new Distribution(this, "RedirectWebsiteDistribution", {
             domainNames: [`www.${props.domainName}`],
             certificate: cert,
             defaultBehavior: {
-                origin: S3BucketOrigin.withOriginAccessControl(props.websiteBucket, {
-                    originAccessLevels: [AccessLevel.READ],
-                }),
+                origin: new S3StaticWebsiteOrigin(props.redirectWebsiteBucket),
                 viewerProtocolPolicy: ViewerProtocolPolicy.REDIRECT_TO_HTTPS,
-                functionAssociations: [{
-                    eventType: FunctionEventType.VIEWER_REQUEST,
-                    function: this.__redirectFn(props.domainName),
-                }]
             },
         });
-    }
-
-    private __createDistribution(resourceName: string, distributionProps: DistributionProps): Distribution {
-        return new Distribution(this, resourceName, distributionProps);
-    }
-
-    private __redirectFn(domainName: string): Function {
-        return new Function(this, "RedirectFn", {
-            code: FunctionCode.fromInline(`
-                function handler(event) {
-                    var response = {
-                        statusCode: 301,
-                        statusDescription: "Redirecting to non-www",
-                        headers: { "location": { "value": "https://${domainName}" } }
-                    };
-                    return response;
-                }
-            `),
-        })
     }
 
     public get websiteDistribution(): Distribution {

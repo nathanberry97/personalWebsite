@@ -41,7 +41,7 @@ jobs:
               with:
                   cdk_subcommand: "deploy"
                   working_dir: "./infra/cdk"
-                  cdk_args: "--require-approval never"
+                  cdk_args: "--all --require-approval never"
                   actions_comment: false
               env:
                   AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}

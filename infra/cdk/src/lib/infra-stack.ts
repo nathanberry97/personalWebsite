@@ -31,6 +31,7 @@ export class InfraStack extends cdk.Stack {
             websiteIndex,
             domainName: props.domainName,
             certArn: props.certArn,
+            redirectWebsiteBucket: buckets.redirectWebsiteBucket,
             websiteBucket: buckets.websiteBucket,
         });
 
