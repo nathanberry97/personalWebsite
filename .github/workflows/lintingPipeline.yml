@@ -28,16 +28,23 @@ jobs:
                   make pre-commit
                   make setup
 
-            - name: Install Infra Dependencies and build
+            - name: Install Dependencies
               run: |
                   make installCDK
-                  make buildCDK
+                  npm install -g sass
+                  sudo apt-get update
+                  sudo apt-get install pandoc
 
             - name: Validate pre-commit
               run: |
                   pre-commit run --all
 
-            - name: Run Infra Tests
+            - name: Run app Build & Tests
+              run: |
+                  make compile
+                  make test
+
+            - name: Run Infra Build & Tests
               run: |
                   make testCDK
 
