@@ -9,6 +9,10 @@ explain:
 pre-commit: ## Install pre-commit hooks
 	@pre-commit install
 
+.PHONY: test
+test: ## Unit test go code
+	@go test -v -parallel 4 ./internal/...
+
 .PHONY: setup
 setup: clean ## Setup build dir and copy over assets
 	@mkdir -p build/css build/blog
@@ -40,7 +44,7 @@ buildCDK: ## Build AWS infrastructure
 	@cd infra/cdk && npm run build
 
 .PHONY: testCDK
-testCDK: ## Test AWS infrastructure
+testCDK: buildCDK ## Test AWS infrastructure
 	@cd infra/cdk && npm test
 
 .PHONY: diffCDK

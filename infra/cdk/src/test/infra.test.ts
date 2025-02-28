@@ -1,6 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 import { Bucket } from "aws-cdk-lib/aws-s3";
-import { Template } from "aws-cdk-lib/assertions";
+import { Match, Template } from "aws-cdk-lib/assertions";
 import { websiteS3 } from "../lib/constructs/websiteS3";
 import { websiteCloudFront } from "../lib/constructs/websiteCloudFront";
 
@@ -15,6 +15,33 @@ describe("Test constructs", () => {
         const template = Template.fromStack(stack);
 
         template.resourceCountIs("AWS::S3::Bucket", 2);
+
+        template.hasResourceProperties("AWS::S3::Bucket", Match.objectLike({
+            BucketName: "assets.test",
+            OwnershipControls: {
+                Rules: [{ ObjectOwnership: "BucketOwnerEnforced" }]
+            },
+            PublicAccessBlockConfiguration: {
+                BlockPublicAcls: true,
+                BlockPublicPolicy: true,
+                IgnorePublicAcls: true,
+                RestrictPublicBuckets: true
+            },
+        }));
+
+        template.hasResourceProperties("AWS::S3::Bucket", Match.objectLike({
+            BucketName: "www.test",
+            OwnershipControls: {
+                Rules: [{ ObjectOwnership: "BucketOwnerEnforced" }]
+            },
+            PublicAccessBlockConfiguration: {
+                BlockPublicAcls: true,
+                BlockPublicPolicy: true,
+                IgnorePublicAcls: true,
+                RestrictPublicBuckets: true
+            },
+            WebsiteConfiguration: { RedirectAllRequestsTo: { HostName: "test" } },
+        }));
     });
 
     test("Test CloudFront creation", () => {
@@ -32,5 +59,32 @@ describe("Test constructs", () => {
         const template = Template.fromStack(stack);
 
         template.resourceCountIs("AWS::CloudFront::Distribution", 2);
+
+        template.hasResourceProperties("AWS::CloudFront::Distribution", Match.objectLike({
+            DistributionConfig: {
+                Aliases: ["test"],
+                CustomErrorResponses: [
+                    {
+                        ErrorCode: 404,
+                        ResponseCode: 404,
+                        ResponsePagePath: "/error.html"
+                    },
+                    {
+                        ErrorCode: 403,
+                        ResponseCode: 404,
+                        ResponsePagePath: "/error.html"
+                    }
+                ],
+                DefaultCacheBehavior: {
+                    Compress: true,
+                    ViewerProtocolPolicy: "redirect-to-https"
+                },
+                DefaultRootObject: "index.html",
+            }
+        }));
+
+        template.hasResourceProperties("AWS::CloudFront::Distribution", Match.objectLike({
+            DistributionConfig: { Aliases: ["www.test"] }
+        }));
     });
 });
