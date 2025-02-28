@@ -14,8 +14,12 @@ import (
 
 func GetBlogPosts() ([]schema.BlogPost, error) {
 	postsDir := "web/posts"
-	var blogPosts []schema.BlogPost
 
+	if _, err := os.Stat(postsDir); os.IsNotExist(err) {
+		return nil, fmt.Errorf("Directory %s does not exist", postsDir)
+	}
+
+	var blogPosts []schema.BlogPost
 	files, err := os.ReadDir(postsDir)
 	if err != nil {
 		return nil, fmt.Errorf("Failed to read directory %s: %v", postsDir, err)
