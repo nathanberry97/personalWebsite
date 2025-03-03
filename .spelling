@@ -41,6 +41,7 @@ cli
 colorcolumn
 config
 createNewSession
+css
 ctrl-f
 dotfiles
 fzf
@@ -58,10 +59,12 @@ netrw
 nom
 nvim
 nvim-cmp
+os
 pandoc
 repo
 repos
 ripgrep
+scss
 selectRepo
 soydevs
 structs

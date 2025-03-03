@@ -3,7 +3,7 @@
 ## 2024-11-23
 
 ```
-Focus on the process not the outcome.
+Focus on the process not the outcome
 ```
 
 This past year I thought I could have achieved so much more.

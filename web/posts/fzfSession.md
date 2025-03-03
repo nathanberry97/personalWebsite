@@ -3,7 +3,7 @@
 ## 2024-02-18
 
 ```
-Forget about automating your job, automate your terminal.
+Forget about automating your job, automate your terminal
 ```
 
 For the longest time I've been using tmux and setting aliases to open up my

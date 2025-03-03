@@ -3,7 +3,7 @@
 ## 2023-12-28
 
 ```
-Making plugin creation easy even dummies can do it.
+Making plugin creation easy even dummies can do it
 ```
 
 Over the Christmas period I've been doing my yearly review of my neovim config
