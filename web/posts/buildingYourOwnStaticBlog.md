@@ -65,7 +65,7 @@ When planning how I wanted my current solution to work I decided to just use
 Go's standard library.
 Admittedly I am using [pandoc](https://pandoc.org/) and
 [sass](https://sass-lang.com/) to compile my scss and markdown
-posts, but I do that using *os/exec* so that is written in Go write?
+posts, but I do that using *os/exec* so that is written in Go, right?
 
 The main reason for this is that I prefer only having to keep Go
 updated and not worry about the dependencies of imported packages.
@@ -177,9 +177,8 @@ func ConvertMarkdown(inputDir, outputDir, templatePath string) error {
 
 There it is, a brief overview of how I've updated my personal blog.
 Admittedly there are some things I could improve.
-But I think at this moment in time I'm not that concerned, as it is
-good enough for what I need, and it is a massive improvement to how the
-project worked previously.
+But I think at this moment in time I'm not that concerned, as it is a massive
+improvement to how the project worked previously.
 
 ### Thoughts now the rewrite is complete
 
