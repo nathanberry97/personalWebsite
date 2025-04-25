@@ -93,7 +93,7 @@ But if you want a guide here is one by
 [Alexotos](https://www.alexotos.com/how-to-solder-a-keyboard-the-basics/)
 going over the basics of soldering.
 
-The soldering iron I used was the TS101 soldering iron which I was quite
+The soldering iron I used was the TS101 which I was quite
 impressed with, as it can use USB-C to power the unit and it heats up
 pretty quick.
 In terms of everything else you'll need you can refer to the guide above.
@@ -112,12 +112,12 @@ Overall I would highly recommend building your own keyboard considering this is
 how you interact with your computer, so why wouldn't you want to make the
 experience more enjoyable?
 
-Also I suggest that you go with the soldering your switches to the PCB as
+Also I suggest that you go with soldering your switches to the PCB as
 this opens up your options when it comes to keyboard layout or perhaps look into
 mill-max.
 For example I have a split backspace which Mode don't offer if you were to go
 with their hotswap boards, plus I feel it makes the building process far more
-personal.
+enjoyable.
 
 Whatever you end up deciding I hope that this article has helped to ease any
 nerves you may have.
