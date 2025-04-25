@@ -1,4 +1,5 @@
 APOD
+Alexotos
 CDK
 CLI
 CloudFront
@@ -10,14 +11,17 @@ EventBridge
 Fzf
 GameBoy-like
 Golang
+HHKB
 IaC
 JS
 LSP
 LSPs
 Lua
+MX
 NERDTree
 Neovim
 Netrw
+Norbauer
 Pandoc
 Playdate
 Primeagen's
@@ -29,7 +33,10 @@ Rg
 Route53
 S3
 SCSS
+SixtyFive
+TS101
 TUI
+Taeha
 Twilio
 apod
 autocompletion
@@ -47,7 +54,9 @@ dotfiles
 fzf
 fzf-sessioniser
 github
+hotswap
 html
+keycaps
 keymap
 linkedin
 lsp
@@ -61,6 +70,7 @@ nvim
 nvim-cmp
 os
 pandoc
+pcb
 repo
 repos
 ripgrep
