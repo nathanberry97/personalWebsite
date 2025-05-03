@@ -25,11 +25,12 @@ compile: setup ## Compile blog posts into HTML
 
 .PHONY: local
 local: compile ## Run a local web server to host website locally
-	@docker build -t webserver_personal_website -f infra/docker/Dockerfile .
-	@docker run --name personal_website -dit \
+	@podman build -t webserver_personal_website -f infra/container/Containerfile
+	@podman run --name personal_website -dit \
   	 -p 8080:80 \
   	 -v ${PWD}/build:/usr/local/apache2/htdocs/:Z \
-  	 webserver_personal_website
+	 --replace \
+  	 webserver_personal_website \
 
 .PHONY: clean
 clean: ## Clean up build artifacts
