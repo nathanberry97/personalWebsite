@@ -1,3 +1,5 @@
+1TB
+32GB
 APOD
 Alexotos
 CDK
@@ -17,7 +19,9 @@ JS
 LSP
 LSPs
 Lua
+M1
 MX
+Macbook
 NERDTree
 Neovim
 Netrw
@@ -31,6 +35,7 @@ RSS
 RedHat
 Rg
 Route53
+Ryzen
 S3
 SCSS
 SixtyFive
@@ -38,6 +43,7 @@ TS101
 TUI
 Taeha
 Twilio
+ansi
 apod
 autocompletion
 aws
@@ -59,6 +65,7 @@ html
 keycaps
 keymap
 linkedin
+linux
 lsp
 lua
 nano
@@ -71,6 +78,8 @@ nvim-cmp
 os
 pandoc
 pcb
+pre-ordering
+repairability
 repo
 repos
 ripgrep
