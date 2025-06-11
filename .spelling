@@ -38,6 +38,7 @@ Route53
 Ryzen
 S3
 SCSS
+SaaS
 SixtyFive
 TS101
 TUI
@@ -57,6 +58,7 @@ createNewSession
 css
 ctrl-f
 dotfiles
+dumbtab
 fzf
 fzf-sessioniser
 github
@@ -83,6 +85,7 @@ repairability
 repo
 repos
 ripgrep
+rss2go
 scss
 selectRepo
 soydevs
@@ -93,5 +96,6 @@ tmux
 tmux-sessioniser
 tmux-sessionizer
 treesitter
+tui
 webpage
 webpages
