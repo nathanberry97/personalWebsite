@@ -16,7 +16,7 @@ their opinions.
 Remember you are the one who decides if a side project is successful or not,
 don't worry if you're the only user.
 As with many of my side projects I'm the only user, if you have an idea and
-you think would be useful create it.
+you think it would be useful create it.
 
 For example
 [dumbtab](https://github.com/nathanberry97/dumbtab.nvim),
@@ -30,5 +30,5 @@ I remember a few years ago thinking that I'll get judged by my peers but most
 of them don't care.
 Your biggest critic is yourself, you just have to ignore any self doubts you
 may have and just start creating.
-You have to start some where, so if that is a silly little tui app you have
+You have to start somewhere, so if that is a silly little tui app you have
 in mind or even a SaaS all I have to say is best of luck.
