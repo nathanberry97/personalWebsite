@@ -18,6 +18,7 @@ IaC
 JS
 LSP
 LSPs
+Linkedin
 Lua
 M1
 MX
@@ -51,6 +52,7 @@ aws
 bouldering
 cd
 checkIfSessionExists
+citymapper
 cli
 colorcolumn
 config
@@ -58,14 +60,21 @@ createNewSession
 css
 ctrl-f
 dotfiles
+dumbify
+dumbing
+dumbphone
 dumbtab
+ebooks
+ebooks
 fzf
 fzf-sessioniser
 github
+greyscale
 hotswap
 html
 keycaps
 keymap
+lightphone
 linkedin
 linux
 lsp
@@ -81,6 +90,7 @@ os
 pandoc
 pcb
 pre-ordering
+reddit
 repairability
 repo
 repos
@@ -97,5 +107,8 @@ tmux-sessioniser
 tmux-sessionizer
 treesitter
 tui
+url
 webpage
 webpages
+whatsapp
+youtube
