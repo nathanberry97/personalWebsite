@@ -1,29 +1,28 @@
 # Modern dumbphone
 
-## 2025-07-08
+## 2025-07-14
 
 ```
 How to be focused in a distracted world
 ```
 
-Recently I've gone and revamped how my smart phone looks and works, I wanted
+Recently I've revamped how my smart phone looks and works, I wanted
 something which gave me the vibe of the
 [light phone 3](https://www.thelightphone.com/lightiii)
 while still having all the functionality I need for my day to day life.
-The phone needed to be able to do have the following: ebooks, city mapper, and
+The phone needed to have the following: ebooks, city mapper, and
 the ability to still work as a mobile phone.
 
 In terms of social media I don't currently have any apart from Linkedin which
 I only use for work.
-Which is another story why I don't use it, but if you do have social media I
-would highly recommend removing it from your device and only accessing it
-through a web browser.
+If you do have social media I would highly recommend removing it from your
+device and only accessing it through a web browser.
 As these applications are high addictive and defeat the purpose of a dumbphone.
 
 Lastly I needed to set it up on my iPhone 15, as this is the phone I currently
 have and don't want to buy a new device due to wanting to simplify my phone.
 In the end I think it turned out pretty well, I'm happy with the results and
-it has helped a lot with getting back into reading.
+it has helped a lot with getting me back into reading.
 The rest of the article will be going through how I achieved this and my
 final thoughts.
 
@@ -34,21 +33,21 @@ final thoughts.
 The app launcher I use is called [dumbify](https://dumbifyapp.com/) which is
 quite nice, basically it is a widget on the home screen with text rather than
 icons for the application.
-For example where is says messages this would open up my messaging app in this
+For example where is says messages this would open up my messaging app, in this
 case that would be whatsapp and so on.
 I quite like this way of launching my apps as it replicates how the lightphone
-works, and I feel like it is a lot less distracting as there aren't any
-notifications icons above the app.
+works, and it is a lot less distracting as there aren't any notifications
+icons above the app.
 
 There are a few things you need to do to get dumbify working well out of the
 box which are the following: update your wallpaper, hide the search bar, and
 turn on reduced motion.
 The reason for the wallpaper is to hide the app bar at the bottom of the phone,
 I like to hide the search bar mainly due to thinking it looks better, and
-reduced motion is to essential hide the fact dumbify needs to first open itself
-up before jumping to the new app.
+reduced motion is to essential hide the fact dumbify needs to open first before
+jumping to the application.
 
-To get the background to match the app tray I just updated the phone background
+To get the background to match the app tray I updated the phone background
 colour to the following **#242424**, as this is the exact colour of the widget
 and the app tray.
 Hiding the search bar you need to go to **settings -> home screen & app library
@@ -57,9 +56,9 @@ Lastly to enable reduced motion you need to go to **settings -> accessibility ->
 motion** and then enable reduce motion.
 
 Within dumbify you can also make the widget jump to apps which it doesn't
-already have saved on the list of default apps. I have it setup only the following
-two: kindle, and city mapper. If you are interested in the app url schema they
-are the following **kindle://** and **citymapper://** this will allow you to
+already have saved on the list of default apps. I have it setup for the following:
+kindle, and city mapper. If you are interested in the app url schema they
+are **kindle://** and **citymapper://** this will allow you to
 create the custom links.
 
 ### E Ink like display
@@ -76,7 +75,7 @@ and turned on greyscale.
 The matte screen protector is the only thing you need to make your phone
 more like the kindle screen, as this greatly increases the ability to read books
 from your phone for long period of times.
-Lastly the greyscale is to just make every other app have no colour like my
+Lastly greyscale is to just make every other app have no colour like my
 kindle, plus I find it makes my phone less addictive.
 To enable greyscale on your phone you need to go to **settings -> accessibility
 -> accessibility shortcuts** and enable **colour filters**, then you are able
@@ -85,6 +84,7 @@ right of the phone.
 
 Since making my phone screen try and replicate E Ink displays I have been able
 to read far more books than I would usually do on average.
+So far one book per week!
 Out of all the things I've done to dumb down my phone I would say this is
 probably the most beneficial.
 
@@ -94,13 +94,13 @@ Lastly I wanted a way to easily add friction to apps or websites which I spend
 too much time on.
 To do this I went through my phone and deleted any apps which is designed to
 waste your time or aren't utilities.
-Also I disabled all notifications on my phone as I don't want my phone to take
+Also I disabled all notifications on my phone, as I don't want my phone to take
 my attention away from the thing I'm currently working on.
 
 For me I always spent too much time scrolling through reddit or watching youtube
 videos on my phone so I went about blocking them.
 To do this you go to **settings -> screen time -> content & privacy restrictions**
-enable this, then go to **app store, media, web & games -> web content**
+and enable this, then go to **app store, media, web & games -> web content**
 which you will be able to add never allow websites.
 I currently have mine set to: youtube.com, reddit.com, linkedin.com.
 
