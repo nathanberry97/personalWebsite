@@ -15,7 +15,7 @@ others should too.
 Since coming off social media I've felt far more present with my time, I no
 longer feel the need to post stuff which quite frankly was to get likes from
 people who were more like acquaintances than actual friends.
-One of my main issues with social media is the "algorithm" all these platforms 
+One of my main issues with social media is the "algorithm" all these platforms
 use to keep you hooked, for example you go to look at a post your friend has
 written and next thing you know it has been 2 hours.
 
