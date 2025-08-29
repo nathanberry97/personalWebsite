@@ -56,7 +56,7 @@ func main() {
 	blogPostsMetadata, err := components.Metadata(schema.GetMetadataData(
 		hashedCSS,
 		fullName,
-		[]string{"scrambleHeader.js", "toTop.js"},
+		[]string{"toTop.js"},
 	))
 	if err != nil {
 		log.Fatal(err)
@@ -106,7 +106,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = components.Blog(generalMetadata, navbar, blogFeed, buildDir)
+	err = components.Blog(blogPostsMetadata, navbar, blogFeed, buildDir)
 	if err != nil {
 		log.Fatal(err)
 	}
