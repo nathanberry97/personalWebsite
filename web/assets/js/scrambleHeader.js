@@ -36,7 +36,7 @@ function ScrambleText(element, text, { speed = 4, scramble = 10, intenseStart = 
 
 document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll("h1").forEach((header) => {
-        const target = header.querySelector(".name") || header;
+        const target = header.querySelector(".name");
         ScrambleText(target, target.textContent);
     });
 });
