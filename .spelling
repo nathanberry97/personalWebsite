@@ -7,6 +7,7 @@ CLI
 CloudFront
 Config
 Ctrl-f
+DevEx
 ECR
 ECS
 EventBridge
@@ -30,6 +31,7 @@ Netrw
 Norbauer
 Pandoc
 Playdate
+Primeagen
 Primeagen's
 Pygame
 RHCSA
@@ -46,6 +48,7 @@ TS101
 TUI
 Taeha
 Twilio
+alacritty
 ansi
 apod
 autocompletion
@@ -69,7 +72,9 @@ ebooks
 ebooks
 fzf
 fzf-sessioniser
+ghostty
 github
+goodun
 greyscale
 hotswap
 html
@@ -109,7 +114,9 @@ tmux-sessionizer
 treesitter
 tui
 url
+vscode
 webpage
 webpages
 whatsapp
+wsl
 youtube
