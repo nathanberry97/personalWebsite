@@ -19,7 +19,7 @@ func main() {
 	const name = "Nathan"
 	const fullName = name + " Berry"
 
-	const email = "nathanberry97@gmail.com"
+	const email = "hey@nathanberry.co.uk"
 	const dns = "https://nathanberry.co.uk"
 	const rssDescription = "Recent content for Nathan Berry's personal blog"
 
