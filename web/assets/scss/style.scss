@@ -113,14 +113,14 @@ a {
 
 main,
 .blogPosts {
-  max-width: 40%;
-  min-width: 800px;
   margin-left: auto;
   margin-right: auto;
   margin-top: 0px;
 }
 
 main {
+  max-width: 40%;
+  min-width: 800px;
   padding-top: 125px;
 
   .blog,
@@ -266,6 +266,9 @@ main.blogFeed {
 
 // 04. BLOG POSTS
 .blogPosts {
+  max-width: 30%;
+  min-width: 600px;
+
   h1 {
     color: $colour-text-secondary;
     padding-top: 100px;
@@ -362,13 +365,9 @@ main.error {
     left: 27.5%;
   }
 
-  main,
-  .blogPosts {
+  main {
     max-width: 50%;
     min-width: 700px;
-  }
-
-  main {
     padding-top: 125px;
   }
 
@@ -450,13 +449,9 @@ main.error {
     }
   }
 
-  main,
-  .blogPosts {
+  main {
     max-width: 75%;
     min-width: 500px;
-  }
-
-  main {
     padding-top: 85px;
   }
 
