@@ -23,8 +23,8 @@ func main() {
 	const dns = "https://nathanberry.co.uk"
 	const rssDescription = "Recent content for Nathan Berry's personal blog"
 
-	const companyName = "Zest"
-	const companyURL = "https://www.zest.uk.com/"
+	const companyName = "GDS"
+	const companyURL = "https://www.gov.uk/government/organisations/government-digital-service"
 
 	const linkedinURL = "https://www.linkedin.com/in/nathan-berry-7b8191115/"
 	const githubURL = "https://github.com/nathanberry97"
