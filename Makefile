@@ -27,7 +27,7 @@ compile: setup ## Compile blog posts into HTML
 local: compile ## Run a local web server to host website locally
 	@podman build -t webserver_personal_website -f infra/container/Containerfile
 	@podman run --name personal_website -dit \
-  	 -p 8000:80 \
+  	 -p 8080:80 \
   	 -v ${PWD}/build:/usr/local/apache2/htdocs/:Z \
 	 --replace \
   	 webserver_personal_website \
