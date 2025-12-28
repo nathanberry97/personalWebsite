@@ -1,5 +1,6 @@
 1TB
 32GB
+APIs
 APOD
 Alexotos
 CDK
@@ -14,6 +15,7 @@ ECS
 EventBridge
 FireFox
 Fzf
+GDS
 GameBoy-like
 Golang
 HHKB
@@ -99,6 +101,7 @@ nvim-cmp
 os
 pandoc
 pcb
+playdate
 pre
 pre-ordering
 reddit
@@ -109,7 +112,9 @@ ripgrep
 rss2go
 scss
 selectRepo
+skynet
 soydevs
+stateful
 structs
 switchSession
 tablines
@@ -125,4 +130,3 @@ webpages
 whatsapp
 wsl
 youtube
-GDS
