@@ -57,7 +57,7 @@ func GetMetadataData(hashedCSS, fullName string, JSFiles []string) MetadataData 
 	return MetadataData{
 		Title:       fullName,
 		Description: "Software Engineer passionate about command-line development and technology.",
-		ThemeColour: "#111016",
+		ThemeColour: "#191a1a",
 		CSSFile:     hashedCSS,
 		JSFiles:     JSFiles,
 	}
