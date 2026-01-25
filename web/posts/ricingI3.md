@@ -21,7 +21,7 @@ first place: no built in settings management, screen tearing, or a bar displayin
 basic information.
 
 I've now fixed these "issues" I've listed above by creating a custom rofi script
-to manage settings; it handles bluetooth, network, audio, and powering off my
+to manage settings: it handles bluetooth, network, audio, and powering off my
 machine.
 Then I configured [picom](https://github.com/yshui/picom)
 to stop the screen tearing which use to drive me crazy.
@@ -36,5 +36,5 @@ I must admit I have really enjoyed ricing my config, I think setting up
 everything to work how you want to is a great experience.
 When using a window manager it feels how computers should just work, when
 compared to the average desktop experience.
-If you are interested in my current config and setting up something like this
+If you're interested in my current config and setting up something like this
 yourself here are my [dotfiles](https://github.com/nathanberry97/dotfiles).
