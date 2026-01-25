@@ -1,4 +1,5 @@
-$font-family-base: "JetBrains Mono", serif;
+$font-family-header: "JetBrains Mono", serif;
+$font-family-base: "Inter", serif;
 
 $colour-bg-primary: #111016;
 $colour-bg-secondary: #262330;
@@ -45,6 +46,7 @@ h1,
 h2,
 h3 {
   color: $colour-text-header;
+  font-family: $font-family-header;
 }
 
 h2 {
@@ -144,6 +146,7 @@ main {
 
 // 01. NAVBAR STYLING
 header.navbar {
+  font-family: $font-family-header;
   position: absolute;
   overflow-x: hidden !important;
   top: 10px;

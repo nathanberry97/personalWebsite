@@ -59,6 +59,7 @@ ansi
 apod
 autocompletion
 aws
+bluetooth
 bouldering
 cd
 checkIfSessionExists
@@ -84,6 +85,7 @@ goodun
 greyscale
 hotswap
 html
+i3
 keycaps
 keymap
 lightphone
@@ -101,7 +103,9 @@ nvim-cmp
 os
 pandoc
 pcb
+picom
 playdate
+polybar
 pre
 pre-ordering
 reddit
@@ -109,6 +113,7 @@ repairability
 repo
 repos
 ripgrep
+rofi
 rss2go
 scss
 selectRepo
