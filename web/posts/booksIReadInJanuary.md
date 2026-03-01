@@ -1,4 +1,4 @@
-# Books I read in January 2026
+# Books I read in January
 
 ## 2026-02-01
 
@@ -63,5 +63,5 @@ novels within the series.
 That is all the books I've read throughout the month and think I've made
 a good start to the year.
 Looking forward to the books I'll be reading this month, there may be a few
-more non fiction and I would be surprised if I don't at least read the 3rd
+more non-fiction and I would be surprised if I don't at least read the 3rd
 book in The Thursday Murder Club.
