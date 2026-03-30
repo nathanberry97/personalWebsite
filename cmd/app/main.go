@@ -13,7 +13,6 @@ import (
 )
 
 func main() {
-	// Decare vars
 	const buildDir = "build/"
 
 	const name = "Nathan"
