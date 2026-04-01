@@ -8,8 +8,8 @@ Books I've read throughout March 2026
 
 Throughout March I read a total of 3 books, on the face of it seems like in
 April I'll only read 2 books and so on...
-But I finally got around to reading the fourth book of dune and two more
-Sherlock Holmes novels.
+But I finally got around to reading the fourth book in the dune series and two
+more Sherlock Holmes novels.
 So it might not be as much as I've been reading throughout the other months but
 I still really enjoyed each of the books I read this month.
 In terms of my yearly total I've now read 12 books throughout 2026.
@@ -24,13 +24,13 @@ continuation of the third novel.
 Overall I really enjoyed this book and looking forward to the next in the
 series.
 
-### The Hound of the Baskervilles
+### The Hound of the Baskerville
 
-The next book I read this month was The Hound of the Baskervilles which is the
+The next book I read this month was The Hound of the Baskerville which is the
 third Sherlock Holmes book I've read this year.
 Out of the others I read including the next book I would probably say this has
 been my favourite out of the series so far.
-It was a nice change of pace having Watson look out for Henry Baskervilles
+It was a nice change of pace having Watson look out for Henry Baskerville
 while Sherlock is "still in London" working on other cases.
 
 ### The Valley of Fear
