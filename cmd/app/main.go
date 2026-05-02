@@ -36,8 +36,7 @@ func main() {
 
 	navbar, err := components.Navbar([]schema.NavbarData{
 		{Href: "/", Text: "[h] home"},
-		{Href: "/blog.html", Text: "[b] blog"},
-		{Href: githubURL, Text: "[g] github"},
+		{Href: "/blog.html", Text: "[w] writing"},
 	})
 	if err != nil {
 		log.Fatal(err)

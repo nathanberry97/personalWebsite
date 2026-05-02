@@ -30,7 +30,7 @@ func Home(metadata, navbar, feed template.HTML, about schema.AboutData, buildDir
 	err = tmpl.ExecuteTemplate(
 		file,
 		"base.tmpl",
-		map[string]interface{}{
+		map[string]any{
 			"Metadata":    metadata,
 			"Navbar":      navbar,
 			"Feed":        feed,
@@ -66,7 +66,7 @@ func Blog(metadata, navbar, feed template.HTML, buildDir string) error {
 	err = tmpl.ExecuteTemplate(
 		file,
 		"base.tmpl",
-		map[string]interface{}{
+		map[string]any{
 			"Metadata": metadata,
 			"Navbar":   navbar,
 			"Feed":     feed,
@@ -96,7 +96,7 @@ func Error(metadata, navbar template.HTML, buildDir string) error {
 	err = tmpl.ExecuteTemplate(
 		file,
 		"base.tmpl",
-		map[string]interface{}{
+		map[string]any{
 			"Metadata": metadata,
 			"Navbar":   navbar,
 		},
@@ -186,7 +186,7 @@ func BlogPostTemplate(metadata, navbar template.HTML, name string) (string, erro
 	}
 	defer tmpFile.Close()
 
-	data := map[string]interface{}{
+	data := map[string]any{
 		"Metadata": metadata,
 		"Navbar":   navbar,
 		"Name":     name,

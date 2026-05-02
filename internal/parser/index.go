@@ -16,25 +16,28 @@ func GetBlogPosts() ([]schema.BlogPost, error) {
 	postsDir := "web/posts"
 
 	if _, err := os.Stat(postsDir); os.IsNotExist(err) {
-		return nil, fmt.Errorf("Directory %s does not exist", postsDir)
+		return nil, fmt.Errorf("directory %s does not exist", postsDir)
 	}
 
 	var blogPosts []schema.BlogPost
-	files, err := os.ReadDir(postsDir)
-	if err != nil {
-		return nil, fmt.Errorf("Failed to read directory %s: %v", postsDir, err)
-	}
 
-	for _, file := range files {
-		filePath := filepath.Join(postsDir, file.Name())
-
-		file, err := os.Open(filePath)
+	err := filepath.WalkDir(postsDir, func(path string, d os.DirEntry, err error) error {
 		if err != nil {
-			return nil, fmt.Errorf("Failed to open file %s: %v", filePath, err)
+			return err
 		}
-		defer file.Close()
 
-		scanner := bufio.NewScanner(file)
+		if d.IsDir() || filepath.Ext(d.Name()) != ".md" {
+			return nil
+		}
+
+		f, err := os.Open(path)
+		if err != nil {
+			return fmt.Errorf("failed to open file %s: %v", path, err)
+		}
+		defer f.Close()
+
+		scanner := bufio.NewScanner(f)
+
 		var title, date string
 		for i := 1; i <= 3; i++ {
 			if !scanner.Scan() {
@@ -50,18 +53,23 @@ func GetBlogPosts() ([]schema.BlogPost, error) {
 
 		parsedDate, err := time.Parse(time.DateOnly, date)
 		if err != nil {
-			return nil, fmt.Errorf("Missing title or date in file %s", filePath)
+			return fmt.Errorf("missing title or date in file %s", path)
 		}
 
-		htmlLink := strings.TrimSuffix(file.Name(), ".md") + ".html"
-		htmlLink = "blog" + strings.TrimPrefix(htmlLink, "web/posts")
+		htmlFile := strings.TrimSuffix(filepath.Base(path), ".md") + ".html"
 
 		blogPosts = append(blogPosts, schema.BlogPost{
 			Title:      title,
 			Date:       date,
-			Link:       htmlLink,
+			Link:       "blog/" + htmlFile,
 			ParsedDate: parsedDate,
 		})
+
+		return nil
+	})
+
+	if err != nil {
+		return nil, err
 	}
 
 	sort.Slice(blogPosts, func(i, j int) bool {
