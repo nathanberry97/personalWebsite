@@ -28,7 +28,6 @@ personalWebsite
 
 Usage:
   pre-commit            Install pre-commit hooks
-  test                  Unit test go code
   setup                 Setup build dir and copy over assets
   compile               Compile blog posts into HTML
   local                 Run a local web server to host website locally
@@ -58,7 +57,6 @@ Here are the commands you can run locally to compile and host the website
 through `docker` and so on:
 
 ```bash
-make test
 make setup
 make compile
 make local
