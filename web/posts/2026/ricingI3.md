@@ -7,8 +7,8 @@ Saying good bye to Gnome
 ```
 
 Recently I updated my laptop to Fedora 43 and it broke all the Gnome extensions
-which made it usable, basically I had my workflow where it worked like my old i3
-setup.
+which made it usable, basically I had my workflow where I set it up like my old
+i3 config.
 Since it broke it resulted in my computer being unbearable, I know cry me a
 river.
 But recently I had some spare time due to being ill to dust off my old i3

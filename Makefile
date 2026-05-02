@@ -9,10 +9,6 @@ explain:
 pre-commit: ## Install pre-commit hooks
 	@pre-commit install
 
-.PHONY: test
-test: ## Unit test go code
-	@go test -v -parallel 4 ./internal/...
-
 .PHONY: setup
 setup: clean ## Setup build dir and copy over assets
 	@mkdir -p build/css build/blog

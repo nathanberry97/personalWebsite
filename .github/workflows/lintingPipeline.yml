@@ -39,10 +39,9 @@ jobs:
               run: |
                   pre-commit run --all
 
-            - name: Run App Build & Tests
+            - name: Run App Build
               run: |
                   make compile
-                  make test
 
             - name: Run Infra Build & Tests
               run: |

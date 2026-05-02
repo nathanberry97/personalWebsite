@@ -5,29 +5,38 @@ import (
 	"os"
 	"os/exec"
 	"path/filepath"
+	"strings"
 )
 
 func ConvertMarkdown(inputDir, outputDir, templatePath string) error {
-	files, err := os.ReadDir(inputDir)
+	pattern := filepath.Join(inputDir, "**", "*.md")
+
+	files, err := filepath.Glob(pattern)
 	if err != nil {
-		return fmt.Errorf("Failed to read directory %s: %v", inputDir, err)
+		return fmt.Errorf("glob failed: %w", err)
 	}
 
-	for _, file := range files {
-		if file.IsDir() || filepath.Ext(file.Name()) != ".md" {
-			continue
-		}
+	for _, path := range files {
+		filename := strings.TrimSuffix(filepath.Base(path), ".md") + ".html"
+		outputPath := filepath.Join(outputDir, filename)
 
-		inputPath := filepath.Join(inputDir, file.Name())
-		outputPath := filepath.Join(outputDir, file.Name()[:len(file.Name())-3]+".html")
+		cmd := exec.Command(
+			"pandoc",
+			"-s",
+			path,
+			"--template", templatePath,
+			"-o", outputPath,
+			"--quiet",
+		)
 
-		cmd := exec.Command("pandoc", "-s", inputPath, "--template", templatePath, "-o", outputPath, "--quiet")
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
+
 		if err := cmd.Run(); err != nil {
-			return fmt.Errorf("Failed to convert Markdown file %s to HTML: %v", inputPath, err)
+			return fmt.Errorf("failed converting %s: %w", path, err)
 		}
-		fmt.Println("Converted:", inputPath, "->", outputPath)
+
+		fmt.Println("Converted:", path, "->", outputPath)
 	}
 
 	return nil
