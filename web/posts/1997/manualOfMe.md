@@ -1,6 +1,6 @@
 # Manual of Me
 
-## 2025-11-20
+## 1997-01-10
 
 ```
 Code monkey @ the GDS
@@ -27,11 +27,13 @@ tell it was named solely for the use of the flex emoji 💪.
 ### The hours I like to work
 
 ```
-* Winter hours tend to be 09:00 - 17:00
+* Tend to work between 09:00 - 17:00
 
-* Summer hours tend to be 08:00 - 16:00
+* Sometimes like to work between the hours 08:00 - 16:00
 
 * I will be available between 09:00 - 16:00 all year round
+
+* I'm in the London office every Wednesday feel free to say hi
 ```
 
 ### The best ways to communicate with me
