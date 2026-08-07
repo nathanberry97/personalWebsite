@@ -1,6 +1,6 @@
 # Manual of Me
 
-## 1997-01-01
+## 1997-01-10
 
 ```
 Code monkey @ the GDS
