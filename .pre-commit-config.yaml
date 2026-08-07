@@ -9,14 +9,3 @@ repos:
       rev: v0.5.1
       hooks:
           - id: go-fmt
-
-    - repo: https://github.com/tbroadley/spellchecker-cli
-      rev: v6.2.0
-      hooks:
-          - id: spellchecker-cli
-            args: ["-l", "en-GB", "-d", ".spelling", "-f", "./blog/*.md"]
-            name: spellcheck
-            language_version: 18.19.1
-            types: [markdown]
-            stages:
-                - "pre-commit"
