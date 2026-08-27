@@ -1,6 +1,6 @@
 # Books I read in May to August
 
-## 2026-08-09
+## 2026-08-27
 
 ```
 Books I've read throughout May to August 2026
