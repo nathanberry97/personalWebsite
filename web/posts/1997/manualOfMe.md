@@ -10,7 +10,7 @@ This page is intended for my work colleagues as a manual of me, so if you
 aren't a work colleague read on if you want to know my working habits...
 I'm currently working at the GDS as a Software Engineer on the GOV.UK Once
 program focusing on [FLEX](https://github.com/govuk-once/flex), as far as I can
-tell it was named solely for the use of the flex emoji 💪.
+tell it was named solely for the use of the flex emoji.
 
 ### Conditions I like to work in
 
